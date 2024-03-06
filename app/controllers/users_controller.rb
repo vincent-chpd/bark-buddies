@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       "
       @users = User.joins(:dog).where(sql_query, query: "%#{params[:query]}%")
     else
-      @users = Movie.all
+      @users = User.all
     end
   end
 
