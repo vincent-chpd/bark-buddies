@@ -2,11 +2,18 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all
-  end
-
-  def query
-    @users = User.where("name ILIKE ?", "%#{params[:query]}%")
+    if params[:query].present?
+      sql_query = " \
+        users.name ILIKE :query \
+        OR users.age ILIKE :query \
+        OR users.location ILIKE :query \
+        OR users.email ILIKE :query \
+        OR users.dog.breed ILIKE :query \
+      "
+      @movies = User.joins(:dog).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @movies = Movie.all
+    end
   end
 
   def show
