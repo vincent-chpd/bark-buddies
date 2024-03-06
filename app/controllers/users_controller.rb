@@ -10,9 +10,9 @@ class UsersController < ApplicationController
         OR users.email ILIKE :query \
         OR users.dog.breed ILIKE :query \
       "
-      @movies = User.joins(:dog).where(sql_query, query: "%#{params[:query]}%")
+      @users = User.joins(:dog).where(sql_query, query: "%#{params[:query]}%")
     else
-      @movies = Movie.all
+      @users = Movie.all
     end
   end
 
