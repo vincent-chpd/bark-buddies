@@ -24,3 +24,23 @@
     <% end %>
   </div>
 </div>
+
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2>Suggested Communties</h2>
+    <%=  link_to "See more", users_path %>
+  </div>
+  <div class="d-flex">
+    <% @communities.all.each do |community| %>
+        <div class="flex my-4 mx-3 border">
+          <div class= "d-flex dog-picture text-center justify-content-center align-items-center" style="background-image: url('<%= image_path community.photo.url if community.photo.try(:url).present? %>')">
+            <h2><%= community.name %></h2>
+          </div>
+          <div class=" d-flex flex-column justify-content-between mx-2 my-1">
+            <p><%= community.description %></p>
+            <%= link_to "Chat"  %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'communities/index'
+  get 'communities/show'
+  get 'communities/new'
+  get 'communities/create'
+  get 'communities/destroy'
   devise_for :users
 
   devise_scope :user do
