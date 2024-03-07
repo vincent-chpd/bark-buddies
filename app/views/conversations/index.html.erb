@@ -2,29 +2,11 @@
   <h3>Mailbox</h3>
   <div class="ui list">
     <div class="item">
+      <ul>
       <% @conversations.each do |conversation| %>
-        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-          <% if conversation.sender_id == current_user.id %>
-            <% recipient = User.find(conversation.recipient_id) %>
-          <% else %>
-            <% recipient = User.find(conversation.sender_id) %>
-          <% end %>
-          <%= link_to recipient.name, conversation_messages_path(conversation) %>
-        <% end %>
+        <li><%= link_to conversation.sender.name, conversation_messages_path(conversation) %></li>
       <% end %>
+      </ul>
     </div>
-  </div>
-</div>
-
-<div class="ui segment">
-  <h3>All Users</h3>
-  <div class="ui list">
-    <% @users.each do |user| %>
-      <% if user.id != current_user.id %>
-        <div class="item">
-          <%= user.name %> <%= button_to "Message me!", conversations_path(recipient_id: user.id, sender_id: current_user.id), method: :post %>
-        </div>
-      <% end %>
-    <% end %>
   </div>
 </div>
