@@ -1,2 +1,29 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="container mt-2">
+  <h2 class="text-center">Fellow Buddies🐕  </h2>
+    <%= form_with url: "/search", method: :get, class: "users-search-bar text-center" do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search for your buddy!" %>
+    <%= submit_tag "Search", name: nil %>
+  <% end %>
+  <div class="d-flex flex-wrap">
+    <% User.all.each do |user| %>
+      <% user.dogs.each do |dog| %>
+        <% first_photo = dog.photos.first %>
+        <div class="profile-card my-4 mx-3 col-2">
+          <div class= "dog-picture" style="background-image: url('<%= image_path first_photo.url %>')">
+            <%= image_tag user.photo.url, height: 80, width: 80, class: "user-avatar", style: "border-radius: 50%;" %>
+          </div>
+          <h5 class="mt-2"><%= user.name %> & <%= dog.name %> </h5>
+          <div class="d-flex">
+            <p><%= dog.breed %> •</p>
+            <p> <i class="fa-solid fa-mars"></i></p>
+          </div>
+          <p><small><i class="fa-solid fa-location-dot"></i> <%= user.location %></small></p>
+          <p><small>Joined: <%= user.created_at.strftime("%d.%m.%Y") %></small></p>
+          <div class="mt-2">
+            <a href="/users/<%= user.id %>" class="btn-view-profile">View <%= user.name %>'s Profile🐾</a>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
