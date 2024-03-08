@@ -8,8 +8,8 @@
     <% User.all.each do |user| %>
       <% user.dogs.each do |dog| %>
         <% first_photo = dog.photos.first %>
-        <div class="profile-card my-4 mx-3 col-2">
-          <div class= "dog-picture" style="background-image: url('<%= image_path first_photo.url %>')">
+        <div class="profile-card-users my-4 mx-3 col-2">
+          <div class= "dog-picture-users" style="background-image: url('<%= image_path first_photo.url %>')">
             <%= image_tag user.photo.url, height: 80, width: 80, class: "user-avatar", style: "border-radius: 50%;" %>
           </div>
           <h5 class="mt-2"><%= user.name %> & <%= dog.name %> </h5>
@@ -20,7 +20,7 @@
           <p><small><i class="fa-solid fa-location-dot"></i> <%= user.location %></small></p>
           <p><small>Joined: <%= user.created_at.strftime("%d.%m.%Y") %></small></p>
           <div class="mt-2">
-            <a href="/users/<%= user.id %>" class="btn-view-profile">View <%= user.name %>'s Profile🐾</a>
+            <a href="/users/<%= user.id %>" class="btn-view-profile"><%= user.name %>'s Profile🐾</a>
           </div>
         </div>
       <% end %>
