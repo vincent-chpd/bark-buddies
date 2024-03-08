@@ -1,0 +1,14 @@
+<% if message.content.present? %>
+        <% user = User.find(message.user_id) %>
+        <div class="item" id="message-<%= message.id %>">
+          <div class="content">
+            <div class="header"><strong><%= user.name %></strong> <%= message.message_time %></div>
+            <div class="list">
+              <div class="item">
+                <i class="right triangle icon"></i>
+                <%= message.content %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>

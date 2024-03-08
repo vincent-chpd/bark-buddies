@@ -16,9 +16,13 @@ class MessagesController < ApplicationController
   end
 
   def create
-
     @message = @conversation.messages.new(message_params)
+
     if @message.save
+      ConversationChannel.broadcast_to(
+        @conversation,
+        render_to_string(partial: "message", locals: {message: @message})
+      )
       redirect_to conversation_messages_path(@conversation)
     else
       flash[:error] = "Failed to create message"
