@@ -1,22 +1,17 @@
 <% if message.content.present? %>
         <% user = User.find(message.user_id) %>
-        <% align =  user == current_user ? "right" : "left" %>
-        <% background =  user == current_user ? "pink" : "#a1f2f7" %>
-        <div class="message-container" id="message-<%= message.id %>" style="text-align: <%= align %>; background-color:<%= background%>;">
-          <div class="message-content" style="background-color:<%= background%>;">
-          <% message_time = Time.strptime(message.message_time, "%m/%d/%y at %I:%M %p") %>
-          <% formatted_message_time = message_time.strftime("%H:%M") %>
+        <% align =  user == current_user ? "align-self:flex-end;" : "align-self:flex-start;" %>
 
-            <div>
+        <div class="message-block" id="message-<%= message.id %>">
+          <div class="message-container" style=<%= align %>>
+            <% message_time = Time.strptime(message.message_time, "%m/%d/%y at %I:%M %p") %>
+            <% formatted_message_time = message_time.strftime("%H:%M") %>
+
             <small><%= formatted_message_time %></small>
-            </div>
-            <%= message.content %>
-            <% if message.read == true %>
-              <i class="fa-solid fa-circle" style="color:gray"></i>
-            <% else %>
-              <i class="fa-solid fa-circle" style="color:blue"></i>
-            <% end %>
+
+            <div class="message"><p><%= message.content %></p></div>
 
           </div>
+
         </div>
 <% end %>
