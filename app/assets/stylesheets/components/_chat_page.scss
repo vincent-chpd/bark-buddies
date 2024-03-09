@@ -1,13 +1,13 @@
 .conversation-container {
 
   padding: 5px;
-  height: 90vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
 }
 
 .chat {
-  height:100%;
+  height:80vh;
 }
 
 .chat-header{
@@ -42,8 +42,9 @@
 .messages {
   display:flex;
   flex-direction: column;
-  height: 90%;
   overflow-y: scroll;
+  margin-bottom: 10px;
+  min-height: 100%;
 }
 
 .message-block{
@@ -58,19 +59,22 @@
 }
 
 .message {
+  max-width: 100%;
   background-color: $orange;
   margin-bottom: 10px;
   border-radius: 10px;
   padding: 5px 10px;
   display: flex;
   align-items: center;
+  word-wrap: break-word; /* For older browsers */
+  overflow-wrap: break-word;
   p{
     margin: 0;
   }
 }
 
 .chat-form{
-  margin-top: auto;
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;

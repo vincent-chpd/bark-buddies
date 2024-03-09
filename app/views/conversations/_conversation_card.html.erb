@@ -3,6 +3,10 @@
 
     <% the_other_person = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
     <%= image_tag the_other_person.photo.url, alt: "#{the_other_person.name} Profile Picture", class:"user-image" %>
-    <%= the_other_person.name %>
+    <div>
+      <%= the_other_person.name %> <small><em> & <%= the_other_person.dogs.first.name %></em></small>
+    </div>
+    <% the_other_person_dog = the_other_person.dogs.first %>
+    <%= image_tag the_other_person_dog.photos.first.url, alt: "#{the_other_person_dog.name} Profile Picture", class:"user-image" %>
   </div>
 <% end %>
