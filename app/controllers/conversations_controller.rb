@@ -5,22 +5,31 @@ class ConversationsController < ApplicationController
     @conversations = Conversation.where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id)
   end
 
+  def show
+    @conversation = Conversation.find(params[:id])
+    @messages = @conversation.messages
+    @over_ten = @messages.length > 10
+    @messages = @messages[ -10..-1 ] if @over_ten && !params[:m]
+    @messages.last&.update(read: true) if @messages.last&.user_id != current_user.id
+    @message = @conversation.messages.new
+  end
+
   def create
-    @conversation = Conversation.new(conversation_params)
     existing_conversation = Conversation.between(params[:sender_id], params[:recipient_id]).first
 
     if existing_conversation.present?
-      @conversation = existing_conversation
+      redirect_to conversation_path(existing_conversation)
     else
-      @conversation.save!  # Use save! to raise an exception if validation fails
+      @conversation = Conversation.new(conversation_params)
+      if @conversation.save
+        redirect_to conversation_path(@conversation)
+      else
+        flash[:error] = "Failed to create conversation"
+        redirect_back fallback_location: root_path
+      end
     end
-
-
-    redirect_to conversation_messages_path(@conversation)
-  rescue ActiveRecord::RecordInvalid => e
-    flash[:error] = "Failed to create conversation: #{e.message}"
-    redirect_back fallback_location: root_path
   end
+
 
   private
 

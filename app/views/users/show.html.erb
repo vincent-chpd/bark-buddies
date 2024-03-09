@@ -1,3 +1,29 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-<%= render "private_message_button", user: @user %>
+<div class="profile-container">
+  <h1><%= @user.name %>'s Profile</h1>
+
+    <div class="dog-profile">
+      <%= image_tag @dog.photos.first, alt: "#{@dog.name} Profile Picture", class: 'profile-image' %>
+      <p><strong>Breed:</strong> <%= @dog.breed %></p>
+      <p><strong>Age:</strong> <%= @dog.age %> years</p>
+      <p><strong>Sex:</strong> <%= @dog.gender %></p>
+    </div>
+
+  <div class="user-profile">
+    <%= image_tag @user.photo.url, alt: "#{@user.name} Profile Picture", class: 'profile-image-small' %>
+    <div class="profile-info">
+      <p><strong>Name:</strong> <%= @user.name %></p>
+      <p><strong>Age:</strong> <%= @user.age %> years</p>
+    </div>
+  </div>
+
+  <div class="bio">
+    <h2>Bio</h2>
+    <p><%= @user.bio %></p>
+  </div>
+
+  <div class="actions">
+    <%= render "private_message_button", user: @user %>
+    <%# <%= button_to "Send Message".html_safe, root_path(user_id: @user.id), method: :get, class: 'button icon-button' %>
+    <%= button_to "Add Friend".html_safe, root_path(user_id: @user.id), method: :post, class: 'button icon-button' %>
+  </div>
+</div>

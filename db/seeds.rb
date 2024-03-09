@@ -1,9 +1,12 @@
 require 'faker'
 require 'open-uri'
 
+Conversation.destroy_all
+Message.destroy_all
 User.destroy_all
 Dog.destroy_all
 Community.destroy_all
+
 
 puts "Creating users..."
 
