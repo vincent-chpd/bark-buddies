@@ -1,13 +1,8 @@
 <div class="ui segment">
-  <h3>Mailbox</h3>
+  <h2>Messages</h2>
   <div class="ui list">
-    <div class="item">
-      <ul>
       <% @conversations.each do |conversation| %>
-        <% name_of_the_other_person = conversation.sender == current_user ? conversation.recipient.name : conversation.sender.name %>
-        <li><%= link_to name_of_the_other_person, conversation_path(conversation) %></li>
+        <%= render "conversation_card", conversation: conversation %>
       <% end %>
-      </ul>
-    </div>
   </div>
 </div>

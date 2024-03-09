@@ -16,22 +16,19 @@
   gap: 5px;
 }
 
-.header-images{
-
-  .user-image{
+.user-image{
     width: 80px;
     height: 80px;
     border-radius: 50%;
   }
 
-  .dog-image{
+.dog-image{
     margin-top: 30px;
     margin-left: -20px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
   }
-}
 
 .header-text{
   display: flex;

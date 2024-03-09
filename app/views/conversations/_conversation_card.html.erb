@@ -1,0 +1,8 @@
+<%=  link_to conversation_path(conversation) do %>
+  <div class="conversation-card">
+
+    <% the_other_person = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
+    <%= image_tag the_other_person.photo.url, alt: "#{the_other_person.name} Profile Picture", class:"user-image" %>
+    <%= the_other_person.name %>
+  </div>
+<% end %>
