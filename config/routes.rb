@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :events
+  resources :searches, only: [:index]
   resources :communities, only: [:index, :show, :new, :create, :destroy] do
     resources :community_messages, only: :create
   end

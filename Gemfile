@@ -53,7 +53,7 @@ gem "sassc-rails"
 gem 'faker'
 gem "cloudinary"
 gem 'redis', '~> 5.0'
-
+gem "pg_search"
 
 group :development, :test do
   gem "dotenv-rails"
