@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  get 'communities/index'
-  get 'communities/show'
-  get 'communities/new'
-  get 'communities/create'
-  get 'communities/destroy'
   devise_for :users
 
   devise_scope :user do
@@ -11,12 +6,15 @@ Rails.application.routes.draw do
     resources :dogs
   end
 
+  root to: "pages#home"
   resources :conversations do
     resources :messages, only: [:index, :new, :create]
   end
 
   resources :events
+  resources :communities, only: [:index, :show, :new, :create, :destroy] do
+    resources :community_messages, only: :create
+  end
 
-  root to: "pages#home"
   get "up" => "rails/health#show", as: :rails_health_check
 end
