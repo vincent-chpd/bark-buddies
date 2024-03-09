@@ -37,7 +37,7 @@
     </div>
 
     <div class="actions">
-      <%= button_to root_path(user_id: @user.id), method: :get, class: 'button icon-button' do %>
+      <%= render "private_message_button", user: @user, method: :get, class: 'button icon-button' do %>
         <i class="fas fa-paw"></i> Bark me!
       <% end %>
         <%= button_to root_path(user_id: @user.id), method: :post, class: 'button icon-button' do %>
