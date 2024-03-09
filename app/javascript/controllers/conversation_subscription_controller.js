@@ -9,8 +9,18 @@ export default class extends Controller {
   connect() {
     this.channel = createConsumer().subscriptions.create(
       { channel: "ConversationChannel", id: this.conversationIdValue },
-      { received: data => this.messagesTarget.insertAdjacentHTML("beforeend", data) }
+      { received: (data) => { this.insertMessageAndScrollDown(data) }}
     )
-    this.channel.perform("mark_as_read")
+  }
+
+  resetForm(event) {
+    event.preventDefault()
+    event.target.reset()
+}
+
+  insertMessageAndScrollDown(data){
+      this.messagesTarget.insertAdjacentHTML("beforeend", data)
+      this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
+      console.log(this.messagesTarget.scrollHeight)
   }
 }

@@ -40,11 +40,10 @@
 }
 
 .messages {
-  display:flex;
-  flex-direction: column;
-  overflow-y: scroll;
-  margin-bottom: 10px;
-  min-height: 100%;
+  // display:flex;
+  // flex-direction: column;
+  max-height: 80%;
+  overflow: auto;
 }
 
 .message-block{
