@@ -22,10 +22,8 @@
   </div>
 
   <div class="actions">
-    <%= button_to "Send Message".html_safe, root_path(user_id: @user.id), method: :get, class: 'button icon-button' %>
+    <%= render "private_message_button", user: @user %>
+    <%# <%= button_to "Send Message".html_safe, root_path(user_id: @user.id), method: :get, class: 'button icon-button' %>
     <%= button_to "Add Friend".html_safe, root_path(user_id: @user.id), method: :post, class: 'button icon-button' %>
   </div>
 </div>
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-<%= render "private_message_button", user: @user %>

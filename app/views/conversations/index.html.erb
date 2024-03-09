@@ -4,7 +4,8 @@
     <div class="item">
       <ul>
       <% @conversations.each do |conversation| %>
-        <li><%= link_to conversation.recipient.name, conversation_path(conversation) %></li>
+        <% name_of_the_other_person = conversation.sender == current_user ? conversation.recipient.name : conversation.sender.name %>
+        <li><%= link_to name_of_the_other_person, conversation_path(conversation) %></li>
       <% end %>
       </ul>
     </div>

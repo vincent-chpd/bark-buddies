@@ -5,6 +5,7 @@ Conversation.destroy_all
 Message.destroy_all
 User.destroy_all
 Dog.destroy_all
+Community.destroy_all
 
 
 puts "Creating users..."
@@ -48,3 +49,18 @@ users.each_with_index do |user, user_index|
 end
 
 puts "Dogs created!"
+
+puts "Creating communities..."
+
+communities = []
+
+10.times do |i|
+  community = Community.create(
+    name: Faker::Creature::Dog.breed + " Lovers",
+    description: Faker::Lorem.paragraph
+  )
+
+  file = URI.open('https://placedog.net/640/480?random')
+  community.photo.attach(io: file, filename: "community#{i}.png", content_type: 'image/png')
+  communities << community
+end
