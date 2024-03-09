@@ -1,0 +1,29 @@
+.conversations {
+  h2{
+    text-align: center;
+  }
+}
+
+.conversation-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: transform 0.3s;
+  &:hover{
+    // transition to bigger size
+    transform: scale(1.05);
+  }
+}
+
+@media (min-width: 768px) {
+  .conversation-card {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+}
