@@ -5,4 +5,11 @@ class User < ApplicationRecord
   has_one_attached :photo
   has_many :dogs, dependent: :destroy
   has_many :conversations, foreign_key: :sender_id, dependent: :destroy
+
+  include PgSearch::Model
+  pg_search_scope :search_by_location_name,
+    against: [ :name, :location ],
+    using: {
+      tsearch: { prefix: true }
+  }
 end

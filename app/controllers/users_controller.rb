@@ -2,14 +2,8 @@ class UsersController < ApplicationController
 
   def index
     if params[:query].present?
-      sql_query = " \
-        users.name ILIKE :query \
-        OR users.age ILIKE :query \
-        OR users.location ILIKE :query \
-        OR users.email ILIKE :query \
-        OR users.dog.breed ILIKE :query \
-      "
-      @users = User.joins(:dog).where(sql_query, query: "%#{params[:query]}%")
+      @users = User.search_by_location_name(params[:query])
+      @message = "There are no users available for this location" if @users.empty?
     else
       @users = User.all
     end
@@ -17,6 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @dog = @user.dogs.first
     @conversations = Conversation.where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id)
   end
 
