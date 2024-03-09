@@ -1,2 +1,27 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb isaac test</p>
+<h1>Dashboard</h1>
+<hr>
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2>Buddies near you</h2>
+    <%=  link_to "See more", users_path %>
+    <%=  link_to "Events", events_path %>
+  </div>
+  <div class="d-flex">
+    <% User.all.each do |user| %>
+      <% user.dogs.each do |dog| %>
+        <% first_photo = dog.photos.first %>
+        <div class="profile-card my-4 mx-3 border">
+          <div class= "dog-picture" style="background-image: url('<%= image_path first_photo.url %>')">
+            <%= image_tag user.photo.url, height: 80, width: 80, class: "user-avatar", style: "border-radius: 50%;" %>
+          </div>
+          <div class="mx-2 my-1 d-flex flex-column justify-content-center">
+            <h5><%= user.name %> & <%= dog.name %> </h5>
+              <p><%= dog.breed %></p>
+              <p><small><%= dog.gender %>, <%= dog.age %> years old</small></p>
+            <p><small><i class="fa-solid fa-location-dot"></i> <%= user.location %></small></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
