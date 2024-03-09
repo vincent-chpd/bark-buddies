@@ -1,0 +1,66 @@
+
+.banner-img{
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  height: 700px;
+  margin-bottom: 60px;
+}
+
+.banner-text h3 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 52px;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+}
+
+.banner-text p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-align: center;
+  padding: 10px;
+  margin-left: 5px;
+}
+
+.card-event {
+  overflow: hidden;
+  height: 100px;
+  background: white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-left: 60px;
+  margin-right: 60px;
+  border-radius: 10px;
+  cursor: pointer; /* Add pointer cursor to indicate interactivity */
+}
+
+.card-event img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-event h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-event p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-event .card-event-info {
+  padding: 16px;
+}
