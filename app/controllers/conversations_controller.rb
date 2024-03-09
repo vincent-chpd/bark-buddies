@@ -12,6 +12,8 @@ class ConversationsController < ApplicationController
     @messages = @messages[ -10..-1 ] if @over_ten && !params[:m]
     @messages.last&.update(read: true) if @messages.last&.user_id != current_user.id
     @message = @conversation.messages.new
+    @other_user = @conversation.sender_id == current_user.id ? User.find(@conversation.recipient_id) : User.find(@conversation.sender_id)
+    @other_user_dog = @other_user.dogs.first
   end
 
   def create

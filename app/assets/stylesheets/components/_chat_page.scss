@@ -1,0 +1,118 @@
+.conversation-container {
+
+  padding: 5px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat {
+  height:100%;
+}
+
+.chat-header{
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.header-images{
+
+  .user-image{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+
+  .dog-image{
+    margin-top: 30px;
+    margin-left: -20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+}
+
+.header-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  h1{
+    margin: 0;
+  }
+}
+
+.messages {
+  display:flex;
+  flex-direction: column;
+  height: 90%;
+  overflow-y: scroll;
+}
+
+.message-block{
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.message-container{
+  max-width: 80%;
+  margin: 0 2%;
+}
+
+.message {
+  background-color: $orange;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  p{
+    margin: 0;
+  }
+}
+
+.chat-form{
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-area{
+  height: 50px;
+  width: 80%;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.form-button{
+  width: 18%;
+  height: 50px;
+  border-radius: 10px;
+  background-color: $blue;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover{
+    background-color: $green;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .conversation-container {
+    margin: 0 auto;
+    max-width: 60%;
+    background-color: $light-gray;
+    border-radius: 10px;
+  }
+
+  body{
+    background-color: white;
+  }
+
+
+}
