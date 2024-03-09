@@ -1,29 +1,48 @@
 <div class="profile-container">
-  <h1><%= @user.name %>'s Profile</h1>
+  <div class ="alignment">
+    <h1><%= @dog.name %> & <%= @user.name %></h1>
 
-    <div class="dog-profile">
-      <%= image_tag 'https://img.freepik.com/free-photo/ai-generated-labrador-retriever-dog-picture_23-2150644908.jpg', alt: "#{"dog_profile_pic"} Profile Picture", class: 'profile-image' %>
-      <p><strong>Breed:</strong> <%= @dog.breed %></p>
-      <p><strong>Age:</strong> <%= @dog.age %> years</p>
-      <p><strong>Sex:</strong> <%= @dog.gender %></p>
+      <div class="dog-profile-container">
+        <div class="dog-profile">
+          <%= image_tag 'https://img.freepik.com/free-photo/ai-generated-labrador-retriever-dog-picture_23-2150644908.jpg', alt: "#{"dog_profile_pic"} Profile Picture", class: 'profile-image' %>
+        </div>
+
+        <div class="profile-details">
+          <h4>
+            <strong><%= @dog.breed %></strong><br>
+            <span class="lighter-font"><%= @dog.age %> years old, <%= @dog.gender %></span>
+          </h4>
+        </div>
+
+
+        <div class="dog-bio">
+          <p><strong>About me:</strong><br>
+          <%= @dog.bio %></p>
+        </div>
+      </div>
+
+
+    <div class="user-card">
+      <div class="user-profile">
+        <%= image_tag @user.photo.url, alt: "#{@user.name} Profile Picture", class: 'profile-image-small' %>
+        <div class="profile-info">
+          <h4><strong><%= @user.name %>, </strong><span class="lighter-font"><%= @user.age %></span></h4>
+        </div>
+      </div>
+
+      <div class="user-bio">
+        <strong>About me</strong>
+        <p><%= @user.bio %></p>
+      </div>
     </div>
 
-  <div class="user-profile">
-    <%= image_tag @user.photo.url, alt: "#{@user.name} Profile Picture", class: 'profile-image-small' %>
-    <div class="profile-info">
-      <p><strong>Name:</strong> <%= @user.name %></p>
-      <p><strong>Age:</strong> <%= @user.age %> years</p>
+    <div class="actions">
+      <%= button_to root_path(user_id: @user.id), method: :get, class: 'button icon-button' do %>
+        <i class="fas fa-paw"></i> Bark me!
+      <% end %>
+        <%= button_to root_path(user_id: @user.id), method: :post, class: 'button icon-button' do %>
+          <i class="fas fa-user-plus"></i> Add buddy
+        <% end %>
     </div>
-  </div>
-
-  <div class="bio">
-    <h2>Bio</h2>
-    <p><%= @user.bio %></p>
-  </div>
-
-  <div class="actions">
-    <%= render "private_message_button", user: @user %>
-    <%# <%= button_to "Send Message".html_safe, root_path(user_id: @user.id), method: :get, class: 'button icon-button' %>
-    <%= button_to "Add Friend".html_safe, root_path(user_id: @user.id), method: :post, class: 'button icon-button' %>
   </div>
 </div>

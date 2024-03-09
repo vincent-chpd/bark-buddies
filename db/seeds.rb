@@ -60,7 +60,7 @@ communities = []
     description: Faker::Lorem.paragraph
   )
 
-  file = URI.open('https://placedog.net/640/480?random')
+  file = URI.open('https://img.freepik.com/free-photo/ai-generated-labrador-retriever-dog-picture_23-2150644908.jpg')
   community.photo.attach(io: file, filename: "community#{i}.png", content_type: 'image/png')
   communities << community
 end
