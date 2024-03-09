@@ -2,7 +2,7 @@
   <h1><%= @user.name %>'s Profile</h1>
 
     <div class="dog-profile">
-      <%= image_tag @dog.photos.first, alt: "#{@dog.name} Profile Picture", class: 'profile-image' %>
+      <%= image_tag 'https://img.freepik.com/free-photo/ai-generated-labrador-retriever-dog-picture_23-2150644908.jpg', alt: "#{"dog_profile_pic"} Profile Picture", class: 'profile-image' %>
       <p><strong>Breed:</strong> <%= @dog.breed %></p>
       <p><strong>Age:</strong> <%= @dog.age %> years</p>
       <p><strong>Sex:</strong> <%= @dog.gender %></p>

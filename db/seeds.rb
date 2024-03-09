@@ -41,7 +41,7 @@ users.each_with_index do |user, user_index|
     )
 
     2.times do |photo_index|
-      file = URI.open('https://placedog.net/640/480?random')
+      file = URI.open('https://img.freepik.com/free-photo/ai-generated-labrador-retriever-dog-picture_23-2150644908.jpg')
       dog.photos.attach(io: file, filename: "dog#{user_index + 1}_photo#{photo_index + 1}.png", content_type: 'image/png')
     end
   end
