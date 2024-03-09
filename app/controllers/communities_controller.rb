@@ -4,6 +4,8 @@ class CommunitiesController < ApplicationController
   end
 
   def show
+    @community = Community.find(params[:id])
+    @community_message = CommunityMessage.new
   end
 
   def new
