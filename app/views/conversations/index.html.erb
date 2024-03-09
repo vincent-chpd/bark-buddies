@@ -4,7 +4,7 @@
     <div class="item">
       <ul>
       <% @conversations.each do |conversation| %>
-        <li><%= link_to conversation.sender.name, conversation_messages_path(conversation) %></li>
+        <li><%= link_to conversation.recipient.name, conversation_path(conversation) %></li>
       <% end %>
       </ul>
     </div>

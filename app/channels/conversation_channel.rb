@@ -10,4 +10,9 @@ class ConversationChannel < ApplicationCable::Channel
     console.log("Unsubscribed from the chatroom")
     this.channel.unsubscribe()
   end
+
+  def mark_as_read
+    chatroom = Chatroom.find(params[:id])
+    chatroom.messages.update_all(read: true)
+  end
 end
