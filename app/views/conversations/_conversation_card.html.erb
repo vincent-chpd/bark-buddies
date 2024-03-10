@@ -1,4 +1,9 @@
-<%=  link_to conversation_path(conversation) do %>
+
+<div class="full-card">
+  <%= link_to conversation_path(conversation), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "delete" do %>
+  <i class="fa-solid fa-trash-can"></i>
+  <% end %>
+<%=  link_to conversation_path(conversation), class: "names" do %>
   <div class="conversation-card">
 
     <% the_other_person = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
@@ -6,9 +11,10 @@
     <%= image_tag the_other_person.photo.url, alt: "#{the_other_person.name} Profile Picture", class:"user-image" %>
      <%= image_tag the_other_person_dog.photos.first.url, alt: "#{the_other_person_dog.name} Profile Picture", class:"dog-image" %>
     <div>
-      <%= the_other_person.name %> <small><em> & <%= the_other_person.dogs.first.name %></em></small>
+      <h2><%= the_other_person.name %> <small><em> & <%= the_other_person.dogs.first.name %></em></small></h2>
+      <p><%= conversation.messages.last.content %></p>
     </div>
 
-
   </div>
-<% end %>
+  <% end %>
+  </div>
