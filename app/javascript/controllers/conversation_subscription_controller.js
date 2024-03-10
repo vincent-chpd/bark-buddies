@@ -11,6 +11,7 @@ export default class extends Controller {
       { channel: "ConversationChannel", id: this.conversationIdValue },
       { received: (data) => { this.insertMessageAndScrollDown(data) }}
     )
+    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
 
   resetForm(event) {
@@ -21,6 +22,5 @@ export default class extends Controller {
   insertMessageAndScrollDown(data){
       this.messagesTarget.insertAdjacentHTML("beforeend", data)
       this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
-      console.log(this.messagesTarget.scrollHeight)
   }
 }
