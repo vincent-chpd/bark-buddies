@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   def home
     @communities = Community.all
     @users = User.all
+    @user = current_user
   end
 
   def show
