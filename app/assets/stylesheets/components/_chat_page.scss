@@ -44,14 +44,13 @@
 }
 
 .messages {
-  // display:flex;
-  // flex-direction: column;
   max-height: 80%;
   overflow: auto;
 }
 
 .message-block{
   display:flex;
+  justify-content: flex-end;
   width: 100%;
 }
 

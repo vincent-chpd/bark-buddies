@@ -1,8 +1,8 @@
 class ConversationChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
-    conversation = Conversation.find(params[:id])
-    stream_for conversation
+    @conversation = Conversation.find(params[:id])
+    stream_for @conversation
   end
 
   def unsubscribed
@@ -12,7 +12,6 @@ class ConversationChannel < ApplicationCable::Channel
   end
 
   def mark_as_read
-    chatroom = Chatroom.find(params[:id])
-    chatroom.messages.update_all(read: true)
+    @conversation.messages.update_all(read: true)
   end
 end

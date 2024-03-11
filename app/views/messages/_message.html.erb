@@ -1,9 +1,9 @@
 <% if message.content.present? %>
         <% user = User.find(message.user_id) %>
-        <% align =  user == current_user ? "align-self:flex-end;" : "align-self:flex-start;" %>
+        <% align =  user == current_user ? "justify-content:flex-end;" : "justify-content:flex-start;" %>
 
-        <div class="message-block" id="message-<%= message.id %>">
-          <div class="message-container" style=<%= align %>>
+        <div class="message-block" id="message-<%= message.id %>" style=<%= align %>>
+          <div class="message-container">
             <% message_time = Time.strptime(message.message_time, "%m/%d/%y at %I:%M %p") %>
             <% formatted_message_time = message_time.strftime("%H:%M") %>
 
