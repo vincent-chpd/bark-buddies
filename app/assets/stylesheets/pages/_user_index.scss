@@ -1,6 +1,6 @@
 .user-avatar {
-  position: relative;
-  top: 120px;
+  position: absolute;
+  top: 5px;
   left: 5px;
   border: 1px solid rgb(255, 255, 255);
 }
@@ -16,6 +16,7 @@
 
 .profile-card-users{
   border-radius: 20px;
+  position: relative;
 
   h5{
     margin: 0;
