@@ -6,9 +6,13 @@ class CommunityMessagesController < ApplicationController
     @community_message.community = @community
     @community_message.user = current_user
     if @community_message.save
-      redirect_to community_path(@community)
+      CommunityChannel.broadcast_to(
+        @community,
+        render_to_string(partial: "community_messages/message", locals: { message: @community_message })
+      )
+      head :ok
     else
-      render "community/show", status: :unprocessable_entity
+      render "communities/show", status: :unprocessable_entity
     end
   end
 
