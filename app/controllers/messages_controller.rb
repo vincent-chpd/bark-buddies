@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
         @conversation,
         render_to_string(partial: "messages/message", locals: { message: @message })
       )
-      redirect_to conversation_path(@conversation)
+      # redirect_to conversation_path(@conversation)
     else
       flash[:error] = "Failed to create message"
       redirect_back fallback_location: root_path

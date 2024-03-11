@@ -1,0 +1,67 @@
+.conversations {
+  h2{
+    text-align: center;
+  }
+}
+
+.full-card{
+  margin: 0 auto;
+  width: 90%;
+  border-radius: 16px;
+  position: relative;
+  border: 1px solid #e0e0e0;
+  transition: transform 0.3s;
+  cursor: pointer;
+  &:hover{
+    // transition to bigger size
+    border: 1px solid orange;
+  }
+}
+
+.conversation-card {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 95%;
+  gap: 10px;
+  padding: 10px 30px;
+
+
+  h2{
+    font-size: 24px;
+    margin-left: -30px;
+  }
+  p {
+    font-size: 16px;
+    color: grey;
+  }
+
+
+}
+
+.names {
+  text-decoration: none;
+  color: black;
+  margin-bottom: 10px ;
+}
+
+.delete {
+  margin: 0;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  i{
+    &:hover{
+      color: red;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .full-card {
+    max-width: 70%;
+  }
+}

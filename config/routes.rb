@@ -6,12 +6,16 @@ Rails.application.routes.draw do
     resources :dogs
   end
 
+  root to: "pages#home"
   resources :conversations do
     resources :messages, only: [:index, :new, :create]
   end
 
   resources :events
+  resources :searches, only: [:index]
+  resources :communities, only: [:index, :show, :new, :create, :destroy] do
+    resources :community_messages, only: :create
+  end
 
-  root to: "pages#home"
   get "up" => "rails/health#show", as: :rails_health_check
 end

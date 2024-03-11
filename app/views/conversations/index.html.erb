@@ -1,12 +1,8 @@
-<div class="ui segment">
-  <h3>Mailbox</h3>
-  <div class="ui list">
-    <div class="item">
-      <ul>
+<div class="conversations">
+  <h2>Messages</h2>
+  <div class="ui list mt-4">
       <% @conversations.each do |conversation| %>
-        <li><%= link_to conversation.recipient.name, conversation_path(conversation) %></li>
+        <%= render "conversation_card", conversation: conversation %>
       <% end %>
-      </ul>
-    </div>
   </div>
 </div>
