@@ -7,7 +7,7 @@
   <% end %>
 
   <%# messages displayed here %>
-  <div class="chat" data-conversation-subscription-target="messages">
+  <div class="chat" >
     <div class="chat-header">
       <div class="header-images">
         <%= image_tag @other_user.photo.url, alt: "#{@other_user.name} Profile Picture", class: "user-image" %>
@@ -15,13 +15,13 @@
       </div>
       <div class="header-text">
         <h2>
-          <%= @other_user.name %><br>
-          <small><em> & <%= @other_user_dog.name %></em></small>
-        </h2>
+          <%= @other_user.name %><br></h2>
+          <h4><em> & <%= @other_user_dog.name %></em></h4>
+
       </div>
     </div>
     <hr>
-    <div class="messages">
+    <div class="messages" data-conversation-subscription-target="messages">
     <% @messages.each do |message| %>
       <%= render "messages/message", message: message %>
     <% end %>
@@ -30,7 +30,7 @@
   </div>
 
   <%# form to add a new message %>
-  <%= form_for [@conversation, @message], html: {class: "chat-form"} do |f| %>
+  <%= form_for [@conversation, @message], html: {class: "chat-form", data: { action: "turbo:submit-end->conversation-subscription#resetForm" }} do |f| %>
       <%= f.text_area :content, placeholder: "Message...", class: "text-area"%>
     <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.submit "Send",  class: "form-button"%>

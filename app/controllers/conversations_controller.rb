@@ -8,9 +8,6 @@ class ConversationsController < ApplicationController
   def show
     @conversation = Conversation.find(params[:id])
     @messages = @conversation.messages
-    @over_ten = @messages.length > 10
-    @messages = @messages[ -10..-1 ] if @over_ten && !params[:m]
-    @messages.last&.update(read: true) if @messages.last&.user_id != current_user.id
     @message = @conversation.messages.new
     @other_user = @conversation.sender_id == current_user.id ? User.find(@conversation.recipient_id) : User.find(@conversation.sender_id)
     @other_user_dog = @other_user.dogs.first
@@ -30,6 +27,12 @@ class ConversationsController < ApplicationController
         redirect_back fallback_location: root_path
       end
     end
+  end
+
+  def destroy
+    @conversation = Conversation.find(params[:id])
+    @conversation.destroy
+    redirect_to conversations_path
   end
 
 
