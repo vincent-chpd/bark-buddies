@@ -41,7 +41,7 @@ users.each_with_index do |user, user_index|
     )
 
     2.times do |photo_index|
-      file = URI.open('https://thispersondoesnotexist.com')
+      file = URI.open('https://placedog.net/640/480?random')
       dog.photos.attach(io: file, filename: "dog#{user_index + 1}_photo#{photo_index + 1}.png", content_type: 'image/png')
     end
   end
