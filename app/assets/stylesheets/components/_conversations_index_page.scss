@@ -7,14 +7,14 @@
 .full-card{
   margin: 0 auto;
   width: 90%;
+  border-radius: 16px;
   position: relative;
   border: 1px solid #e0e0e0;
   transition: transform 0.3s;
   cursor: pointer;
-  box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
   &:hover{
     // transition to bigger size
-    transform: scale(1.05);
+    border: 1px solid orange;
   }
 }
 
