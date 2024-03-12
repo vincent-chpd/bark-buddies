@@ -13,7 +13,7 @@
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 10px 10px 0px 0;
+  border-radius: 16px 16px 0px 0;
 }
 
 .profiles-container {
@@ -27,7 +27,7 @@
 
 .profile-card{
   color: black;
-  border-radius: 20px;
+  border-radius: 16px;
   background: white;
   h5{
     margin: 0;
@@ -37,6 +37,9 @@
     padding: 0;
     margin: 0;
     color: gray;
+  }
+  &:hover {
+    outline: 2px solid #e27835;
   }
 }
 

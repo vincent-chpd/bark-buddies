@@ -9,7 +9,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav me-auto d-flex align-items-center">
         <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to "Home", root_path, class: "nav-link" %>
@@ -18,19 +18,16 @@
             <%= link_to "Messages", conversations_path, class: "nav-link" %>
           </li>
           <div class="d-flex user-actions">
-            <li class="nav-item">
-              <%= link_to user_path(current_user), class: "nav-link" do %>
-                Hi, <%= current_user.name %>
-              <% end %>
-            </li>
             <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Hello, <%= current_user.name %>
               <%= image_tag current_user.photo, class: "avatar", alt: "dropdown menu" %>
             </a>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <%= link_to "My Buddies", "#", class: "dropdown-item" %>
-                <%= link_to "My Communitites", "#", class: "dropdown-item" %>
-                <%= link_to "My Events", "#", class: "dropdown-item" %>
+                <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
+                <%= link_to "Buddies", "#", class: "dropdown-item" %>
+                <%= link_to "Communitites", "#", class: "dropdown-item" %>
+                <%= link_to "Events", "#", class: "dropdown-item" %>
                 <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
               </div>
             </li>
