@@ -26,7 +26,7 @@
       <div class="user-profile">
         <%= image_tag @user.photo.url, alt: "#{@user.name} Profile Picture", class: 'profile-image-small' %>
         <div class="profile-info">
-          <h4><strong><%= @user.name %>, </strong><span class="lighter-font"><%= @user.age %></span></h4>
+          <h4><strong><%= @user.name %>, </strong><span class="lighter-font"><%= @user.age %> <%= @dog.gender %></span></h4>
         </div>
       </div>
 
@@ -37,9 +37,7 @@
     </div>
 
     <div class="actions">
-      <%= button_to root_path(user_id: @user.id), method: :get, class: 'button icon-button' do %>
-        <i class="fas fa-paw"></i> Bark me!
-      <% end %>
+        <%= render "private_message_button", user: @user %>
         <%= button_to root_path(user_id: @user.id), method: :post, class: 'button icon-button' do %>
           <i class="fas fa-user-plus"></i> Add buddy
         <% end %>
