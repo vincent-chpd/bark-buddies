@@ -14,8 +14,8 @@
           <li class="nav-item active">
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%= link_to "Messages", conversations_path, class: "nav-link" %>
+          <li class="nav-item" data-controller="notifications">
+            <%= link_to "Messages", conversations_path, class: "nav-link", data: { target: "messages" } %>
           </li>
           <div class="d-flex user-actions">
             <li class="nav-item">

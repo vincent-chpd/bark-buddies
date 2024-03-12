@@ -1,9 +1,11 @@
 import { Controller } from "@hotwired/stimulus"
+import { createConsumer } from "@rails/actioncable"
 
 // Connects to data-controller="notifications"
 export default class extends Controller {
+  static targets = ["notifications"]
   connect() {
-    this.subscription = consumer.subscriptions.create(
+    this.channel = createConsumer().subscriptions.create(
       { channel: "NotificationChannel" },
       { received: (data) => { console.log(data) }}
     )
