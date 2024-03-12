@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_one_attached :photo
   has_many :dogs, dependent: :destroy
   has_many :conversations, foreign_key: :sender_id, dependent: :destroy
+  has_many :community_messages, dependent: :destroy
 
   include PgSearch::Model
   pg_search_scope :search_by_location_name,
