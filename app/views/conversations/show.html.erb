@@ -1,4 +1,4 @@
-<div class="container conversation"
+<div class="conversation-container"
   data-controller="conversation-subscription"
   data-conversation-subscription-conversation-id-value="<%= @conversation.id %>"
 >
@@ -7,23 +7,33 @@
   <% end %>
 
   <%# messages displayed here %>
-  <div class="ui segment" data-conversation-subscription-target="messages">
-    <%  name_of_the_other_user = @conversation.sender_id == current_user.id ? User.find(@conversation.recipient_id).name : User.find(@conversation.sender_id).name %>
-    <h1><%= name_of_the_other_user %></h1>
+  <div class="chat" >
+    <div class="chat-header">
+      <div class="header-images">
+        <%= image_tag @other_user.photo.url, alt: "#{@other_user.name} Profile Picture", class: "user-image" %>
+        <%= image_tag @other_user_dog.photos.first, alt: "#{@other_user_dog.name} Profile Picture", class: "dog-image" %>
+      </div>
+      <div class="header-text">
+        <h2>
+          <%= @other_user.name %><br></h2>
+          <h4><em> & <%= @other_user_dog.name %></em></h4>
+
+      </div>
+    </div>
+    <hr>
+    <div class="messages" data-conversation-subscription-target="messages">
     <% @messages.each do |message| %>
       <%= render "messages/message", message: message %>
     <% end %>
+    </div>
+
   </div>
 
   <%# form to add a new message %>
-  <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
-    <div class="field">
-      <%= f.text_area :content, class: "form-control" %>
-    </div>
+  <%= form_for [@conversation, @message], html: {class: "chat-form", data: { action: "turbo:submit-end->conversation-subscription#resetForm" }} do |f| %>
+      <%= f.text_area :content, placeholder: "Message...", class: "text-area"%>
     <%= f.hidden_field :user_id, value: current_user.id %>
-    <div>
-      <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
-    </div>
+      <%= f.submit "Send",  class: "form-button"%>
   <% end %>
 
 </div>

@@ -1,2 +1,21 @@
-<h1>Communities#show</h1>
-<p>Find me in app/views/communities/show.html.erb</p>
+<div class="container chatroom" data-controller="community-subscription" data-community-subscription-community-id-value="<%= @community.id %>">
+  <h1><%= @community.name %></h1>
+
+  <div class="messages" data-community-subscription-target="messages">
+    <% @community.community_messages.each do |message| %>
+      <%= render "community_messages/message", message: message %>
+    <% end %>
+  </div>
+
+
+<%= simple_form_for [@community, @community_message],
+  html: { data: { action: "turbo:submit-end->community-subscription#resetForm" }, class: "d-flex"} do |f|
+%>
+  <%= f.input :content,
+    label: false,
+    placeholder: "Message...", class: "text-area",
+    wrapper_html: {class: "flex-grow-1"}
+  %>
+  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+<% end %>
+</div>

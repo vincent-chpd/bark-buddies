@@ -1,46 +1,46 @@
-<div class="profile-container">
-  <div class ="alignment">
-    <h1><%= @dog.name %> & <%= @user.name %></h1>
+<div class="container-fluid">
 
-      <div class="dog-profile-container">
-        <div class="dog-profile">
-          <%= image_tag 'https://img.freepik.com/free-photo/ai-generated-labrador-retriever-dog-picture_23-2150644908.jpg', alt: "#{"dog_profile_pic"} Profile Picture", class: 'profile-image' %>
-        </div>
-
-        <div class="profile-details">
-          <h4>
-            <strong><%= @dog.breed %></strong><br>
-            <span class="lighter-font"><%= @dog.age %> years old, <%= @dog.gender %></span>
-          </h4>
-        </div>
-
-
-        <div class="dog-bio">
-          <p><strong>About me:</strong><br>
-          <%= @dog.bio %></p>
-        </div>
-      </div>
-
-
-    <div class="user-card">
-      <div class="user-profile">
-        <%= image_tag @user.photo.url, alt: "#{@user.name} Profile Picture", class: 'profile-image-small' %>
-        <div class="profile-info">
-          <h4><strong><%= @user.name %>, </strong><span class="lighter-font"><%= @user.age %> <%= @dog.gender %></span></h4>
-        </div>
-      </div>
-
-      <div class="user-bio">
-        <strong>About me</strong>
-        <p><%= @user.bio %></p>
-      </div>
+  <div class="profile-container my-3">
+    <div class="text-center">
+      <h1><%= @dog.name %> & <%= @user.name %></h1>
     </div>
 
-    <div class="actions">
-        <%= render "private_message_button", user: @user %>
-        <%= button_to root_path(user_id: @user.id), method: :post, class: 'button icon-button' do %>
-          <i class="fas fa-user-plus"></i> Add buddy
+        <div class="dog-profile-container">
+          <div class="dog-profile">
+            <%= image_tag @dog.photos.first.url, alt: "#{@user.name} Dog Picture", class: 'profile-image' %>
+          </div>
+
+          <div class="mt-2">
+            <h5><strong><%= @dog.breed %></strong></h5>
+            <p><small><%= @dog.age %> years old, <%= @dog.gender %></small></p>
+          </div>
+
+          <div class="mt-4">
+            <p><%= @dog.bio %></p>
+          </div>
+        </div>
+
+
+      <div class="user-card">
+        <div class="user-profile">
+          <%= image_tag @user.photo.url, alt: "#{@user.name} Profile Picture", class: 'profile-image-small' %>
+          <div class="profile-info">
+            <h4><strong><%= @user.name %>, </strong><span class="lighter-font"><%= @user.age %></span></h4>
+          </div>
+        </div>
+
+        <div class="user-bio">
+          <strong>About me</strong>
+          <p><%= @user.bio %></p>
+        </div>
+      </div>
+
+      <div class="actions d-flex my-3 justify-content-center">
+        <%= render "private_message_button", user: @user, method: :get, class: 'btn btn-warning' do %>
         <% end %>
-    </div>
+          <%= button_to root_path(user_id: @user.id), method: :post, class: 'btn btn-warning' do %>
+            <i class="fas fa-user-plus"></i> Add buddy
+          <% end %>
+      </div>
   </div>
 </div>

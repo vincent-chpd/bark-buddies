@@ -1,6 +1,6 @@
 .user-avatar {
-  position: relative;
-  top: 120px;
+  position: absolute;
+  bottom: 5px;
   left: 5px;
   border: 1px solid rgb(255, 255, 255);
 }
@@ -8,6 +8,7 @@
 .dog-picture-users {
   height: 200px;
   width: 200px;
+  position: relative;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 10px 10px 0px 0;
@@ -16,6 +17,7 @@
 
 .profile-card-users{
   border-radius: 20px;
+  position: relative;
 
   h5{
     margin: 0;
@@ -30,4 +32,12 @@
 .btn-view-profile {
   color: black;
   text-decoration: none;
+}
+
+
+.input-search {
+  width: 300px;
+  border-radius: 20px;
+  padding: 8px;
+  margin-top: 8px;
 }

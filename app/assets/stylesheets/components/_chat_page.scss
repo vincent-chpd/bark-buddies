@@ -1,0 +1,162 @@
+.conversation-container {
+
+  padding: 16px 0px;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat {
+  height:80vh;
+}
+
+.chat-header{
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.user-image{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+
+.dog-image{
+    margin-top: 30px;
+    margin-left: -20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+.header-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  h2{
+    margin: 0;
+    font-weight: 600;
+  }
+  h4 {
+    font-weight: 400;
+  }
+}
+
+.messages {
+  // display:flex;
+  // flex-direction: column;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.message-block{
+  display:flex;
+  width: 100%;
+}
+
+.message-container{
+  max-width: 80%;
+  margin: 0 2%;
+}
+
+.message {
+  max-width: 100%;
+  background-color: $orange;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  word-wrap: break-word; /* For older browsers */
+  overflow-wrap: break-word;
+  p{
+    margin: 0;
+  }
+}
+
+.chat-form{
+  width:95%;
+
+  margin: 10px auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-area{
+  height: 50px;
+  width: 80%;
+  padding: 10px;
+  border-radius: 10px 0px 0px 10px;
+  resize: none;
+  border-right: none;
+  border-left: 1px solid rgb(133, 133, 133);
+  border-top: 1px solid rgb(133, 133, 133);
+  border-bottom: 1px solid rgb(133, 133, 133);
+}
+
+.form-button{
+  width: 20%;
+  height: 50px;
+  border-radius: 0px 10px 10px 0px;
+  background-color: $blue;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  border-top: 1px solid rgb(133, 133, 133);
+  border-bottom: 1px solid rgb(133, 133, 133);
+  border-right: 1px solid rgb(133, 133, 133);
+
+  &:hover{
+    background-color: $green;
+  }
+}
+
+@media (min-width: 768px) {
+  .conversation-container {
+    margin: 0 auto;
+    max-width: 60%;
+    background-color: $light-gray;
+    border-radius: 10px;
+  }
+
+  .text-area {
+    width: 85%;
+  }
+
+  .form-button{
+    width: 15%;
+  }
+
+  body{
+    background-color: white;
+  }
+
+
+}
+
+@media (min-width: 968px) {
+  .conversation-container {
+    margin: 0 auto;
+    max-width: 60%;
+    background-color: $light-gray;
+    border-radius: 10px;
+  }
+
+  .text-area {
+    width: 90%;
+  }
+
+  .form-button{
+    width: 10%;
+  }
+
+  body{
+    background-color: white;
+  }
+
+
+}
