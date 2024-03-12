@@ -22,12 +22,12 @@ class MessagesController < ApplicationController
   end
 
   def reach_to_notification_channel
-    unread_messages = current_user.messages.where(read: false)
+    other_user = @conversation.sender == current_user ? @conversation.recipient : @conversation.sender
+    unread_messages = other_user.messages.where(read: false)
     NotificationChannel.broadcast_to(
-      current_user,
+      other_user,
       notification_count: unread_messages.count
     )
-    NotificationChannel.broadcast_to(current_user, notification_count: 10)
   end
 
   def message_params

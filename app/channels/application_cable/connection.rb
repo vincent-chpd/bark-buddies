@@ -7,11 +7,9 @@ module ApplicationCable
     end
 
     private
-
     def find_verified_user
-      raise
-      if verified_user == User.find_by(id: params[:id])
-        verified_user
+      if current_user = env['warden'].user
+        current_user
       else
         reject_unauthorized_connection
       end

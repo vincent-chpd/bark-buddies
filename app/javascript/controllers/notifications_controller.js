@@ -7,7 +7,7 @@ export default class extends Controller {
   connect() {
     this.channel = createConsumer().subscriptions.create(
       { channel: "NotificationChannel" },
-      { received: (data) => { console.log(data) }}
+      { received: (data) => { console.log(data) } }
     )
   }
 }
