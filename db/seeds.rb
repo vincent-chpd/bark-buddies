@@ -3,9 +3,9 @@ require 'open-uri'
 
 Conversation.destroy_all
 Message.destroy_all
+Event.destroy_all
 User.destroy_all
 Dog.destroy_all
-Event.destroy_all
 Community.destroy_all
 
 
@@ -51,6 +51,7 @@ end
 
 puts "Dogs created!"
 
+puts "Creating events!"
 events = [
   {
     event: "Yappy Hour: A Tail-Wagging Extravaganza!",
