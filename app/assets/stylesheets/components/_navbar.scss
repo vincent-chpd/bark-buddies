@@ -4,6 +4,10 @@
   background: white;
   margin-bottom: 20px;
   color: gray;
+  a{
+    color: gray;
+
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -12,35 +16,4 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 100px;
-}
-
-.user-actions {
-  background: #e27835;
-  border-radius: 16px;
-  padding: 4px 8px;
-  outline: 1px solid black;
-  a {
-    color: black;
-    text-decoration: none;
-  }
-}
-
-.user-actions:hover {
-  background-color: white;
-  outline: 1px solid #e27835;
-  a {
-    color: black;
-  }
-}
-
-.dropdown-menu {
-  background: white;
-  border-top: none;
-  width: 147px;
-  right: -8px !important;
-  border-radius: 8px;
-  border: 1px solid #e27735c9;
-  a {
-    color: black;
-  }
 }

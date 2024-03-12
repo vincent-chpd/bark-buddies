@@ -1,4 +1,4 @@
-<div class="container chatroom" data-controller="community-subscription" data-community-subscription-community-id-value="<%= @community.id %>">
+<div class="conversation-container" data-controller="community-subscription" data-community-subscription-community-id-value="<%= @community.id %>">
   <h1><%= @community.name %></h1>
 
   <div class="messages" data-community-subscription-target="messages">
@@ -9,7 +9,7 @@
 
 
 <%= simple_form_for [@community, @community_message],
-  html: { data: { action: "turbo:submit-end->community-subscription#resetForm" }, class: "d-flex"} do |f|
+  html: { data: { action: "turbo:submit-end->community-subscription#resetForm" }, class: "chat-form d-flex"} do |f|
 %>
   <%= f.input :content,
     label: false,
