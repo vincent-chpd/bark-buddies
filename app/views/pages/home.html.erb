@@ -29,7 +29,7 @@
 <div class="container mt-5">
   <div class="d-flex justify-content-between align-items-center">
     <h2>Suggested Communties</h2>
-    <%=  link_to "See more", users_path %>
+    <%=  link_to "See more", users_path, class:"orange" %>
   </div>
   <div class="d-flex scroll">
     <% @communities.all.each do |community| %>
@@ -42,4 +42,37 @@
         </div>
     <% end %>
   </div>
+</div>
+
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2>Events Coming Up</h2>
+    <%=  link_to "See more", events_path, class:"orange" %>
+  </div>
+
+  <time datetime="2014-07-01" class="icon">
+    <em>Saturday</em>
+    <strong>April</strong>
+    <span>01</span>
+  </time>
+
+  <div class="container">
+    <div class="row mt-3">
+      <% @events.each do |event| %>
+        <div class="col-6">
+          <div class="card-event">
+            <img src="https://saltydogpaddle.org/wp-content/uploads/2019/11/yappyhourbeer-1024x585.jpg">
+          <div class="card-event-info">
+            <h2><%= event.title %></h2>
+            <p><%= event.description %></p>
+            <p><%= event.location %></p>
+            <p><span><%= event.date %></span></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
 </div>
