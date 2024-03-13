@@ -1,2 +1,37 @@
-<h1>Communities#index</h1>
-<p>Find me in app/views/communities/index.html.erb</p>
+<div class="community-banner my-5">
+  <h1>Join the Bark Buddies community!</h1>
+</div>
+
+
+<div class="mt-5 pt-3 container-lg px-5" style="background: #e27c3d1c; border-radius:8px;">
+  <div class="row mt-4">
+    <h2>Popular Breed Groups</h2>
+    <% @communities.all.take(8).each do |community| %>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="community-card my-4 mx-1">
+          <%= image_tag community.photo.url, height: 140, width: 140, crop: :fill, style: "border-radius: 50%; outline: 2px solid white ;" %>
+          <h5><%= community.name %></h5>
+          <%= link_to "Join Community", community_path(community), class:"btn btn-warning" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="mt-5 pt-3 container-lg px-5" style="background: #e27c3d1c; border-radius:8px;">
+  <div class="row mt-4">
+    <h2>City & Neighborhood Groups</h2>
+    <% @communities.all.take(4).each do |community| %>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="community-card my-4 mx-1">
+          <%= image_tag community.photo.url, height: 140, width: 140, crop: :fill, style: "border-radius: 50%; outline: 2px solid white ;" %>
+          <h5><%= community.name %></h5>
+          <%= link_to "Join Community", community_path(community), class:"btn btn-warning" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<h5>General Groups</h5>
