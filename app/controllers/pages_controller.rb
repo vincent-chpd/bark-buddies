@@ -5,6 +5,7 @@ class PagesController < ApplicationController
     @communities = Community.all
     @users = User.all
     @user = current_user
+    @events = Event.all
   end
 
   def show
