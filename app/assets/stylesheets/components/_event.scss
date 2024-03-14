@@ -3,8 +3,11 @@
   background-size: cover;
   background-position: center;
   padding: 150px 0;
-  height: 700px;
+  height: 500px;
   margin-bottom: 60px;
+  margin-right: 60px;
+  margin-left: 60px;
+  border-radius: 8px;
 }
 
 .banner-text h3 {
@@ -29,7 +32,7 @@
 
 .card-event {
   overflow: hidden;
-  height: 100px;
+  height: 140px;
   background: white;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
   display: flex;
@@ -38,12 +41,17 @@
   margin-left: 60px;
   margin-right: 60px;
   border-radius: 10px;
-  cursor: pointer; /* Add pointer cursor to indicate interactivity */
+  cursor: pointer;
+  transition: box-shadow 0.3s ease; /* Add pointer cursor to indicate interactivity */
+}
+
+.card-event:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add slight shadow when hovering */
 }
 
 .card-event img {
   height: 100%;
-  width: 120px;
+  width: 140px;
   object-fit: cover;
 }
 
@@ -63,4 +71,15 @@
 
 .card-event .card-event-info {
   padding: 16px;
+}
+
+.modal-image-container {
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 100%;
 }
