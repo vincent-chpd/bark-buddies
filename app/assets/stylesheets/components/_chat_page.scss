@@ -1,25 +1,29 @@
 .conversation-container {
-
-  padding: 16px 0px;
-  min-height: 90vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
+
 }
 
 .chat {
-  height:80vh;
+  height: 70vh;
 }
 
 .chat-header{
   display: flex;
   justify-content: center;
   gap: 5px;
+  background-color: $orange;
+  padding: 10px 0px;
+  border-bottom: 2px solid rgb(255, 255, 255);
+  border-radius: 8px 8px 0px 0px;
 }
 
 .user-image{
     width: 80px;
     height: 80px;
     border-radius: 50%;
+    border: 1px solid white;
   }
 
 .dog-image{
@@ -28,6 +32,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    border-right: 1px solid white;
   }
 
 .header-text{
@@ -77,17 +82,31 @@
 
 .chat-form{
   width:95%;
-
   margin: 10px auto;
-
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.form-control{
+  background-color: white;
+  height: 50px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px 0px 0px 10px;
+  resize: none;
+  border-right: none;
+  border-left: 1px solid rgb(133, 133, 133);
+  border-top: 1px solid rgb(133, 133, 133);
+  border-bottom: 1px solid rgb(133, 133, 133);
+  &:focus{
+    background-color: white;
+  }
+}
+
 .text-area{
   height: 50px;
-  width: 80%;
+  width: 100%;
   padding: 10px;
   border-radius: 10px 0px 0px 10px;
   resize: none;
@@ -101,7 +120,7 @@
   width: 20%;
   height: 50px;
   border-radius: 0px 10px 10px 0px;
-  background-color: $blue;
+  background-color: $orange;
   color: white;
   border: none;
   cursor: pointer;
@@ -111,7 +130,8 @@
   border-right: 1px solid rgb(133, 133, 133);
 
   &:hover{
-    background-color: $green;
+    background-color: black;
+    color: $orange;
   }
 }
 
