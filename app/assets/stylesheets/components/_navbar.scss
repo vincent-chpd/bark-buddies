@@ -3,6 +3,11 @@
   align-items: center;
   background: white;
   margin-bottom: 20px;
+  color: gray;
+  a{
+    color: gray;
+
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -11,10 +16,4 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 100px;
-}
-
-.user-actions {
-  background: #e27835;
-  border-radius: 16px;
-  padding: 4px 8px;
 }
