@@ -18,7 +18,7 @@
 
 .profiles-container {
   background: #e27c3d1c;
-  border-radius: 16px;
+  border-radius: 32px;
   padding: 1rem 2rem;
   overflow: hidden;
   a {
@@ -48,8 +48,6 @@
 
 .scroll {
   overflow-x: scroll;
-  overflow: hidden;
-  cursor: grab;
 }
 
 .card-community{
@@ -73,4 +71,14 @@
 
 a {
   text-decoration: none;
+}
+
+li {
+  list-style: none !important;
+}
+
+@media (min-width: 575px) {
+  #dashboard-header {
+    display: none;
+  }
 }

@@ -1,6 +1,10 @@
+body{
+  background-color: white;
+
+}
 .community-card {
-  width: 250px;
-  height: 300px;
+  width: 150px;
+  height: 200px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -11,21 +15,36 @@
   text-wrap: wrap;
   padding: 10px;
   border: 1px solid white;
+  p{
+    font-size: 14px;
+  }
+  a{
+    font-size: 12px;
+    background: #e27835;
+    padding: 4px 8px;
+    color: white;
+    border-radius: 16px;
+  }
 }
 
 .community-banner{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://www.allirafontana.com/sy-photos/page-photos/20190916052651-Fagan_Park.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   height: 250px;
   width: 90%;
   border-radius: 16px;
   margin: 20px;
   padding: 20px;
-  color: white;
+  color: #e27835;
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
+  img {
+    height: 200px;
+    width: 40vw;
+    border-radius: 16px;
+
+  }
 }
 
 .breed-container{
