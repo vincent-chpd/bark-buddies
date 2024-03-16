@@ -1,3 +1,35 @@
+<div class= "my-4 mx-2 d-flex justify-content-between" id="dashboard-header">
+  <%= link_to root_path, class: " mx-3 navbar-brand" do %>
+      <%= image_tag 'https://res.cloudinary.com/drqv8g5uf/image/upload/v1710167061/Bark_Buddies_1_tzzpf2.png', width: 100 %>
+  <% end %>
+  <div class="d-flex justify-content-end align-items-center">
+    <% if user_signed_in? %>
+      <h1 class="mx-2">Hi, <%= current_user.name %>! </h1>
+      <div class="d-flex user-actions">
+        <li class="nav-item dropdown">
+        <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= image_tag current_user.photo, class: "avatar", alt: "dropdown menu" if current_user.photo.present? %>
+        </a>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Buddies", "#", class: "dropdown-item" %>
+            <%= link_to "Communities", "#", class: "dropdown-item" %>
+            <%= link_to "Events", "#", class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+          </div>
+        </li>
+      </div>
+    <% else %>
+      <li class="nav-item">
+        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+      </li>
+    <% end %>
+  </div>
+</div>
+
+<div class="mb-5 d-flex align-items-center justify-content-around">
+
+</div>
 
 <div class="container profiles-container">
   <div class="d-flex justify-content-between align-items-center">
@@ -5,7 +37,7 @@
     <%=  link_to "See more", users_path %>
   </div>
   <div class="d-flex container scroll">
-    <% @users.all.each do |user| %>
+    <% @users.all.take(5).each do |user| %>
       <% user.dogs.each do |dog| %>
         <%=  link_to user_path(user) do %>
           <% first_photo = dog.photos.first %>
@@ -29,7 +61,7 @@
 <div class="container mt-5">
   <div class="d-flex justify-content-between align-items-center">
     <h2>Suggested Communties</h2>
-    <%=  link_to "See more", users_path, class:"orange" %>
+    <%=  link_to "See more", communities_path, class:"orange" %>
   </div>
   <div class="d-flex scroll">
     <% @communities.all.each do |community| %>
@@ -51,10 +83,10 @@
   </div>
 
 
-    <div class="container">
+    <div class="">
       <div class="row mt-4">
         <% @events.each do |event| %>
-          <div class="col-6 d-flex align-items-center">
+          <div class="col-12 d-flex align-items-center">
             <div class="card-event">
               <img src="https://saltydogpaddle.org/wp-content/uploads/2019/11/yappyhourbeer-1024x585.jpg">
             <div class="card-event-info">
