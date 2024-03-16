@@ -38,7 +38,7 @@
   </div>
   <div class="d-flex scroll">
     <% @communities.all.each do |community| %>
-        <div class="d-flex flex-column my-4 mx-3">
+        <div class="d-flex flex-column my-4">
           <%= link_to community_path(community) do %>
             <div class= "d-flex card-community text-center justify-content-center align-items-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('<%= image_path community.photo.url if community.photo.try(:url).present? %>')">
             <h2><%= community.name %></h2>
@@ -57,21 +57,20 @@
 
 
     <div class="">
-      <div class="row mt-4">
-        <% @events.each do |event| %>
-          <div class="col-12 d-flex align-items-center">
-            <div class="card-event">
-              <img src="https://saltydogpaddle.org/wp-content/uploads/2019/11/yappyhourbeer-1024x585.jpg">
-            <div class="card-event-info">
-              <h2><%= event.title %></h2>
-              <p><%= event.description %></p>
-              <p><%= event.location %></p>
-              <p><span><%= event.date %></span></p>
-            </div>
+      <div class="row mt-5">
+        <% @events.take(4).each do |event| %>
+            <div class="events-cards d-flex">
+              <time datetime="2014-09-20" class="icon">
+                <strong>Sept.</strong>
+                <span>20</span>
+              </time>
+              <div class="mx-2">
+                <h5><%= event.title %></h5>
+                <p>Location<%= event.location %></p>
+              </div>
             </div>
           </div>
         <% end %>
-      </div>
     </div>
 
 
