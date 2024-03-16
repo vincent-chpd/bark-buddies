@@ -11,6 +11,11 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
   end
 
+  resources :dogs do
+    post 'upload_photos', on: :member
+  end
+
+  resources :friendships, only: [:create, :destroy]
   patch 'conversations/:id/update_read_status', to: 'conversations#update_read_status', as: 'update_read_status'
 
   resources :events

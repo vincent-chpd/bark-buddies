@@ -1,46 +1,85 @@
 <div class="container-fluid">
-
   <div class="profile-container my-3">
-    <div class="text-center">
-      <h1><%= @dog.name %> & <%= @user.name %></h1>
-    </div>
-
-        <div class="dog-profile-container">
-          <div class="dog-profile">
-            <%= image_tag @dog.photos.first.url, alt: "#{@user.name} Dog Picture", class: 'profile-image' %>
-          </div>
-
-          <div class="mt-2">
-            <h5><strong><%= @dog.breed %></strong></h5>
-            <p><small><%= @dog.age %> years old, <%= @dog.gender %></small></p>
-          </div>
-
-          <div class="mt-4">
-            <p><%= @dog.bio %></p>
-          </div>
+    <div class="row">
+      <!-- Dog Details and Photo Carousel -->
+      <div class="col-md-8">
+        <div class="text-center">
+          <h1><%= @dog.name %> & <%= @user.name %></h1>
         </div>
-
-
-      <div class="user-card">
-        <div class="user-profile">
-          <%= image_tag @user.photo.url, alt: "#{@user.name} Profile Picture", class: 'profile-image-small' %>
-          <div class="profile-info">
-            <h4><strong><%= @user.name %>, </strong><span class="lighter-font"><%= @user.age %></span></h4>
+        <% if user_signed_in? %>
+          <div class="text-md-end">
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#photoModal">
+              <i class="fas fa-camera"></i> <!-- Using camera icon from FontAwesome -->
+            </button>
           </div>
-        </div>
-
-        <div class="user-bio">
-          <strong>About me</strong>
-          <p><%= @user.bio %></p>
-        </div>
-      </div>
-
-      <div class="actions d-flex my-3 justify-content-center">
-        <%= render "private_message_button", user: @user, method: :get, class: 'btn btn-warning' do %>
         <% end %>
-          <%= button_to root_path(user_id: @user.id), method: :post, class: 'btn btn-warning' do %>
-            <i class="fas fa-user-plus"></i> Add buddy
-          <% end %>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <!-- Carousel Indicators -->
+          <div class="carousel-indicators">
+            <% @dog.photos.each_with_index do |photo, index| %>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" <%= 'class="active"' if index.zero? %> aria-label="Slide <%= index + 1 %>"></button>
+            <% end %>
+          </div>
+          <!-- Carousel Inner -->
+          <div class="carousel-inner">
+            <% @dog.photos.each_with_index do |photo, index| %>
+              <div class="carousel-item <%= 'active' if index.zero? %>">
+                <%= image_tag photo.url, class: 'd-block w-100', alt: "Slide #{index + 1}" %>
+              </div>
+            <% end %>
+          </div>
+          <!-- Carousel Controls -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <!-- Dog Details -->
+        <div class="mt-2 dog_details">
+          <h5><strong><%= @dog.breed %></strong></h5>
+          <p><%= @dog.age %> years old, <%= @dog.gender %></p>
+          <p class="mt-3">Fun fact about me - <%= @dog.bio %></p>
+        </div>
+
+
+      <!-- User Card -->
+      <div class="col-md-4 align-self-start">
+        <div class="user-card mt-3 mt-md-0">
+          <div class="user-profile">
+            <%= image_tag @user.photo.url, alt: "#{@user.name} Profile Picture", class: 'profile-image-small' %>
+            <div class="profile-info">
+              <h4><strong><%= @user.name %>, </strong><span class="lighter-font"><%= @user.age %></span></h4>
+            </div>
+          </div>
+          <div class="user-bio">
+            <strong>About me</strong>
+            <p><%= @user.bio %></p>
+          </div>
+        </div>
       </div>
+      <!-- Add Friend and Message Buttons -->
+        <% unless current_user == @user %>
+          <div class="actions d-flex justify-content-center mt-3">
+            <%= render "private_message_button", user: @user, method: :get, class: 'btn btn-warning me-2' %>
+        <% if @friendship %>
+          <% unless @friendship.confirmed %>
+            <%= button_to "Pending", class: 'btn btn-primary' %>
+          <%end%>
+        <% else %>
+          <%= button_to "Add buddy", friendships_path(receiver_id: @user.id), method: :post, class: 'btn btn-primary' %>
+              <%# <i class="fas fa-user-plus"></i> Add buddy %>
+            <%end%>
+
+          </div>
+        <% end %>
+
+
+
+      </div>
+    </div>
   </div>
 </div>
