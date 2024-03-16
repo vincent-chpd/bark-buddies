@@ -1,6 +1,6 @@
 <div class="conversations">
   <h2>Messages</h2>
-  <div class="ui list mt-4" data-controller="notifications" data-notifications-target= "conversationList">
+  <div class="ui list mt-4">
       <% @conversations.each do |conversation| %>
         <%= render "conversation_card", conversation: conversation %>
       <% end %>

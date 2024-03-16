@@ -16,7 +16,7 @@ export default class extends Controller {
     const unreadMessagesNumber = data.data.unread_messages_number
     if (unreadMessagesNumber) {
       if (unreadMessagesNumber > 0) {
-        this.notificationsDotTarget.innerHTML += `<span class="notification-dot">${unreadMessagesNumber}</span>`
+        this.notificationsDotTarget.innerHTML += `<div class="notification-dot">${unreadMessagesNumber}</div>`
       }
     }
     // const redDot = `<i class="fa-solid fa-circle"></i>`
