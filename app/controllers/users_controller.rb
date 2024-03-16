@@ -24,6 +24,14 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def upload_photos
+    @dog = Dog.find(params[:id])
+    params[:photos].each do |photo|
+      @dog.photos.create(image: photo)
+    end
+    redirect_to @dog
+  end
+
   private
 
   def set_user

@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :new, :create]
   end
 
+  resources :dogs do
+    post 'upload_photos', on: :member
+  end
+
   resources :events
   resources :searches, only: [:index]
   resources :communities, only: [:index, :show, :new, :create, :destroy] do

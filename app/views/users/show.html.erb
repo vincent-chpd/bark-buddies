@@ -1,46 +1,87 @@
 <div class="container-fluid">
-
   <div class="profile-container my-3">
-    <div class="text-center">
-      <h1><%= @dog.name %> & <%= @user.name %></h1>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="text-center">
+          <h1><%= @dog.name %> & <%= @user.name %></h1>
+        </div>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <% @dog.photos.each_with_index do |photo, index| %>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" <%= 'class="active"' if index.zero? %> aria-label="Slide <%= index + 1 %>"></button>
+            <% end %>
+          </div>
+          <div class="carousel-inner">
+            <% @dog.photos.each_with_index do |photo, index| %>
+              <div class="carousel-item <%= 'active' if index.zero? %>">
+                <%= image_tag photo.url, class: 'd-block w-100', alt: "Slide #{index + 1}" %>
+              </div>
+            <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <% if user_signed_in? %>
+          <div class="text-end">
+           <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#photoModal">
+            <i class="fas fa-camera"></i>
+          </button>
+
+          </div>
+        <% end %>
+        <div class="mt-2 dog_details">
+          <h5><strong><%= @dog.breed %></strong></h5>
+          <p><%= @dog.age %> years old, <%= @dog.gender %></p>
+          <p class="mt-3">Fun fact about me - <%= @dog.bio %></p>
+        </div>
+
+      </div>
     </div>
 
-        <div class="dog-profile-container">
-          <div class="dog-profile">
-            <%= image_tag @dog.photos.first.url, alt: "#{@user.name} Dog Picture", class: 'profile-image' %>
-          </div>
-
-          <div class="mt-2">
-            <h5><strong><%= @dog.breed %></strong></h5>
-            <p><small><%= @dog.age %> years old, <%= @dog.gender %></small></p>
-          </div>
-
-          <div class="mt-4">
-            <p><%= @dog.bio %></p>
-          </div>
-        </div>
-
-
-      <div class="user-card">
-        <div class="user-profile">
-          <%= image_tag @user.photo.url, alt: "#{@user.name} Profile Picture", class: 'profile-image-small' %>
-          <div class="profile-info">
-            <h4><strong><%= @user.name %>, </strong><span class="lighter-font"><%= @user.age %></span></h4>
-          </div>
-        </div>
-
-        <div class="user-bio">
-          <strong>About me</strong>
-          <p><%= @user.bio %></p>
+    <div class="user-card">
+      <div class="user-profile">
+        <%= image_tag @user.photo.url, alt: "#{@user.name} Profile Picture", class: 'profile-image-small' %>
+        <div class="profile-info">
+          <h4><strong><%= @user.name %>, </strong><span class="lighter-font"><%= @user.age %></span></h4>
         </div>
       </div>
-
-      <div class="actions d-flex my-3 justify-content-center">
-        <%= render "private_message_button", user: @user, method: :get, class: 'btn btn-warning' do %>
-        <% end %>
-          <%= button_to root_path(user_id: @user.id), method: :post, class: 'btn btn-warning' do %>
-            <i class="fas fa-user-plus"></i> Add buddy
-          <% end %>
+      <div class="user-bio">
+        <strong>About me</strong>
+        <p><%= @user.bio %></p>
       </div>
+    </div>
+
+    <div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="photoModalLabel">Add Photo(s)</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for @dog do |f| %>
+              <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+              <%= f.submit "Add Photo(s)", class:"btn btn-primary mt-4" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions d-flex my-3 justify-content-center">
+      <%= render "private_message_button", user: @user, method: :get, class: 'btn btn-warning' do %>
+      <% end %>
+      <%= button_to root_path(user_id: @user.id), method: :post, class: 'btn btn-warning' do %>
+        <i class="fas fa-user-plus"></i> Add buddy
+      <% end %>
+    </div>
   </div>
 </div>
