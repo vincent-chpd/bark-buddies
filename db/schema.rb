@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_11_192051) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_16_114641) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -90,6 +90,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_11_192051) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
+  create_table "friendships", force: :cascade do |t|
+    t.bigint "sender_id", null: false
+    t.bigint "receiver_id", null: false
+    t.boolean "confirmed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_friendships_on_receiver_id"
+    t.index ["sender_id"], name: "index_friendships_on_sender_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text "content"
     t.bigint "conversation_id", null: false
@@ -123,6 +133,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_11_192051) do
   add_foreign_key "community_messages", "users"
   add_foreign_key "dogs", "users"
   add_foreign_key "events", "users"
+  add_foreign_key "friendships", "users", column: "receiver_id"
+  add_foreign_key "friendships", "users", column: "sender_id"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
 end
