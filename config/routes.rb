@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     post 'upload_photos', on: :member
   end
 
+  resources :friendships, only: [:create, :destroy]
+
   resources :events
   resources :searches, only: [:index]
   resources :communities, only: [:index, :show, :new, :create, :destroy] do
