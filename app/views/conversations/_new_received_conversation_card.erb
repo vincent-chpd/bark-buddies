@@ -5,7 +5,7 @@
   <% end %>
   <%=  link_to conversation_path(conversation), class: "names" do %>
     <div class="conversation-card">
-      <% the_other_person = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
+      <% the_other_person = conversation.sender %>
       <% the_other_person_dog = the_other_person.dogs.first %>
       <%= image_tag the_other_person.photo.url, alt: "#{the_other_person.name} Profile Picture", class:"user-image" %>
       <%= image_tag the_other_person_dog.photos.first.url, alt: "#{the_other_person_dog.name} Profile Picture", class:"dog-image" %>
@@ -13,7 +13,7 @@
       <h2><%= the_other_person.name %> <small><em> & <%= the_other_person.dogs.first.name %></em></small></h2>
       <% if conversation.messages.any? %>
         <% last_message = conversation.messages.last %>
-        <% last_message_received = conversation.messages.last.user_id != current_user.id %>
+        <% last_message_received = conversation.messages.last %>
         <%# if the last message is a received message and it's not read it would be highlighted %>
         <% font_style = !last_message.read && last_message_received ? [900, "black"] : [500, "gray"] %>
         <%# the card displays the last message of the conversation %>
