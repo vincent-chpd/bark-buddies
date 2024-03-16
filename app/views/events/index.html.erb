@@ -1,5 +1,5 @@
 
-<div class="banner-img" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://rare-gallery.com/uploads/posts/717748-Dogs-Retriever.jpg);">
+<div class="banner-img" style="background-image: url(https://st2.depositphotos.com/1763191/7390/v/450/depositphotos_73900639-stock-illustration-dog-and-cat.jpg);">
   <div class="container">
     <div class="banner-text">
       <h3>Explore Events</h3>
@@ -11,6 +11,7 @@
 </div>
 
 <div class="container-event">
+  <h3 style="margin-left: 40px;">Featured events</h3>
   <% @events.each do |event| %>
     <div class="card-event">
       <%= image_tag event.photo.url %>
@@ -18,11 +19,13 @@
         <div class="card-event-info">
           <h5><%= event.title %></h5>
           <p><%= event.description %></p>
-          <p><%= event.location %></p>
-          <p><span><%= event.date %></span></p>
+          <p>📍<%= event.location %></p>
+          <p>🗓️<span><%= event.date %></span></p>
         </div>
-      </a>
     </div>
+      </a>
+</div>
+
     <!-- Modal -->
   <div class="modal fade" id="staticBackdrop<%= event.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel<%= event.id %>" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -31,7 +34,7 @@
           <h1 class="modal-title fs-5" id="staticBackdropLabel"><%= event.title %> 🎉</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" data-controller="attend">
           <div class="modal-image-container text-center mb-3">
             <%= image_tag event.photo.url, class: "modal-image" %>
           </div>
@@ -41,13 +44,23 @@
           </div>
           <div class="event-info">
             <p class="fw-bold">Location:</p>
-            <p><%= event.location %></p>
+            <p>📍<%= event.location %></p>
             <p class="fw-bold">Date:</p>
             <p><span><%= event.date %></span></p>
           </div>
+            <div class="postion-right">
+              <button class="attend-button" data-action="click->attend#attend" data-target="attend.button">Attend</button>
+            </div>
       </div>
     </div>
   </div>
 </div>
 <% end %>
+
+<div class="community-link">
+    <p>If you’re interested to see what London’s canine community gets up to, check out our blog posts covering dog events in and around London.</p>
+    <p>Please note, we do our best to ensure our Events Calendar is accurate, however, we do not organize these events (unless clearly stated) and changes may occur to events, so please do check with the event organizers for the latest information.</p>
+      <hr>
+  </div>
+</div>
 </div>
