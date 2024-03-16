@@ -55,15 +55,16 @@ puts "Creating events!"
 events = [
   {
     title: "Yappy Hour: A Tail-Wagging Extravaganza!",
-    description: "Unleash the joy and let the fur fly at our Happy Hour for Hounds!",
+    description: "Unleash the joy and let the fur fly at our Happy Hour for Hounds! Indulge in delicious treats for both humans and dogs alike, mingle with fellow dog lovers, and enjoy a variety of activities guaranteed to make tails wag.",
     # turn this into a date.
     date: "20 April 2024",
     location: 'Reading',
-    img: "https://saltydogpaddle.org/wp-content/uploads/2019/11/yappyhourbeer-1024x585.jpg"
+    img: "https://media.istockphoto.com/id/162055755/photo/martini-dog.jpg?s=612x612&w=0&k=20&c=AQV8oHGakter-SuLHvHPuWj9btrbUQ2JpDelsQjwM7I="
   },
   {
     title: "Paws in Motion: Walkathon for Dogs!",
-    description: "Get ready to put your best paw forward at Paws in Motion, the ultimate event for dogs!",
+    description: "Get ready to put your best paw forward at Paws in Motion, the ultimate event for dogs!
+    Embark on an adventure like no other as we transform the park into a playground for pups of all shapes and sizes.",
     date: "29 April 2024",
     location: 'Surrey',
     img: "https://www.rauanimalhospital.com/sites/default/files/summertime-events-for-dogs-blog-header.jpg"
@@ -85,11 +86,11 @@ events = [
   },
 
   {
-    title: "Paw and Order: A Movie Day for Paws and Claws!",
+    title: "Cinema Day: A Movie Day for Paws and Claws!",
     description: "Get ready for a cinematic adventure like no other at Paw and Order - the ultimate movie day for you!",
     date: "14 June 2024",
     location: 'Soho, London',
-    img: "https://m.media-amazon.com/images/M/MV5BMjMwODg2NDA2MV5BMl5BanBnXkFtZTgwNDI1Mjg5NDM@._V1_.jpg"
+    img: "https://occ-0-2794-2219.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABRsgD-4khUGuGjIj3RrN-Tv8xQWAPLs07geUnat-pifJCdF5DCqj-tTCCh59Y9ZmEZir75VKIG5eTHjQ2hQBiPzW8xDPcJNkRB6RtyD4ERKIFO4GGwFIjOSgxuycoMqmhB0c3Q.jpg?r=f7b"
   },
 
   {
