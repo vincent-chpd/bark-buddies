@@ -9,26 +9,6 @@
     <div class="navbar-items">
 
         <% if user_signed_in? %>
-<<<<<<< HEAD
-          <li class="nav-item active">
-            <%= link_to "Home", root_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item" data-controller="notifications" data-notifications-target = "notificationsDiv">
-            <%= link_to conversations_path, class: "nav-link", data: { target: "messages" } do %>
-              <span>Messages</span>
-              <i class="fa-solid fa-circle"></i>
-            <% end %>
-          <li class="nav-item">
-            <%= link_to "Messages", conversations_path, class: "nav-link" %>
-          <li class="nav-item">
-            <%= link_to "Events", events_path, class: "nav-link" %>
-          </li>
-          <div class="d-flex user-actions">
-            <li class="nav-item dropdown">
-            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= image_tag current_user.photo, class: "avatar", alt: "dropdown menu" if current_user.photo.present? %>
-            </a>
-=======
 
           <div class="appear-if-large">
             <div class="menu">
@@ -90,7 +70,6 @@
 
             </div>
 
->>>>>>> master
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "Profile", user_path(current_user), class: "dropdown-item active" %>
                 <%= link_to "Messages", conversations_path, class: "dropdown-item appear-if-large" %>
