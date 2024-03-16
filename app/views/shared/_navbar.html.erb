@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon" >
   <div class="container-fluid">
     <%= link_to root_path, class: " mx-3 navbar-brand" do %>
       <%= image_tag 'https://res.cloudinary.com/drqv8g5uf/image/upload/v1710167061/Bark_Buddies_1_tzzpf2.png' %>
@@ -14,11 +14,18 @@
           <li class="nav-item active">
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
+<<<<<<< HEAD
           <li class="nav-item" data-controller="notifications" data-notifications-target = "notificationsDiv">
             <%= link_to conversations_path, class: "nav-link", data: { target: "messages" } do %>
               <span>Messages</span>
               <i class="fa-solid fa-circle"></i>
             <% end %>
+=======
+          <li class="nav-item">
+            <%= link_to "Messages", conversations_path, class: "nav-link" %>
+          <li class="nav-item">
+            <%= link_to "Events", events_path, class: "nav-link" %>
+>>>>>>> a4ed3b456bf8085f901230aa4136efb63b9cac85
           </li>
           <div class="d-flex user-actions">
             <li class="nav-item dropdown">

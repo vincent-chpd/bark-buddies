@@ -21,4 +21,11 @@
 i {
   color: red;
   margin-left: -5px;
+
+}
+
+@media (max-width: 575px) {
+  .navbar {
+    display: none;
+  }
 }
