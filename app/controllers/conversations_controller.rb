@@ -3,6 +3,10 @@ class ConversationsController < ApplicationController
 
   def index
     @conversations = Conversation.where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id)
+    respond_to do |format|
+      format.html
+      format.text { render partial: "conversations/conversations_card", locals: { conversations: @conversations } }
+    end
   end
 
   def show
@@ -11,6 +15,17 @@ class ConversationsController < ApplicationController
     @message = @conversation.messages.new
     @other_user = @conversation.sender_id == current_user.id ? User.find(@conversation.recipient_id) : User.find(@conversation.sender_id)
     @other_user_dog = @other_user.dogs.first
+  end
+
+  def update_read_status
+    @conversation = Conversation.find(params[:id])
+    # all the messages wich are not sent by the current user and are unread
+    @messages = @conversation.messages.where.not(user_id: current_user.id).where(read: false)
+    @messages.update_all(read: true)
+
+    respond_to do |format|
+      format.json { render json: { status: :ok } }
+    end
   end
 
   def create
@@ -34,7 +49,6 @@ class ConversationsController < ApplicationController
     @conversation.destroy
     redirect_to conversations_path
   end
-
 
   private
 

@@ -1,10 +1,10 @@
 .profile-container {
+  background-color: $light-gray;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 800px;
   margin: 0 auto;
-  border: 2px solid #ccc;
+  border-radius: 10px;
   align-items: center;
   p {
     margin: 0;
@@ -24,31 +24,24 @@
 .user-profile {
   margin-top: 20px;
   display: flex;
-  align-items: center;
 }
 
-.profile-image {
-  width: 600px;
-  height: 400px;
+.carousel-inner {
   object-fit: cover;
   border-radius: 10px;
 }
 
 .profile-details {
   align-items: center;
-  text-align: left;
-  max-width: 300px;
   margin-top: 10px;
 }
 
 
 .user-card {
-  border: 1px solid #ccc;
   border-radius: 8px;
   padding: 10px;
   margin-bottom: 30px;
   margin-top: 30px;
-  width: 500px;
   align-items: center;
 }
 
@@ -88,4 +81,10 @@
 
 .lighter-font {
   font-weight: 350;
+}
+
+.modal_button {
+  background-color: $orange;
+  outline: $orange;
+  color: black;
 }

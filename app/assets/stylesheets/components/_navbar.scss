@@ -1,25 +1,139 @@
-.navbar-lewagon {
+.navbar-barkbuddies {
+  // border: solid 1px rgb(23, 172, 33);
+  display: flex;
   justify-content: space-between;
-  align-items: center;
-  background: white;
-  margin-bottom: 20px;
+  // background: white;
   color: gray;
+  padding: 5px 10px;
   a{
     color: gray;
+  }
+
+}
+
+.logo-container {
+  // border: solid 1px red;
+  display: flex;
+  align-items: center;
+  width: 90px;
+  .logo {
+    width: 100%;
+  }
+}
+
+.navbar-items{
+  // border: solid 1px rgb(197, 2, 129);
+  display: flex;
+  width:60%;
+  justify-content: flex-end;
+  gap:10px;
+  align-items: center;
+}
+
+.link {
+  color: gray;
+
+  &:hover {
+    color: rgb(0, 0, 0);
+  }
+}
+
+.icon {
+  font-size: 30px;
+  color: gray;
+
+
+}
+
+.navbar-dropdown {
+  position: relative;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu {
+  // border: solid 1px blue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li{
+      margin: 0 10px;
+    }
 
   }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.appear-if-large {
+  display: none;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 100px;
+
+
+
+
+// .navbar-lewagon .navbar-brand img {
+//   width: 100px;
+// }
+
+.notification-dot{
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $orange;
+  z-index: 1000;
+  color: white;
+  margin: 0 0 -12px -8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+@media (min-width: 575px) {
+  .appear-if-large {
+    display: block;
+  }
+  .appear-if-small {
+    display: none;
+  }
 }
 
 @media (max-width: 575px) {
-  .navbar {
-    display: none;
+  .navbar-items{
+    // border: solid 1px red;
+    width:100%;
+    justify-content: space-around;
+    gap:0;
+    .appear-if-small{
+      // border: solid 1px blue;
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      gap:10px;
+    }
+    .icon{
+      // border: solid 1px green;
+      margin-left: 8px;
+      color: rgba(77, 39, 0, 0.564)
+    }
   }
+ .navbar-container{
+    border: solid 1px rgb(169, 167, 167);
+    border-radius: 8px 8px 0 0;
+    position: fixed;
+    background: #fdddc9;
+    z-index: 1000;
+    width: 100%;
+    bottom: 0;
+ }
 }

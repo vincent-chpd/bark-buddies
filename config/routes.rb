@@ -8,8 +8,15 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
   resources :conversations do
-    resources :messages, only: [:index, :new, :create]
+    resources :messages, only: [:create]
   end
+
+  resources :dogs do
+    post 'upload_photos', on: :member
+  end
+
+  resources :friendships, only: [:create, :destroy]
+  patch 'conversations/:id/update_read_status', to: 'conversations#update_read_status', as: 'update_read_status'
 
   resources :events
   resources :searches, only: [:index]

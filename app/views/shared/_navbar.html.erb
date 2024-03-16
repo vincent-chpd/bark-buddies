@@ -1,44 +1,93 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon" >
-  <div class="container-fluid">
-    <%= link_to root_path, class: " mx-3 navbar-brand" do %>
-      <%= image_tag 'https://res.cloudinary.com/drqv8g5uf/image/upload/v1710167061/Bark_Buddies_1_tzzpf2.png' %>
+<div class="navbar-container" >
+  <div class="navbar-barkbuddies">
+    <%= link_to root_path, class: "logo-container appear-if-large" do %>
+      <%= image_tag ("https://res.cloudinary.com/drqv8g5uf/image/upload/v1710167061/Bark_Buddies_1_tzzpf2.png"), alt: "Bark Buddies Logo", class: "logo" %>
     <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto d-flex align-items-center">
+
+    <div class="navbar-items">
+
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", root_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Messages", conversations_path, class: "nav-link" %>
-          <li class="nav-item">
-            <%= link_to "Events", events_path, class: "nav-link" %>
-          </li>
-          <div class="d-flex user-actions">
-            <li class="nav-item dropdown">
-            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= image_tag current_user.photo, class: "avatar", alt: "dropdown menu" if current_user.photo.present? %>
-            </a>
+
+          <div class="appear-if-large">
+            <div class="menu">
+              <ul>
+                <li class="link">
+                  <%= link_to "Home", root_path, class: "" %>
+                </li>
+                <li class="link">
+                  <%= link_to "Messages", conversations_path, class: "" %>
+                </li>
+                <li class="link">
+                  <%= link_to "Events", events_path, class: "" %>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="appear-if-small">
+            <div class="menu">
+              <ul>
+                <li class="link">
+                  <%= link_to root_path, class: "icon" do %>
+                    <i class="fas fa-home"></i>
+                  <% end %>
+                </li>
+                <li class="link">
+                  <%= link_to conversations_path, class: "icon" do %>
+                    <i class="fas fa-envelope"></i>
+                  <% end %>
+                </li>
+                <li class="link">
+                  <%= link_to events_path, class: "icon" do %>
+                    <i class="fas fa-calendar-alt"></i>
+                  <% end %>
+                </li>
+                <li class="link">
+                  <%= link_to events_path, class: "icon" do %>
+                    <i class="fas fa-user-friends"></i>
+                  <% end %>
+                </li>
+                <li class="link">
+                  <%= link_to communities_path, class: "icon" do %>
+                    <i class="fas fa-users"></i>
+                  <% end %>
+                </li>
+                <li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="avatar-container">
+            <div class="dropdown-image">
+
+            <div class="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-controller="notifications" data-notifications-target="notificationsDot">
+              <div class="notification-dot">3</div>
+              <div class="avatar">
+                <%= image_tag current_user.photo, class: "avatar", alt: "dropdown menu" if current_user.photo.present? %>
+              </div>
+
+            </div>
+
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
-                <%= link_to "Buddies", "#", class: "dropdown-item" %>
-                <%= link_to "Communitites", "#", class: "dropdown-item" %>
-                <%= link_to "Events", "#", class: "dropdown-item" %>
+                <%= link_to "Profile", user_path(current_user), class: "dropdown-item active" %>
+                <%= link_to "Messages", conversations_path, class: "dropdown-item appear-if-large" %>
+                <%= link_to "Buddies", "#", class: "dropdown-item appear-if-large" %>
+                <%= link_to "Communitites", "#", class: "dropdown-item appear-if-large" %>
+                <%= link_to "Events", "#", class: "dropdown-item appear-if-large" %>
                 <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
               </div>
-            </li>
-          <% else %>
-            <li class="nav-item">
+
+            </div>
+        <% else %>
+            <div class="login-item">
               <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-            </li>
-          <% end %>
+            </div>
+        <% end %>
         </div>
-      </ul>
+
     </div>
+
   </div>
 </div>
