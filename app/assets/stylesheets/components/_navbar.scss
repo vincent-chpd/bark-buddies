@@ -1,20 +1,17 @@
 .navbar-lewagon {
+  display: flex;
   justify-content: space-between;
   align-items: center;
   background: white;
-  margin-bottom: 20px;
+  color: gray;
+  a{
+    color: gray;
+  }
+
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
+
 
 .navbar-lewagon .navbar-brand img {
   width: 100px;
-}
-
-.user-actions {
-  background: #e27835;
-  border-radius: 16px;
-  padding: 4px 8px;
 }

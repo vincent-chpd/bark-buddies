@@ -2,9 +2,7 @@
   data-controller="conversation-subscription"
   data-conversation-subscription-conversation-id-value="<%= @conversation.id %>"
 >
-  <% if @over_ten %>
-    <%= link_to "Show Previous", "?m=all" %>
-  <% end %>
+
 
   <%# messages displayed here %>
   <div class="chat" >
@@ -20,7 +18,7 @@
 
       </div>
     </div>
-    <hr>
+
     <div class="messages" data-conversation-subscription-target="messages">
     <% @messages.each do |message| %>
       <%= render "messages/message", message: message %>
