@@ -21,8 +21,9 @@
           </li>
           <div class="d-flex user-actions">
             <li class="nav-item dropdown">
-            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-controller="notifications" data-notifications-target="notificationsDot">
               <%= image_tag current_user.photo, class: "avatar", alt: "dropdown menu" if current_user.photo.present? %>
+              <div class="notification-dot">3</div>
             </a>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
