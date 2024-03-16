@@ -13,12 +13,11 @@
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 16px 16px 0px 0;
+  border-radius: 4px 4px 0px 0;
 }
 
 .profiles-container {
   background: #e27c3d1c;
-  border-radius: 32px;
   padding: 1rem 2rem;
   overflow: hidden;
   a {
@@ -28,10 +27,11 @@
 
 .profile-card{
   color: black;
-  border-radius: 16px;
+  border-radius: 4px;
   background: white;
   transition: ease-in-out 0.3s;
   padding-bottom: 10px;
+  margin-right: 15px;
   h5{
     margin: 0;
   }
@@ -75,10 +75,4 @@ a {
 
 li {
   list-style: none !important;
-}
-
-@media (min-width: 575px) {
-  #dashboard-header {
-    display: none;
-  }
 }
