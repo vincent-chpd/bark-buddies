@@ -1,87 +1,107 @@
-
-.banner-img{
-  background-size: cover;
-  background-position: center;
-  padding: 150px 0;
-  height: 500px;
+.banner-img {
+  background-color: $orange;
+  padding: 50% 0;
+  max-width: 100%;
   margin-bottom: 60px;
-  margin-right: 60px;
-  margin-left: 60px;
-  border-radius: 8px;
-}
+  border-radius: 20px;
 
-.banner-text h3 {
+
+  .banner-text h3 {
   margin: 0;
-  color: white;
+  color: rgb(255, 255, 255);
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 52px;
+  font-size: 42px;
   font-weight: bold;
   text-align: center;
-  padding: 20px;
+  padding: 8px;
+  }
+
+  .text-center{
+    color: rgb(255, 255, 255);
+  }
+
+  @media (max-width: 480px) {
+    padding: 20px;
+    margin: 0 20px;
+    margin-top: 20px
+  }
 }
 
-.banner-text p {
-  font-size: 20px;
-  color: white;
-  opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  text-align: center;
-  padding: 10px;
-  margin-left: 5px;
+.container-event {
+  margin-bottom: 20px;
 }
 
 .card-event {
+  margin-bottom: 20px;
+  border-radius: 8px;
+  height: 140px;
+  border: 1px solid lightgrey;
   overflow: hidden;
   height: 140px;
   background: white;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
   display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  margin-left: 60px;
-  margin-right: 60px;
-  border-radius: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  transition: box-shadow 0.4s ease;
   cursor: pointer;
-  transition: box-shadow 0.3s ease; /* Add pointer cursor to indicate interactivity */
+
+  .card-event:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .event-image {
+    width: 140px;
+    height: auto;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    object-fit: cover;
+  }
+
+  .card-event-info {
+    padding: 16px;// Add padding to the card content
+    background-color: #ffffff; // Set background color for card content
+    border-bottom-left-radius: 8px; // Ensure rounded corners for the card content
+    border-bottom-right-radius: 8px;
+
+    h5 {
+      font-size: 1rem; // Adjust font size for event title
+      margin-top: 5px;// Add margin at the bottom of the title
+    }
+
+    .event-details {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 1rem; // Adjust font size for paragraph text
+      margin-top: 8px; // Add margin at the top of paragraphs for spacing
+      opacity: 0.7;
+      margin-bottom: 10px;
+    }
+  }
 }
 
-.card-event:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add slight shadow when hovering */
+// Media query for smaller screens
+@media (max-width: 480px) {
+  .card-event {
+    margin-bottom: 20px; // Adjust margin between cards for smaller screens
+  }
+}
+.modal-header{
+    background: #e27c3d1c;
 }
 
-.card-event img {
-  height: 100%;
-  width: 140px;
-  object-fit: cover;
-}
-
-.card-event h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-event p {
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
-}
-
-.card-event .card-event-info {
-  padding: 16px;
-}
-
-.modal-image-container {
-  width: 100%;
-  height: auto;
-  text-align: center;
-}
-
-.modal-image {
-  max-width: 100%;
-  max-height: 100%;
+.modal-body {
+  img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 8px;
+  }
+    padding: 0px;
 }
 
 .attend-button{
@@ -90,11 +110,4 @@
   border: 0px;
   width: auto;
   height: 40px;
-}
-
-.community-link {
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-top: 40px;
-  text-align: center;
 }

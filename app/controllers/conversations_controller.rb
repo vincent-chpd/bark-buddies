@@ -3,6 +3,10 @@ class ConversationsController < ApplicationController
 
   def index
     @conversations = Conversation.where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id)
+    respond_to do |format|
+      format.html
+      format.text { render partial: "conversations/conversations_card", locals: { conversations: @conversations } }
+    end
   end
 
   def show
