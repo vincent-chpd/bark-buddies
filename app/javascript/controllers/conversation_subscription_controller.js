@@ -12,6 +12,7 @@ export default class extends Controller {
       { received: (data) => { this.insertMessageAndScrollDown(data) }}
     )
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
+    this.markMessagesAsRead()
   }
 
   resetForm(event) {
@@ -22,5 +23,26 @@ export default class extends Controller {
   insertMessageAndScrollDown(data){
       this.messagesTarget.insertAdjacentHTML("beforeend", data)
       this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
+  }
+
+  markMessagesAsRead() {
+    fetch(`/conversations/${this.conversationIdValue}/update_read_status`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+      },
+      body: JSON.stringify({ read: true })
+    }).then(response => {
+      if (response.ok) {
+        // Optionally handle success
+        console.log('Messages updated successfully');
+      } else {
+        // Handle error
+        console.error('Error updating messages');
+      }
+    }).catch(error => {
+      console.error('Network error:', error);
+    });
   }
 }

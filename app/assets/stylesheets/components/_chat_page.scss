@@ -49,8 +49,6 @@
 }
 
 .messages {
-  // display:flex;
-  // flex-direction: column;
   max-height: 80%;
   overflow: auto;
 }
@@ -63,6 +61,7 @@
 .message-container{
   max-width: 80%;
   margin: 0 2%;
+
 }
 
 .message {

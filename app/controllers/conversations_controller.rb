@@ -13,6 +13,17 @@ class ConversationsController < ApplicationController
     @other_user_dog = @other_user.dogs.first
   end
 
+  def update_read_status
+    @conversation = Conversation.find(params[:id])
+    # all the messages wich are not sent by the current user and are unread
+    @messages = @conversation.messages.where.not(user_id: current_user.id).where(read: false)
+    @messages.update_all(read: true)
+
+    respond_to do |format|
+      format.json { render json: { status: :ok } }
+    end
+  end
+
   def create
     existing_conversation = Conversation.between(params[:sender_id], params[:recipient_id]).first
 
@@ -34,7 +45,6 @@ class ConversationsController < ApplicationController
     @conversation.destroy
     redirect_to conversations_path
   end
-
 
   private
 
