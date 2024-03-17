@@ -1,6 +1,8 @@
-
-<div class="d-flex align-items-center justify-content-around">
-
+<div class="navbar-barkbuddies appear-if-small  mt-3 mx-2">
+    <%= link_to root_path, class: "logo-container " do %>
+      <%= image_tag ("https://res.cloudinary.com/drqv8g5uf/image/upload/v1710167061/Bark_Buddies_1_tzzpf2.png"), alt: "Bark Buddies Logo", class: "logo" %>
+    <% end %>
+    <h3>Hi, <%= current_user.name %>!</h3>
 </div>
 
 <div class="mt-4 container profiles-container">
@@ -48,30 +50,25 @@
   </div>
 </div>
 
-<div class="container my-5">
+<div class="container my-5 pb-3">
   <div class="d-flex justify-content-between align-items-center">
     <h2>Events Coming Up</h2>
     <%=  link_to "See more", events_path, class:"orange" %>
   </div>
-
-
-    <div class="">
-      <div class="row mt-5">
-        <% @events.take(4).each do |event| %>
-            <div class="events-cards d-flex">
-              <time datetime="2014-09-20" class="icon">
-                <strong>Sept.</strong>
-                <span>20</span>
-              </time>
-              <div class="mx-2">
-                <h5><%= event.title %></h5>
-                <p>Location<%= event.location %></p>
-              </div>
-            </div>
+  <div class="row mt-4">
+    <% @events.take(4).each do |event| %>
+        <div class="events-cards">
+          <div class="">
+            <time datetime="2014-09-20" class="icon">
+              <strong>Sept.</strong>
+              <span>20</span>
+            </time>
           </div>
-        <% end %>
-    </div>
-
-
-
+          <div class="mx-2">
+            <h5><%= event.title %></h5>
+            <p>📍 <%= event.location %></p>
+          </div>
+        </div>
+    <% end %>
+  </div>
 </div>

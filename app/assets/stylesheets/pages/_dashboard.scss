@@ -22,6 +22,7 @@
   overflow: hidden;
   a {
     color:#e27835;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -53,6 +54,7 @@
 .card-community{
   height: 200px;
   width: 400px;
+  margin-right: 8px;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 4px;
@@ -65,8 +67,18 @@
   }
 }
 .events-cards{
-
-
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  h5{
+    font-size: 1rem;
+    margin: 0;
+  }
+  p{
+    font-size: 0.8rem;
+    margin: 0;
+    color: grey;
+  }
 }
 
 time.icon
@@ -112,8 +124,10 @@ time.icon span
   padding-top: 1.2em;
   color: #2f2f2f;
 }
+
 .orange {
   color: #e27835;
+  margin-bottom: 0.5rem;
 }
 
 a {

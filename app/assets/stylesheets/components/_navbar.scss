@@ -1,28 +1,30 @@
 .navbar-barkbuddies {
-  // border: solid 1px rgb(23, 172, 33);
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  // background: white;
   color: gray;
-  padding: 5px 10px;
+  padding: 4px;
   a{
     color: gray;
+  }
+
+  h3{
+    margin: 0;
+    color: black;
   }
 
 }
 
 .logo-container {
-  // border: solid 1px red;
   display: flex;
   align-items: center;
-  width: 90px;
+  width: 100px;
   .logo {
     width: 100%;
   }
 }
 
 .navbar-items{
-  // border: solid 1px rgb(197, 2, 129);
   display: flex;
   width:60%;
   justify-content: flex-end;
@@ -31,7 +33,7 @@
 }
 
 .link {
-  color: gray;
+  color: #808080;
 
   &:hover {
     color: rgb(0, 0, 0);
@@ -40,9 +42,6 @@
 
 .icon {
   font-size: 30px;
-  color: gray;
-
-
 }
 
 .navbar-dropdown {
@@ -65,22 +64,17 @@
     margin: 0;
     li{
       margin: 0 10px;
+      text-align: center;
     }
-
+    small {
+      font-size: 10px;
+    }
   }
 }
 
 .appear-if-large {
   display: none;
 }
-
-
-
-
-
-// .navbar-lewagon .navbar-brand img {
-//   width: 100px;
-// }
 
 .notification-dot{
   position: absolute;
@@ -110,30 +104,26 @@
 
 @media (max-width: 575px) {
   .navbar-items{
-    // border: solid 1px red;
     width:100%;
     justify-content: space-around;
     gap:0;
     .appear-if-small{
-      // border: solid 1px blue;
       display: flex;
       justify-content: space-around;
       width: 100%;
       gap:10px;
     }
     .icon{
-      // border: solid 1px green;
-      margin-left: 8px;
-      color: rgba(77, 39, 0, 0.564)
+      font-size: 20px;
     }
   }
- .navbar-container{
-    border: solid 1px rgb(169, 167, 167);
-    border-radius: 8px 8px 0 0;
+  .navbar-container{
+    border-top: solid 1px rgb(169, 167, 167);
+    padding-top:  2px;
     position: fixed;
-    background: #fdddc9;
+    background: #fcf1ea;
     z-index: 1000;
     width: 100%;
     bottom: 0;
- }
+  }
 }
