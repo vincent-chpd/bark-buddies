@@ -1,9 +1,8 @@
 .banner-img {
   background-color: $orange;
-  padding: 50% 0;
+  padding: 50px 0;
   max-width: 100%;
   margin-bottom: 60px;
-  border-radius: 20px;
 
 
   .banner-text h3 {
@@ -22,8 +21,6 @@
 
   @media (max-width: 480px) {
     padding: 20px;
-    margin: 0 20px;
-    margin-top: 20px
   }
 }
 
