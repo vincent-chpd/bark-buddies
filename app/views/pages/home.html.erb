@@ -1,6 +1,6 @@
 <div class="navbar-barkbuddies appear-if-small  mt-3 mx-2">
     <%= link_to root_path, class: "logo-container " do %>
-      <%= image_tag ("https://res.cloudinary.com/drqv8g5uf/image/upload/v1710167061/Bark_Buddies_1_tzzpf2.png"), alt: "Bark Buddies Logo", class: "logo" %>
+      <%= image_tag ("https://res.cloudinary.com/drqv8g5uf/image/upload/v1710167061/Bark_Buddies_1_rg5mi8"), alt: "Bark Buddies Logo", class: "logo" %>
     <% end %>
     <h3>Hi, <%= current_user.name %>!</h3>
 </div>
@@ -11,7 +11,7 @@
     <%=  link_to "See more", users_path %>
   </div>
   <div class="d-flex scroll">
-    <% @users.all.take(5).each do |user| %>
+    <% @users.reject { |user| user == current_user }.take(10).each do |user| %>
       <% user.dogs.each do |dog| %>
         <%=  link_to user_path(user) do %>
           <% first_photo = dog.photos.first %>
@@ -50,7 +50,7 @@
   </div>
 </div>
 
-<div class="container my-5 pb-3">
+<div class="container event-container my-5">
   <div class="d-flex justify-content-between align-items-center">
     <h2>Events Coming Up</h2>
     <%=  link_to "See more", events_path, class:"orange" %>
