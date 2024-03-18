@@ -19,13 +19,13 @@
 
 <% if params[:query].present? %>
   <div class="pt-3 pb-5 container-lg px-2" style="background: #e27c3d1c;">
-    <div class="row mt-4 mx-3">
+    <div class="row mt-4 mx-3" >
       <h2>Search results for: <%= params[:query] %></h2>
       <% @communities.first(6).each do |community| %>
         <div class="col-6">
           <div class="community-card">
             <div class="modal fade" id="staticBackdrop<%= community.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog">
+              <div class="modal-dialog" >
                 <div class="modal-content">
                   <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel"><%= community.name %></h1>
@@ -45,7 +45,7 @@
             </div>
             <%= image_tag community.photo.url, height:100, width: 130, crop: :fill, style: "border-radius: 8px; outline: 2px solid white ;" %>
             <p><%= community.name %></p>
-              <%= link_to "Join Community", "#", class: "btn-community", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" }, onclick: "$('#staticBackdrop#{community.id}').modal('show')" %>
+              <%= link_to "Join Community", "#", class: "btn-community", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" } %>
           </div>
         </div>
       <% end %>
@@ -54,7 +54,7 @@
 <% else %>
   <div class="py-3 container-lg px-2" style="background: #e27c3d1c;">
       <h2>Popular Breed Groups</h2>
-    <div class="row mt-4 mx-3">
+    <div class="row mt-4 mx-3" >
       <% @communities.first(6).each do |community| %>
         <div class="col-6">
           <div class="community-card">
@@ -69,9 +69,9 @@
                   <div class="modal-body">
                     <p><%= community.description %></p>
                   </div>
-                  <div class="modal-footer">
+                  <div class="modal-footer" data-controller="join-community" >
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-warning">Join community</button>
+                    <button type="button" class="btn btn-warning" data-action="click->join-community#toggle"  data-join-community-target="button">Join community</button>
                     <%= link_to "Chat", community_path(community), class:"btn btn-warning" %>
                   </div>
                 </div>
@@ -79,7 +79,7 @@
             </div>
             <%= image_tag community.photo.url, height:100, width: 130, crop: :fill, style: "border-radius: 4px; outline: 2px solid white ;" %>
             <p><%= community.name %></p>
-              <%= link_to "Join Community", "#", class: "btn-community", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" }, onclick: "$('#staticBackdrop#{community.id}').modal('show')" %>
+              <%= link_to "Join Community", "#", class: "btn-community", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" } %>
           </div>
         </div>
       <% end %>
@@ -105,7 +105,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-warning">Join community</button>
+                    <button type="button" class="btn btn-warning"  data-action="click -> join-community#join" data-join-community-target="button">Join community</button>
                     <%= link_to "Chat", community_path(community) %>
                   </div>
                 </div>
@@ -113,7 +113,7 @@
             </div>
             <%= image_tag community.photo.url, height: 100, width: 130, crop: :fill, style: "border-radius: 4px; outline: 2px solid white ;" %>
             <p><%= community.name %></p>
-              <%= link_to "Join Community", "#", class: "btn-community", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" }, onclick: "$('#staticBackdrop#{community.id}').modal('show')" %>
+              <%= link_to "Join Community", "#", class: "btn-community", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" } %>
           </div>
         </div>
       <% end %>
