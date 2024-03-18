@@ -2,7 +2,6 @@
   // border: solid 1px rgb(23, 172, 33);
   display: flex;
   justify-content: space-between;
-  // background: white;
   color: gray;
   padding: 5px 10px;
   a{
@@ -31,11 +30,8 @@
 }
 
 .link {
+  position: relative;
   color: gray;
-
-  &:hover {
-    color: rgb(0, 0, 0);
-  }
 }
 
 .icon {
@@ -46,14 +42,19 @@
 }
 
 .navbar-dropdown {
-  position: relative;
   display:flex;
   align-items: center;
   justify-content: center;
 }
 
+.notification-container{
+  position: relative;
+}
+
 .menu {
   // border: solid 1px blue;
+  width: 100%;
+  flex-grow: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -70,27 +71,44 @@
   }
 }
 
+.menu-selections{
+  // border: solid 1px green;
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
 .appear-if-large {
   display: none;
 }
 
 
-
-
-
-// .navbar-lewagon .navbar-brand img {
-//   width: 100px;
-// }
-
 .notification-dot{
   position: absolute;
   top: 4px;
-  right: 4px;
+  right: -8px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: $orange;
-  z-index: 1000;
+  color: white;
+  margin: 0 0 -12px -8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+.messages-dot{
+  position: absolute;
+  top: -10px;
+  right: -8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $orange;
   color: white;
   margin: 0 0 -12px -8px;
   width: 20px;
@@ -128,7 +146,7 @@
     }
   }
  .navbar-container{
-    border: solid 1px rgb(169, 167, 167);
+    // border: solid 1px rgb(169, 167, 167);
     border-radius: 8px 8px 0 0;
     position: fixed;
     background: #fdddc9;

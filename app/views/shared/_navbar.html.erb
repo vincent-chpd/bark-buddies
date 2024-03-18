@@ -6,64 +6,67 @@
 
 
 
-    <div class="navbar-items">
+    <div class="navbar-items" data-controller="notifications">
 
         <% if user_signed_in? %>
 
           <div class="appear-if-large">
             <div class="menu">
-              <ul>
-                <li class="link">
+              <div class="menu-selections">
+                <div class="link">
                   <%= link_to "Home", root_path, class: "" %>
-                </li>
-                <li class="link">
+                </div>
+                <%# notifications here %>
+                <div class="link" data-notifications-target="chatNotifications">
                   <%= link_to "Messages", conversations_path, class: "" %>
-                </li>
-                <li class="link">
+                </div>
+                <div class="link">
                   <%= link_to "Events", events_path, class: "" %>
-                </li>
-              </ul>
+                </div>
+              </div>
             </div>
           </div>
 
           <div class="appear-if-small">
             <div class="menu">
-              <ul>
-                <li class="link">
+              <div class="menu-selections">
+                <div class="link">
                   <%= link_to root_path, class: "icon" do %>
                     <i class="fas fa-home"></i>
                   <% end %>
-                </li>
-                <li class="link">
-                  <%= link_to conversations_path, class: "icon" do %>
+                </div>
+                <%# notifications here %>
+                <div class="link" data-notifications-target="notificationsDot">
+                  <%= link_to conversations_path, class: "icon", data: {notifications_target: "messages_notifications" } do %>
                     <i class="fas fa-envelope"></i>
                   <% end %>
-                </li>
-                <li class="link">
+                </div>
+                <div class="link">
                   <%= link_to events_path, class: "icon" do %>
                     <i class="fas fa-calendar-alt"></i>
                   <% end %>
-                </li>
-                <li class="link">
+                </div>
+                <div class="link">
                   <%= link_to events_path, class: "icon" do %>
                     <i class="fas fa-user-friends"></i>
                   <% end %>
-                </li>
-                <li class="link">
+                </div>
+                <div class="link">
                   <%= link_to communities_path, class: "icon" do %>
                     <i class="fas fa-users"></i>
                   <% end %>
-                </li>
-                <li>
-              </ul>
+                </div>
+                <div>
+              </div>
             </div>
+          </div>
           </div>
 
           <div class="avatar-container">
             <div class="dropdown-image">
 
-            <div class="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-controller="notifications" data-notifications-target="notificationsDot">
-              <div class="notification-dot">3</div>
+            <div class="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-notifications-target="notificationsDot">
+              <%# <div class="notification-dot">3</div> %>
               <div class="avatar">
                 <%= image_tag current_user.photo, class: "avatar", alt: "dropdown menu" if current_user.photo.present? %>
               </div>
