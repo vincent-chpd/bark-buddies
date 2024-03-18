@@ -22,8 +22,6 @@ export default class extends Controller {
         chatNotifications.innerHTML += `<div class="messages-dot">${unreadMessagesNumber}</div>`
       }
     }
-    // const redDot = `<i class="fa-solid fa-circle"></i>`
-    // notificationsContainer.insertAdjacentHTML('beforeend', redDot)
   }
 
 }

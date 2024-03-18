@@ -26,6 +26,8 @@ class ConversationsController < ApplicationController
     respond_to do |format|
       format.json { render json: { status: :ok } }
     end
+
+    reach_to_notification_channel
   end
 
   def create
@@ -54,5 +56,20 @@ class ConversationsController < ApplicationController
 
   def conversation_params
     params.permit(:sender_id, :recipient_id)
+  end
+
+  def reach_to_notification_channel
+    # other_user = @conversation.sender == current_user ? @conversation.recipient : @conversation.sender
+
+    # Find unread messages for the conversation between current_user and other_user
+    my_unread_messages = @conversation.messages.where.not(user_id: current_user.id).where(read: false)
+
+    # Broadcast the conversation ID along with the unread messages count to the other_user
+    NotificationChannel.broadcast_to(
+      current_user,
+      data: {
+        unread_messages_number: my_unread_messages.count
+      }
+    )
   end
 end

@@ -1,7 +1,7 @@
 <div class="navbar-container" >
   <div class="navbar-barkbuddies">
     <%= link_to root_path, class: "logo-container appear-if-large" do %>
-      <%= image_tag ("https://res.cloudinary.com/drqv8g5uf/image/upload/v1710167061/Bark_Buddies_1_tzzpf2.png"), alt: "Bark Buddies Logo", class: "logo" %>
+      <%= image_tag ("https://res.cloudinary.com/drqv8g5uf/image/upload/v1710167061/Bark_Buddies_1_rg5mi8"), alt: "Bark Buddies Logo", class: "logo" %>
     <% end %>
 
 
@@ -29,36 +29,41 @@
 
           <div class="appear-if-small">
             <div class="menu">
-              <div class="menu-selections">
-                <div class="link">
+
+
+              <ul>
+                <li class="link ">
                   <%= link_to root_path, class: "icon" do %>
                     <i class="fas fa-home"></i>
                   <% end %>
-                </div>
-                <%# notifications here %>
-                <div class="link" data-notifications-target="notificationsDot">
-                  <%= link_to conversations_path, class: "icon", data: {notifications_target: "messages_notifications" } do %>
+                  <small>HOME</small>
+                </li>
+                <li class="link" data-notifications-target="notificationsDot">
+                  <%= link_to conversations_path, class: "icon" do %>
                     <i class="fas fa-envelope"></i>
                   <% end %>
-                </div>
-                <div class="link">
-                  <%= link_to events_path, class: "icon" do %>
-                    <i class="fas fa-calendar-alt"></i>
-                  <% end %>
-                </div>
-                <div class="link">
+                  <small>CHATS</small>
+                </li>
+                <li class="link">
                   <%= link_to events_path, class: "icon" do %>
                     <i class="fas fa-user-friends"></i>
                   <% end %>
-                </div>
-                <div class="link">
+                  <small>FRIENDS</small>
+                </li>
+                <li class="link">
+                  <%= link_to events_path, class: "icon" do %>
+                    <i class="fas fa-calendar-alt"></i>
+                  <% end %>
+                  <small>EVENTS</small>
+                </li>
+                <li class="link">
                   <%= link_to communities_path, class: "icon" do %>
                     <i class="fas fa-users"></i>
                   <% end %>
-                </div>
-                <div>
-              </div>
-            </div>
+                  <small>COMMUNITY</small>
+                </li>
+              </ul>
+
           </div>
           </div>
 

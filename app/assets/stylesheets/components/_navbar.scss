@@ -1,27 +1,30 @@
 .navbar-barkbuddies {
-  // border: solid 1px rgb(23, 172, 33);
   display: flex;
+  align-items: center;
   justify-content: space-between;
   color: gray;
-  padding: 5px 10px;
+  padding: 4px;
   a{
     color: gray;
+  }
+
+  h3{
+    margin: 0;
+    color: black;
   }
 
 }
 
 .logo-container {
-  // border: solid 1px red;
   display: flex;
   align-items: center;
-  width: 90px;
+  width: 100px;
   .logo {
     width: 100%;
   }
 }
 
 .navbar-items{
-  // border: solid 1px rgb(197, 2, 129);
   display: flex;
   width:60%;
   justify-content: flex-end;
@@ -31,14 +34,19 @@
 
 .link {
   position: relative;
-  color: gray;
+  color: #808080;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    color: rgb(0, 0, 0);
+  }
 }
 
 .icon {
-  font-size: 30px;
-  color: gray;
-
-
+  font-size: 38px;
 }
 
 .navbar-dropdown {
@@ -60,30 +68,28 @@
   justify-content: space-between;
 
   ul{
+    // border: solid 1px green;
+    width:100%;
     display: flex;
+    justify-content: space-around;
     list-style: none;
+    gap: 12px;
     padding: 0;
     margin: 0;
     li{
       margin: 0 10px;
+      text-align: center;
     }
-
+    small {
+      font-size: 9px;
+    }
   }
 }
 
-.menu-selections{
-  // border: solid 1px green;
-  width:100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-}
 
 .appear-if-large {
   display: none;
 }
-
 
 .notification-dot{
   position: absolute;
@@ -128,30 +134,26 @@
 
 @media (max-width: 575px) {
   .navbar-items{
-    // border: solid 1px red;
     width:100%;
-    justify-content: space-around;
+    justify-content: space-evenly;
     gap:0;
     .appear-if-small{
-      // border: solid 1px blue;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-evenly;
       width: 100%;
       gap:10px;
     }
     .icon{
-      // border: solid 1px green;
-      margin-left: 8px;
-      color: rgba(77, 39, 0, 0.564)
+      font-size: 20px;
     }
   }
- .navbar-container{
-    // border: solid 1px rgb(169, 167, 167);
-    border-radius: 8px 8px 0 0;
+  .navbar-container{
+    border-top: solid 1px rgb(169, 167, 167);
+    padding-top:  2px;
     position: fixed;
-    background: #fdddc9;
+    background: #fcf1ea;
     z-index: 1000;
     width: 100%;
     bottom: 0;
- }
+  }
 }

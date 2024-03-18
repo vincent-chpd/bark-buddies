@@ -1,7 +1,12 @@
-
-
-<div class="d-flex align-items-center justify-content-around">
-
+<div class="navbar-barkbuddies appear-if-small  mt-3 mx-2">
+    <%= link_to root_path, class: "logo-container " do %>
+      <%= image_tag ("https://res.cloudinary.com/drqv8g5uf/image/upload/v1710167061/Bark_Buddies_1_rg5mi8"), alt: "Bark Buddies Logo", class: "logo" %>
+    <% end %>
+    <% if user_signed_in? %>
+      <h3>Hi, <%= current_user.name %>!</h3>
+    <% else %>
+      <h3>Hi, there!</h3>
+    <% end %>
 </div>
 
 <div class="mt-4 container profiles-container">
@@ -10,7 +15,7 @@
     <%=  link_to "See more", users_path %>
   </div>
   <div class="d-flex scroll">
-    <% @users.all.take(5).each do |user| %>
+    <% @users.reject { |user| user == current_user }.take(10).each do |user| %>
       <% user.dogs.each do |dog| %>
         <%=  link_to user_path(user) do %>
           <% first_photo = dog.photos.first %>
@@ -38,7 +43,7 @@
   </div>
   <div class="d-flex scroll">
     <% @communities.all.each do |community| %>
-        <div class="d-flex flex-column my-4 mx-3">
+        <div class="d-flex flex-column my-4">
           <%= link_to community_path(community) do %>
             <div class= "d-flex card-community text-center justify-content-center align-items-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('<%= image_path community.photo.url if community.photo.try(:url).present? %>')">
             <h2><%= community.name %></h2>
@@ -49,31 +54,25 @@
   </div>
 </div>
 
-<div class="container my-5">
+<div class="container event-container my-5">
   <div class="d-flex justify-content-between align-items-center">
     <h2>Events Coming Up</h2>
     <%=  link_to "See more", events_path, class:"orange" %>
   </div>
-
-
-    <div class="">
-      <div class="row mt-4">
-        <% @events.each do |event| %>
-          <div class="col-12 d-flex align-items-center">
-            <div class="card-event">
-              <img src="https://saltydogpaddle.org/wp-content/uploads/2019/11/yappyhourbeer-1024x585.jpg">
-            <div class="card-event-info">
-              <h2><%= event.title %></h2>
-              <p><%= event.description %></p>
-              <p><%= event.location %></p>
-              <p><span><%= event.date %></span></p>
-            </div>
-            </div>
+  <div class="row mt-4">
+    <% @events.take(4).each do |event| %>
+        <div class="events-cards">
+          <div class="">
+            <time datetime="2014-09-20" class="icon">
+              <strong>Sept.</strong>
+              <span>20</span>
+            </time>
           </div>
-        <% end %>
-      </div>
-    </div>
-
-
-
+          <div class="mx-2">
+            <h5><%= event.title %></h5>
+            <p>📍 <%= event.location %></p>
+          </div>
+        </div>
+    <% end %>
+  </div>
 </div>
