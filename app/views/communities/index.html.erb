@@ -35,10 +35,10 @@
                   <div class="modal-body">
                     <p><%= community.description %></p>
                   </div>
-                  <div class="modal-footer">
+                  <div class="modal-footer" data-controller="join-community">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-warning">Join community</button>
-                    <%= link_to "Chat", community_path(community), class:"btn btn-warning" %>
+                    <button type="button" class="btn btn-warning" data-action="click->join-community#toggle"  data-join-community-target="button">Join community</button>
+                    <%= link_to "Chat", community_path(community), class:"btn btn-warning d-none", data: { target: "join-community.chat" }  %>
                   </div>
                 </div>
               </div>
@@ -71,8 +71,8 @@
                   </div>
                   <div class="modal-footer" data-controller="join-community" >
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-warning" data-action="click->join-community#toggle"  data-join-community-target="button">Join community</button>
-                    <%= link_to "Chat", community_path(community), class:"btn btn-warning" %>
+                    <button type="button" class="btn btn-warning" data-action="click->join-community#toggle" data-join-community-target="button">Join community</button>
+                    <%= link_to "Chat", community_path(community), class:"btn btn-warning d-none", data: { target: "join-community.chat" } %>
                   </div>
                 </div>
               </div>
@@ -85,7 +85,7 @@
       <% end %>
     </div>
   </div>
-  <div class="my-4 pt-3 container-lg px-2">
+  <div class="my-5 pt-3 container-lg px-2">
     <div class="row mt-4 mx-2">
       <h2>City & Neighborhood Groups</h2>
       <% @communities.last(2).each do |community| %>
@@ -103,10 +103,10 @@
                   <div class="modal-body">
                     <p><%= community.description %></p>
                   </div>
-                  <div class="modal-footer">
+                  <div class="modal-footer" data-controller="join-community">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-warning"  data-action="click -> join-community#join" data-join-community-target="button">Join community</button>
-                    <%= link_to "Chat", community_path(community) %>
+                    <button type="button" class="btn btn-warning"  data-action="click->join-community#toggle" data-join-community-target="button">Join community</button>
+                    <%= link_to "Chat", community_path(community), class:"btn btn-warning d-none", data: { target: "join-community.chat" } %>
                   </div>
                 </div>
               </div>
