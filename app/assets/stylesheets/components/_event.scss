@@ -1,10 +1,9 @@
 .banner-img {
-  background-color: $orange;
+  background-color: rgba(244, 199, 148, 0.88);
   padding: 50% 0;
   max-width: 100%;
   margin-bottom: 60px;
-  border-radius: 20px;
-
+  border-radius: 10px;
 
   .banner-text h3 {
   margin: 0;
@@ -14,6 +13,10 @@
   font-weight: bold;
   text-align: center;
   padding: 8px;
+  }
+
+  .page-bottom{
+  margin-bottom: 70px;
   }
 
   .text-center{
