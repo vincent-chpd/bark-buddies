@@ -1,5 +1,4 @@
 .profile-container {
-  background-color: $light-gray;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,6 +14,10 @@
     padding: 0;
 
   }
+}
+
+.profile_page {
+  margin-bottom: 48px;
 }
 
 .dog.profile-container{
@@ -87,4 +90,32 @@
   background-color: $orange;
   outline: $orange;
   color: black;
+}
+
+.modal-header {
+  background-color: white;
+  border-radius: 4px;
+  border-bottom: none;
+}
+
+.pending {
+  background-color: white;
+  outline: $orange;
+}
+
+.form-control.is-valid {
+  border-color: $orange;
+  border-right: solid 1px $orange;
+  margin: 4px;
+  border-radius: 4px;
+}
+
+.submit {
+  margin: 8px;
+}
+
+.modal-content {
+  padding: 20px;
+  background-color: white;
+  box-shadow: $orange (100, 100, 111, 0.2) 0px 7px 29px 0px;
 }

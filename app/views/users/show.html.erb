@@ -1,43 +1,52 @@
 <div class="container-fluid">
   <div class="profile-container my-3">
-    <div class="row d-flex justify-content-around">
+    <div class="row d-flex justify-content-around profile_page">
+      <!-- Back Button -->
+      <div class="row">
+        <div class="col-12">
+          <a href="<%= @referer_url %>" class="btn btn-warning"><i class="fa-solid fa-chevron-left"></i></a>
+        </div>
+      </div>
       <!-- Dog Details and Photo Carousel -->
       <div class="col-md-8">
         <div class="text-center">
           <h1><%= @dog.name %> & <%= @user.name %></h1>
         </div>
-          <% if current_user == @user %>
-            <div class="text-md-end">
-              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#photoModal">
-                <i class="fa-solid fa-pen"></i>
-              </button>
+          <div id="carouselExampleIndicators" class="carousel slide position-relative" data-bs-ride="carousel">
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators">
+              <% @dog.photos.each_with_index do |photo, index| %>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" <%= 'class="active"' if index.zero? %> aria-label="Slide <%= index + 1 %>"></button>
+              <% end %>
             </div>
-        <% end %>
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-          <!-- Carousel Indicators -->
-          <div class="carousel-indicators">
-            <% @dog.photos.each_with_index do |photo, index| %>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" <%= 'class="active"' if index.zero? %> aria-label="Slide <%= index + 1 %>"></button>
-            <% end %>
-          </div>
-          <!-- Carousel Inner -->
-          <div class="carousel-inner">
-            <% @dog.photos.each_with_index do |photo, index| %>
-              <div class="carousel-item <%= 'active' if index.zero? %>">
-                <%= image_tag photo.url, class: 'd-block w-100', alt: "Slide #{index + 1}" %>
+            <!-- Carousel Inner -->
+            <div class="carousel-inner">
+              <% @dog.photos.each_with_index do |photo, index| %>
+                <div class="carousel-item <%= 'active' if index.zero? %>">
+                  <%= image_tag photo.url, class: 'd-block w-100', alt: "Slide #{index + 1}" %>
+                </div>
+              <% end %>
+            </div>
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+            <!-- Upload Photo Button -->
+            <% if current_user == @user %>
+              <div class="position-absolute bottom-0 end-0 mb-3 me-3" style="z-index: 1;">
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#photoModal">
+                  <i class="fa-solid fa-pen"></i>
+                </button>
               </div>
             <% end %>
           </div>
-          <!-- Carousel Controls -->
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
+
+
         <!-- Dog Details -->
         <div class="mt-2 dog_details">
           <h5><strong><%= @dog.breed %></strong></h5>
@@ -56,15 +65,6 @@
                     <h4><strong><%= @user.name %>, </strong><span class="lighter-font"><%= @user.age %></span></h4>
                   </div>
                 </div>
-
-                <!-- Edit Profile Button -->
-                <% if current_user == @user %>
-                  <div>
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editProfileModal">
-                      Edit Profile
-                    </button>
-                  </div>
-                <% end %>
               </div>
 
             <strong>About me</strong>
@@ -80,13 +80,9 @@
                   <div class="modal-body">
                     <!-- Profile Edit Form -->
                     <%= simple_form_for @user, url: user_path(@user), method: :put do |f| %>
-                      <!-- Your form fields for editing profile details -->
                       <%= f.input :name %>
                       <%= f.input :age %>
-                      <!-- Add more fields as needed -->
-
-                      <!-- Submit Button -->
-                      <%= f.button :submit, "Save Changes", class: "btn btn-primary" %>
+                      <%= f.button :submit, "Save Changes", class: "btn btn-warning submit" %>
                     <% end %>
                   </div>
                 </div>
@@ -100,14 +96,14 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="photoModalLabel">Edit Profile</h5>
+                <h5 class="modal-title" id="photoModalLabel">Add Photo(s)</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <!-- Your form goes here -->
                 <%= simple_form_for [@dog] do |f| %>
                   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-                  <%= f.submit "Add Photo(s)", class:"btn btn-primary mt-4" %>
+                  <%= f.submit "Add Photo(s)", class:"btn btn-warning mt-4 submit" %>
                 <% end %>
               </div>
             </div>
@@ -116,22 +112,33 @@
 
 
       <!-- Add Friend and Message Buttons -->
+        <!-- Edit Profile Button -->
+        <div class="row mb-4">
+          <div class="col text-center">
+            <% if current_user == @user %>
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                Edit Profile
+              </button>
+            <% end %>
+          </div>
+        </div>
         <% unless current_user == @user %>
-          <div class="actions d-flex justify-content-center mt-3">
+          <div class="actions d-flex justify-content-center mb-4">
             <%= render "private_message_button", user: @user, method: :get, class: 'btn btn-warning me-2' %>
-        <% if @friendship %>
-          <% unless @friendship.confirmed %>
-            <%= button_to "Pending", class: 'btn btn-primary' %>
-          <%end%>
-        <% else %>
-          <%= button_to friendships_path(receiver_id: @user.id), method: :post, class: 'btn btn-warning' do %>
-            <i class="fa-solid fa-user-plus"></i> Add buddy
-          <% end %>
-              <%# <i class="fas fa-user-plus"></i> Add buddy %>
-            <%end%>
-
+            <% if @friendship %>
+              <% unless @friendship.confirmed %>
+                <%= button_to friendships_path(receiver_id: @user.id), method: :post, class: 'btn btn-warning pending' do %>
+                  <i class="fa-regular fa-hourglass-half"></i> Pending
+                <% end %>
+              <% end %>
+            <% else %>
+              <%= button_to friendships_path(receiver_id: @user.id), method: :post, class: 'btn btn-warning' do %>
+                <i class="fa-solid fa-user-plus"></i> Add buddy
+              <% end %>
+            <% end %>
           </div>
         <% end %>
+
 
 
 
