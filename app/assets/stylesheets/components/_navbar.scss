@@ -86,6 +86,16 @@
   }
 }
 
+.menu-selections{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  .icon{
+    font-size: 20px;
+  }
+}
+
 
 .appear-if-large {
   display: none;
