@@ -1,38 +1,122 @@
-<div class="community-banner">
-  <h1>Join the Bark Buddies community!</h1>
-  <img src="https://img.freepik.com/premium-vector/illustration-people-walk-dogs-park_253349-108.jpg" alt="">
-</div>
-
-
-<div class="mt-2 pt-3 container-lg px-2" style="background: #e27c3d1c;">
-  <div class="row mt-4 mx-3">
-    <h2>Popular Breed Groups</h2>
-    <% @communities.all.take(8).each do |community| %>
-      <div class="col-6">
-        <div class="community-card my-4">
-          <%= image_tag community.photo.url, height: 80, width: 80, crop: :fill, style: "border-radius: 50%; outline: 2px solid white ;" %>
-          <p><%= community.name %></p>
-          <%= link_to "Join Community", community_path(community),  data: { turbo_confirm: "You have join the community!" } %>
-        </div>
-      </div>
-    <% end %>
+<div class="banner-img">
+  <div class="container">
+    <div class="banner-text">
+      <h3>  Communities</h3>
+        <h5 class="text-center">Join the Bark Buddies community!</h5>
+          <%= form_with url: communities_path, method: :get, class: "d-flex justify-content-center" do  %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control input-search",
+              placeholder: "🔍 Search...",
+              id: "search-bar"
+              %>
+              <button type="button" id="clear-button"><i class="fa-solid fa-xmark"></i></button>
+            <%= javascript_include_tag 'search_form' %>
+          <% end %>
+    </div>
   </div>
 </div>
 
-
-<div class="my-4 pt-3 container-lg px-2">
-  <div class="row mt-4 mx-2">
-    <h2>City & Neighborhood Groups</h2>
-    <% @communities.all.take(4).each do |community| %>
-      <div class="col-6">
-        <div class="community-card my-4 mx-1">
-          <%= image_tag community.photo.url, height: 80, width: 80, crop: :fill, style: "border-radius: 50%; outline: 2px solid white ;" %>
-          <p><%= community.name %></p>
-          <%= link_to "Join Community", community_path(community), class:" btn-warning" %>
+<% if params[:query].present? %>
+  <div class="pt-3 pb-5 container-lg px-2" style="background: #e27c3d1c;">
+    <div class="row mt-4 mx-3" >
+      <h2>Search results for: <%= params[:query] %></h2>
+      <% @communities.first(6).each do |community| %>
+        <div class="col-6">
+          <div class="community-card">
+            <div class="modal fade" id="staticBackdrop<%= community.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog" >
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel"><%= community.name %></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <%= image_tag community.photo.url %>
+                  <div class="modal-body">
+                    <p><%= community.description %></p>
+                  </div>
+                  <div class="modal-footer" data-controller="join-community">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-warning" data-action="click->join-community#toggle"  data-join-community-target="button">Join community</button>
+                    <%= link_to "Chat", community_path(community), class:"btn btn-warning d-none", data: { target: "join-community.chat" }  %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <%= image_tag community.photo.url, height:100, width: 130, crop: :fill, style: "border-radius: 8px; outline: 2px solid white ;" %>
+            <p><%= community.name %></p>
+              <%= link_to "Join Community", "#", class: "btn-community", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" } %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
-
-<h5>General Groups</h5>
+<% else %>
+  <div class="py-3 container-lg px-2" style="background: #e27c3d1c;">
+      <h2>Popular Breed Groups</h2>
+    <div class="row mt-4 mx-3" >
+      <% @communities.first(6).each do |community| %>
+        <div class="col-6">
+          <div class="community-card">
+            <div class="modal fade" id="staticBackdrop<%= community.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel"><%= community.name %></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <%= image_tag community.photo.url %>
+                  <div class="modal-body">
+                    <p><%= community.description %></p>
+                  </div>
+                  <div class="modal-footer" data-controller="join-community" >
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-warning" data-action="click->join-community#toggle" data-join-community-target="button">Join community</button>
+                    <%= link_to "Chat", community_path(community), class:"btn btn-warning d-none", data: { target: "join-community.chat" } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <%= image_tag community.photo.url, height:100, width: 130, crop: :fill, style: "border-radius: 4px; outline: 2px solid white ;" %>
+            <p><%= community.name %></p>
+              <%= link_to "Join Community", "#", class: "btn-community", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" } %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="my-5 pt-3 container-lg px-2">
+    <div class="row mt-4 mx-2">
+      <h2>City & Neighborhood Groups</h2>
+      <% @communities.last(2).each do |community| %>
+        <div class="col-6">
+          <div class="community-card my-4 mx-1">
+          <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop<%= community.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel"><%= community.name %></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <%= image_tag community.photo.url %>
+                  <div class="modal-body">
+                    <p><%= community.description %></p>
+                  </div>
+                  <div class="modal-footer" data-controller="join-community">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-warning"  data-action="click->join-community#toggle" data-join-community-target="button">Join community</button>
+                    <%= link_to "Chat", community_path(community), class:"btn btn-warning d-none", data: { target: "join-community.chat" } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <%= image_tag community.photo.url, height: 100, width: 130, crop: :fill, style: "border-radius: 4px; outline: 2px solid white ;" %>
+            <p><%= community.name %></p>
+              <%= link_to "Join Community", "#", class: "btn-community", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" } %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
