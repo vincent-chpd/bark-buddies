@@ -3,7 +3,7 @@ import { createConsumer } from "@rails/actioncable"
 
 // Connects to data-controller="notifications"
 export default class extends Controller {
-  static targets = [ "notificationsDot" ]
+  static targets = [ "notificationsDot", "chatNotifications" ]
   connect() {
     this.channel = createConsumer().subscriptions.create(
       { channel: "NotificationChannel" },
@@ -12,15 +12,16 @@ export default class extends Controller {
   }
 
   renderRedDot(data) {
-    // const notificationDot = this.notificationsDotTarget
-    const unreadMessagesNumber = data.data.unread_messages_number
+    const notificationDot = this.notificationsDotTarget
+    const chatNotifications = this.chatNotificationsTarget
+    let unread_messages_number = data.data.unread_messages_number
+    const unreadMessagesNumber = unread_messages_number > 99 ? "99+" : unread_messages_number
     if (unreadMessagesNumber) {
       if (unreadMessagesNumber > 0) {
-        this.notificationsDotTarget.innerHTML += `<div class="notification-dot">${unreadMessagesNumber}</div>`
+        notificationDot.innerHTML += `<div class="notification-dot">${unreadMessagesNumber}</div>`
+        chatNotifications.innerHTML += `<div class="messages-dot">${unreadMessagesNumber}</div>`
       }
     }
-    // const redDot = `<i class="fa-solid fa-circle"></i>`
-    // notificationsContainer.insertAdjacentHTML('beforeend', redDot)
   }
 
 }

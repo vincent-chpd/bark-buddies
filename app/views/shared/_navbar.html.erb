@@ -6,28 +6,31 @@
 
 
 
-    <div class="navbar-items">
+    <div class="navbar-items" data-controller="notifications">
 
         <% if user_signed_in? %>
 
           <div class="appear-if-large">
             <div class="menu">
-              <ul>
-                <li class="link">
+              <div class="menu-selections">
+                <div class="link">
                   <%= link_to "Home", root_path, class: "" %>
-                </li>
-                <li class="link">
+                </div>
+                <%# notifications here %>
+                <div class="link" data-notifications-target="chatNotifications">
                   <%= link_to "Messages", conversations_path, class: "" %>
-                </li>
-                <li class="link">
+                </div>
+                <div class="link">
                   <%= link_to "Events", events_path, class: "" %>
-                </li>
-              </ul>
+                </div>
+              </div>
             </div>
           </div>
 
           <div class="appear-if-small">
             <div class="menu">
+
+
               <ul>
                 <li class="link ">
                   <%= link_to root_path, class: "icon" do %>
@@ -35,7 +38,7 @@
                   <% end %>
                   <small>HOME</small>
                 </li>
-                <li class="link">
+                <li class="link" data-notifications-target="notificationsDot">
                   <%= link_to conversations_path, class: "icon" do %>
                     <i class="fas fa-envelope"></i>
                   <% end %>
@@ -60,14 +63,15 @@
                   <small>COMMUNITY</small>
                 </li>
               </ul>
-            </div>
+
+          </div>
           </div>
 
           <div class="avatar-container">
             <div class="dropdown-image">
 
-            <div class="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-controller="notifications" data-notifications-target="notificationsDot">
-              <div class="notification-dot">3</div>
+            <div class="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-notifications-target="notificationsDot">
+              <%# <div class="notification-dot">3</div> %>
               <div class="avatar">
                 <%= image_tag current_user.photo, class: "avatar", alt: "dropdown menu" if current_user.photo.present? %>
               </div>
