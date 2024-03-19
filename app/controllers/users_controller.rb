@@ -14,11 +14,18 @@ class UsersController < ApplicationController
     @dog = @user.dogs.first
     @conversations = Conversation.where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id)
     @friendship = Friendship.find_by(receiver_id: @user.id, sender_id: current_user.id)
+    @referer_url = request.referer
   end
 
   def update
-    @user.update(user_params)
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to user_path(@user), notice: 'Profile was successfully updated.'
+    else
+      render :edit
+    end
   end
+
 
   def destroy
     @user.destroy
