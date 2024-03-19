@@ -18,6 +18,15 @@
   }
 }
 
+.conversations-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+
+}
+
 .conversation-card {
   display: flex;
   justify-content: flex-start;
@@ -37,6 +46,10 @@
   }
 
 
+}
+
+a {
+  margin-bottom: 10px;
 }
 
 .names {
