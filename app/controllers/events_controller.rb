@@ -3,7 +3,7 @@ class EventsController < ApplicationController
     if params[:query].present?
       @events = Event.search_by_location(params[:query])
     else
-      @events = Event.all
+      @events = Event.all.all.order(:date)
     end
   end
 end

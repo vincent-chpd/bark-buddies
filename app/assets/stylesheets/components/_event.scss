@@ -3,8 +3,7 @@
   padding: 50px 0;
   max-width: 100%;
 
-
-  .banner-text h3 {
+.banner-text h3 {
   margin: 0;
   color: rgb(255, 255, 255);
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
@@ -57,6 +56,7 @@
     object-fit: cover;
   }
 
+
   .card-event-info {
     padding: 16px;// Add padding to the card content
     background-color: #ffffff; // Set background color for card content
@@ -64,12 +64,10 @@
     border-bottom-right-radius: 8px;
 
     h5 {
-      font-size: 1rem; // Adjust font size for event title
-      margin-top: 5px;// Add margin at the bottom of the title
+      font-size: 1rem;
     }
 
     .event-details {
-      display: flex;
       align-items: center;
       margin-bottom: 8px;
     }
@@ -86,11 +84,8 @@
 // Media query for smaller screens
 @media (max-width: 480px) {
   .card-event {
-    margin-bottom: 20px; // Adjust margin between cards for smaller screens
+    margin-bottom: 20px;
   }
-}
-.modal-header{
-    background: #e27c3d1c;
 }
 
 .modal-body {
