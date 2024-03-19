@@ -23,18 +23,17 @@ class MessagesController < ApplicationController
 
   def reach_to_notification_channel
     other_user = @conversation.sender == current_user ? @conversation.recipient : @conversation.sender
-    # other_user_unread_messages = All the mesages in a conversation where the user_id is not the other_user and the read is false
+
+    # Find unread messages for the conversation between current_user and other_user
     other_user_unread_messages = @conversation.messages.where.not(user_id: other_user.id).where(read: false)
-    other_user_converations = Conversation.where(sender_id: other_user.id).or(Conversation.where(recipient_id: other_user.id))
-    other_user_conversations_and_last_messages = other_user_converations.map do |conversation|
-      { conversation_data: conversation, last_message: conversation.messages.last }
-    end
-    other_user_converations.each do |conversation|
+
+    # Broadcast the conversation ID along with the unread messages count to the other_user
     NotificationChannel.broadcast_to(
       other_user,
-      render_to_string(partial: "conversations/new_received_conversation_card", locals: { conversation: conversation })
+      data: {
+        unread_messages_number: other_user_unread_messages.count
+      }
     )
-    end
   end
 
   def message_params

@@ -1,39 +1,51 @@
-<div class="container mt-2">
+<div class="container-users mt-2">
 
-  <h2 class="text-center">Fellow Buddies🐕  </h2>
+  <h2 class="text-center">Search for buddies 🐶</h2>
     <%= form_with url: users_path, method: :get, class: "d-flex justify-content-center", id: "search-form" do  %>
+    <div class="search-container">
       <%= text_field_tag :query,
             params[:query],
-            class: "form-control input-search",
-            placeholder: "🔍Type a location...",
+            class: "input-search",
+            placeholder: "🔍 Type a location...",
             id: "search-bar"
       %>
+      <button type="button" id="clear-button"><i class="fa-solid fa-xmark"></i></button>
     <%= javascript_include_tag 'search_form' %>
 <% end %>
 
 </div>
-
-<div class="container mt-4 text-center">
-  <h5> <%= @message %> </h5>
 </div>
 
-  <div class="cards-container d-flex flex-wrap justify-content" style="margin-left: 30px; margin-right: 30px;">
-    <% @users.each do |user| %>
-      <% user.dogs.each do |dog| %>
-        <%=  link_to user_path(user) do %>
-          <% first_photo = dog.photos.first %>
-          <div class="profile-card-users my-4 mx-4 col-2" style="width:200px;" >
-            <div class= "dog-picture-users" style="background-image: url('<%= image_path first_photo.url %>')">
-              <%= image_tag user.photo.url, height: 80, width: 80, class: "user-avatar", style: "border-radius: 50%;" %>
-            </div>
-            <h5 class="black-link mt-2"><%= user.name %> & <%= dog.name %> </h5>
+<div class="container mt-4 text-center">
+  <h5 class="user-error"> <%= @message.html_safe if @message %> </h5>
+</div>
+
+  <div class="container">
+    <div class="row">
+      <% @users.each do |user| %>
+        <% user.dogs.each do |dog| %>
+          <div class="col-6">
             <div class="d-flex">
-              <p><%= dog.breed %> •</p>
-              <p> <i class="fa-solid fa-mars"></i></p>
+              <%=  link_to user_path(user) do %>
+                <% first_photo = dog.photos.first %>
+
+                <div class="profile-card-users my-4 mx-4">
+                  <div class= "dog-picture-users" style="background-image: url('<%= image_path first_photo.url %>')">
+                    <%= image_tag user.photo.url, height: 80, width: 80, class: "user-avatar", style: "border-radius: 50%;" %>
+                  </div>
+                  <h5 class="black-link mt-2"><%= user.name %> & <%= dog.name %> </h5>
+
+                  <div class="d-flex">
+                    <p class="remove-width"><%= dog.breed %> •</p>
+                    <p class="remove-width"> <i class="fa-solid fa-mars"></i></p>
+                  </div>
+
+                  <p><small class="smaller"><i class="fa-solid fa-location-dot "></i> <%= user.location %></small></p>
+                </div>
+              <% end %>
             </div>
-            <p><small><i class="fa-solid fa-location-dot "></i> <%= user.location %></small></p>
           </div>
         <% end %>
       <% end %>
-    <% end %>
   </div>
+</div>

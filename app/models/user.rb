@@ -15,5 +15,5 @@ class User < ApplicationRecord
     against: [ :name, :location ],
     using: {
       tsearch: { prefix: true }
-  }
+    }
 end

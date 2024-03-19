@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def index
     if params[:query].present?
       @users = User.search_by_location_name(params[:query])
-      @message = "⛔ There are no users available for this location ⛔" if @users.empty?
+      @message = "⛔ No users available for this location ⛔ #{view_context.link_to('Go back', users_path)}" if @users.empty?
     else
       @users = User.all
     end

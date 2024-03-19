@@ -1,17 +1,134 @@
-.navbar-lewagon {
+.navbar-barkbuddies {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background: white;
+  justify-content: space-between;
   color: gray;
+  padding: 4px;
   a{
     color: gray;
   }
 
+  h3{
+    margin: 0;
+    color: black;
+  }
+
 }
 
-
-
-.navbar-lewagon .navbar-brand img {
+.logo-container {
+  display: flex;
+  align-items: center;
   width: 100px;
+  .logo {
+    width: 100%;
+  }
+}
+
+.navbar-items{
+  display: flex;
+  width:60%;
+  justify-content: flex-end;
+  gap:10px;
+  align-items: center;
+}
+
+.link {
+  color: #808080;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    color: rgb(0, 0, 0);
+  }
+}
+
+.icon {
+  font-size: 38px;
+}
+
+.navbar-dropdown {
+  position: relative;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  ul{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+    li{
+      margin: 0 10px;
+      text-align: center;
+    }
+    small {
+      font-size: 9px;
+    }
+  }
+}
+
+.appear-if-large {
+  display: none;
+}
+
+.notification-dot{
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $orange;
+  z-index: 1000;
+  color: white;
+  margin: 0 0 -12px -8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+@media (min-width: 575px) {
+  .appear-if-large {
+    display: block;
+  }
+  .appear-if-small {
+    display: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .navbar-items{
+    width:100%;
+    justify-content: space-evenly;
+    gap:0;
+    .appear-if-small{
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+      gap:10px;
+    }
+    .icon{
+      font-size: 20px;
+    }
+  }
+  .navbar-container{
+    border-top: solid 1px rgb(169, 167, 167);
+    padding-top:  2px;
+    position: fixed;
+    background: #fcf1ea;
+    z-index: 1000;
+    width: 100%;
+    bottom: 0;
+  }
 }

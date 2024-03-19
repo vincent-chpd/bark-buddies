@@ -1,29 +1,36 @@
 
-<div class="banner-img" style="background-image: url(https://st2.depositphotos.com/1763191/7390/v/450/depositphotos_73900639-stock-illustration-dog-and-cat.jpg);">
+<div class="banner-img">
   <div class="container">
     <div class="banner-text">
-      <h3>Explore Events</h3>
-      <span>
-        <p>From dog shows and dog-friendly cinema screenings to brunch meet-ups and more, if it's an event designed for our furry companions to enjoy, we'll feature it on our London Dog Events Calendar. This way, you can plan your pup's social life alongside your own. Simply click on the event you're interested in from the calendar below for more details…</p>
-      </span>
+      <h3>Events</h3>
+        <h5 class="text-center">Discover more</h5>
+          <%= form_with url: events_path, method: :get, class: "d-flex justify-content-center" do  %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control input-search",
+              placeholder: "🔍 Explore..",
+              id: "search-bar"
+              %>
+          <% end %>
     </div>
   </div>
 </div>
 
 <div class="container-event">
-  <h3 style="margin-left: 40px;">Featured events</h3>
+  <h3 style="margin-left: 10px; margin-top: 20px">Featured events</h3>
   <% @events.each do |event| %>
     <div class="card-event">
-      <%= image_tag event.photo.url %>
+      <%= image_tag event.photo.url, class: "event-image" %>
       <a data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= event.id %>">
         <div class="card-event-info">
           <h5><%= event.title %></h5>
-          <p><%= event.description %></p>
-          <p>📍<%= event.location %></p>
-          <p>🗓️<span><%= event.date %></span></p>
-        </div>
-    </div>
+            <div class="event-details">
+              <p>📍<%= event.location %></p>
+              <p>🗓️<span><%= event.date %></span></p>
+            </div>
+          </div>
       </a>
+    </div>
 </div>
 
     <!-- Modal -->
@@ -35,32 +42,28 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body" data-controller="attend">
-          <div class="modal-image-container text-center mb-3">
-            <%= image_tag event.photo.url, class: "modal-image" %>
+              <%= image_tag event.photo.url, class: "modal-image" %>
+            <div class="event-details" style= "margin-left: 8px; margin-right: 8px; margin-bottom: 8px;">
+              <p class="fw-bold">Event Details:</p>
+              <p><%= event.description %></p>
+            </div>
+              <div class="event-info" style= "margin-left: 8px; margin-right: 8px; margin-bottom: 8px;">
+                  <div class="d-flex justify-content-between" style ="width: 300px;">
+                <div>
+                  <p class="fw-bold">Location:</p>
+                  <p>📍<%= event.location %></p>
+                </div>
+              <div>
+                <p class="fw-bold">Date:</p>
+                <p><span><%= event.date %></span></p>
+              </div>
+            </div>
           </div>
-          <div class="event-details">
-            <p class="fw-bold">Event Details:</p>
-            <p><%= event.description %></p>
-          </div>
-          <div class="event-info">
-            <p class="fw-bold">Location:</p>
-            <p>📍<%= event.location %></p>
-            <p class="fw-bold">Date:</p>
-            <p><span><%= event.date %></span></p>
-          </div>
-            <div class="postion-right">
+            <div class="postion-right" style= "margin-left: 8px; margin-right: 8px; margin-bottom: 8px;">
               <button class="attend-button" data-action="click->attend#attend" data-target="attend.button">Attend</button>
             </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 <% end %>
-
-<div class="community-link">
-    <p>If you’re interested to see what London’s canine community gets up to, check out our blog posts covering dog events in and around London.</p>
-    <p>Please note, we do our best to ensure our Events Calendar is accurate, however, we do not organize these events (unless clearly stated) and changes may occur to events, so please do check with the event organizers for the latest information.</p>
-      <hr>
-  </div>
-</div>
-</div>
