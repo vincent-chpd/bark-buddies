@@ -1,17 +1,17 @@
 <div class="container-fluid">
   <div class="profile-container my-3">
-    <div class="row">
+    <div class="row d-flex justify-content-around">
       <!-- Dog Details and Photo Carousel -->
       <div class="col-md-8">
         <div class="text-center">
           <h1><%= @dog.name %> & <%= @user.name %></h1>
         </div>
-        <% if user_signed_in? %>
-          <div class="text-md-end">
-            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#photoModal">
-              <i class="fas fa-camera"></i> <!-- Using camera icon from FontAwesome -->
-            </button>
-          </div>
+          <% if current_user == @user %>
+            <div class="text-md-end">
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#photoModal">
+                <i class="fa-solid fa-pen"></i>
+              </button>
+            </div>
         <% end %>
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
           <!-- Carousel Indicators -->
@@ -49,18 +49,72 @@
       <!-- User Card -->
       <div class="col-md-4 align-self-start">
         <div class="user-card mt-3 mt-md-0">
-          <div class="user-profile">
-            <%= image_tag @user.photo.url, alt: "#{@user.name} Profile Picture", class: 'profile-image-small' %>
-            <div class="profile-info">
-              <h4><strong><%= @user.name %>, </strong><span class="lighter-font"><%= @user.age %></span></h4>
-            </div>
-          </div>
-          <div class="user-bio">
+              <div class="user-profile d-flex justify-content-between align-items-center">
+                <div>
+                  <%= image_tag @user.photo.url, alt: "#{@user.name} Profile Picture", class: 'profile-image-small' %>
+                  <div class="profile-info">
+                    <h4><strong><%= @user.name %>, </strong><span class="lighter-font"><%= @user.age %></span></h4>
+                  </div>
+                </div>
+
+                <!-- Edit Profile Button -->
+                <% if current_user == @user %>
+                  <div>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                      Edit Profile
+                    </button>
+                  </div>
+                <% end %>
+              </div>
+
             <strong>About me</strong>
             <p><%= @user.bio %></p>
+            <!-- Edit Profile Modal -->
+            <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- Profile Edit Form -->
+                    <%= simple_form_for @user, url: user_path(@user), method: :put do |f| %>
+                      <!-- Your form fields for editing profile details -->
+                      <%= f.input :name %>
+                      <%= f.input :age %>
+                      <!-- Add more fields as needed -->
+
+                      <!-- Submit Button -->
+                      <%= f.button :submit, "Save Changes", class: "btn btn-primary" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+        <!-- Modal -->
+        <div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="photoModalLabel">Edit Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <!-- Your form goes here -->
+                <%= simple_form_for [@dog] do |f| %>
+                  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+                  <%= f.submit "Add Photo(s)", class:"btn btn-primary mt-4" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       <!-- Add Friend and Message Buttons -->
         <% unless current_user == @user %>
           <div class="actions d-flex justify-content-center mt-3">
@@ -70,7 +124,9 @@
             <%= button_to "Pending", class: 'btn btn-primary' %>
           <%end%>
         <% else %>
-          <%= button_to "Add buddy", friendships_path(receiver_id: @user.id), method: :post, class: 'btn btn-primary' %>
+          <%= button_to friendships_path(receiver_id: @user.id), method: :post, class: 'btn btn-warning' do %>
+            <i class="fa-solid fa-user-plus"></i> Add buddy
+          <% end %>
               <%# <i class="fas fa-user-plus"></i> Add buddy %>
             <%end%>
 
