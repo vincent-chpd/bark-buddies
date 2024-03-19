@@ -8,13 +8,81 @@ Event.destroy_all
 User.destroy_all
 Dog.destroy_all
 
+puts "Creating real users..."
 
-puts "Creating users..."
+## Vincent's profile
+vincent = User.create(
+  name: "Vincent",
+  email: "vincent@vincent.com",
+  password: '123456',
+  location: "Hoxton",
+  age: 28,
+  bio: "Just moved to London and looking for some dog friends. Send me a message if you want to meet up for a walk!"
+)
+file = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1697808207/fococnbp64dtyybgvzec.jpg')
+vincent.photo.attach(io: file, filename: "vincent.png", content_type: 'image/png')
+vincent.save
+
+vincent_dog = Dog.create(
+  name: "Luffy",
+  age: 1,
+  breed: "Pembroke Welsh Corgi",
+  gender: "male",
+  bio: "I'm a friendly corgi who loves to play and meet new friends!",
+  user_id: vincent.id
+)
+
+luffy_photos = [
+  'https://pethelpful.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:eco%2Cw_1200/MTkyNjM2NjExNzgxOTkzOTA4/shutterstock_1342321847.jpg',
+  'https://corgicare.com/wp-content/uploads/how-much-attention-do-corgis-need-fun-activities.jpg'
+]
+
+luffy_photos.each do |photo, index|
+  file = URI.open(photo)
+  vincent_dog.photos.attach(io: file, filename: "luffy#{index}.png", content_type: 'image/png')
+end
+vincent_dog.save
+
+## Luca's profile
+luca = User.create(
+  name: "Luca",
+  email: "luca@luca.com",
+  password: '123456',
+  location: "Kilburn",
+  age: 30,
+  bio: "Looking to meet other dog owners in the area. I have a friendly golden retriever who loves to play with other dogs!"
+)
+file = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1705006005/vzzyayojrtu8cxenstzi.jpg')
+luca.photo.attach(io: file, filename: "luca.png", content_type: 'image/png')
+luca.save
+
+luca_dog = Dog.create(
+  name: "Ceasar",
+  age: 3,
+  breed: "Golden retriever",
+  gender: "male",
+  bio: "I'm a friendly golden retriever who loves to play and meet new friends! I'm very friendly and love to play with other dogs.",
+  user_id: luca.id
+)
+
+ceasar_photos = [
+  'https://www.dailypaws.com/thmb/DQfQglzyKWlVSlsDwKPprF2iMSg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/golden-retriever-177213599-2000-a30830f4d2b24635a5d01b3c5c64b9ef.jpg',
+  'https://pethelpful.com/.image/ar_4:3%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_xy_center%2Cq_auto:eco%2Cw_1200%2Cx_3086%2Cy_1421/MTkwMjIwNTkyMjgzMTMzMjcw/shutterstock_610623968.jpg'
+]
+
+ceasar_photos.each do |photo, index|
+  file = URI.open(photo)
+  luca_dog.photos.attach(io: file, filename: "ceasar#{index}.png", content_type: 'image/png')
+end
+luca_dog.save
+
+puts "Real users created!"
+puts "Creating fake users..."
 
 users = [] # Define an empty array to store created users
-boroughs = %w[Hackney Croydon Camden Stratford Shoreditch Lambeth Newham Greenwich Lewisham Southwark Islington Westminster Hammersmith Fulham]
+boroughs = %w[Hackney Croydon Camden Stratford Shoreditch Lambeth Newham Greenwich Lewisham Southwark Islington Westminster Hoxton Fulham]
 
-10.times do |i|
+20.times do |i|
   user = User.create(
     name: Faker::Name.first_name,
     email: "user#{i}@user.com",
@@ -28,7 +96,7 @@ boroughs = %w[Hackney Croydon Camden Stratford Shoreditch Lambeth Newham Greenwi
   users << user # Add the created user to the users array
 end
 
-puts "Users created!"
+puts "Fake users created!"
 puts "Creating dogs..."
 
 users.each_with_index do |user, user_index|
@@ -113,15 +181,53 @@ end
 puts "Events created!"
 puts "Creating communities..."
 
-communities = []
+communities = [
+  {
+    name: "Corgi lovers",
+    description: "A community for all corgi lovers to share their love for the breed and meet other corgi owners!",
+    photo: "https://www.akc.org/wp-content/uploads/2017/11/Pembroke-Welsh-Corgi-standing-outdoors-in-the-fall.jpg"
+  },
+  {
+    name: "Pomeranian lovers",
+    description: "A community for all pomeranian lovers to share their love for the breed and meet other pomeranian owners!",
+    photo: "https://media-be.chewy.com/wp-content/uploads/2021/04/18141250/iStock-1422682177-923x615.jpg"
+  },
+  {
+    name: "Pug lovers",
+    description: "A community for all pugs lovers to share their love for the breed and meet other pugs owners!",
+    photo: "https://www.vettimes.co.uk/app/uploads/2022/05/pug-2035675-scaled.jpg"
+  },
+  {
+    name: "Yorkshire Terrier",
+    description: "A community for all Yorkshire Terrier lovers to share their love for the breed and meet other Yorkshire Terrier owners!",
+    photo: "https://www.yorkshire.com/wp-content/uploads/2022/10/yorkshire-terrier-on-grass.jpg"
+  },
+  {
+    name: "Golden retriever",
+    description: "A community for all Golden retriever lovers to share their love for the breed and meet other Golden retriever owners!",
+    photo: "https://13630656.rocketcdn.me/wp-content/uploads/2020/01/Golden4.jpg"
+  },
+  {
+    name: "French bulldog",
+    description: "A community for all French bulldog lovers to share their love for the breed and meet other French bulldog owners!",
+    photo: "https://cdn.britannica.com/44/233844-050-A0F9F39C/French-bulldog.jpg"
+  },
+  {
+    name: "East London Dog Walkers",
+    description: "A community for all dog owners in East London to meet and organise dog walks!",
+    photo: "https://romanroadlondon.com/wp-content/uploads/2018/02/Screen-Shot-2018-02-12-at-16.07.54.png"
+  },
+  {
+    name: "Cool dogs of shoreditch",
+    description: "The coolest dogs in Shoreditch! Join us for meetups and events in the area.",
+    photo: "https://static.standard.co.uk/s3fs-public/thumbnails/image/2014/06/05/10/dogphoto10.jpg?crop=8:5,smart&quality=75&auto=webp&width=1024"
+  }
+]
 
-10.times do |i|
-  community = Community.create(
-    name: Faker::Creature::Dog.breed + " Lovers",
-    description: Faker::Lorem.paragraph
-  )
-
-  file = URI.open('https://placedog.net/640/480?random')
-  community.photo.attach(io: file, filename: "community#{i}.png", content_type: 'image/png')
-  communities << community
+communities.each do |community|
+  breed_community = Community.new(name: community[:name], description: community[:description])
+  breed_community.photo.attach(io: URI.open(community[:photo]), filename: "nes.png", content_type: "image/png")
+  breed_community.save
 end
+
+puts "Communities created!"

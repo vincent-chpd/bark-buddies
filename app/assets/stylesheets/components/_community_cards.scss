@@ -11,40 +11,33 @@ body{
   justify-content: space-around;
   align-items: center;
   text-align: center;
-  background: rgb(228, 228, 228);
+  background: rgb(255, 255, 255);
   text-wrap: wrap;
   padding: 10px;
+  margin-bottom: 10px;
   border: 1px solid white;
   p{
     font-size: 14px;
   }
-  a{
-    font-size: 12px;
-    background: #e27835;
-    padding: 4px 8px;
-    color: white;
-    border-radius: 16px;
-  }
 }
 
+.btn-community{
+  font-size: 12px;
+  background: #e27835;
+  padding: 4px 8px;
+  color: white;
+  border-radius: 4px;
+}
 .community-banner{
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 250px;
-  width: 90%;
-  border-radius: 16px;
-  margin: 20px;
+  width: 100%;
   padding: 20px;
-  color: #e27835;
-  margin: 0 auto;
-  text-align: left;
-  img {
-    height: 200px;
-    width: 40vw;
-    border-radius: 16px;
-
-  }
+  background: #e27835;
+  color: white;
+  text-align: center
 }
 
 .breed-container{

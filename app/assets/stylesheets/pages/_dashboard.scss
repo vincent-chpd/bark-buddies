@@ -18,10 +18,11 @@
 
 .profiles-container {
   background: #e27c3d1c;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   overflow: hidden;
   a {
     color:#e27835;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -52,10 +53,11 @@
 
 .card-community{
   height: 200px;
-  width: 350px;
+  width: 400px;
+  margin-right: 8px;
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 20px;
+  border-radius: 4px;
   color: white;
   text-shadow: 2px 2px 4px #000000;
   a {
@@ -64,9 +66,73 @@
     text-shadow: 2px 2px 4px #000000;
   }
 }
+.events-cards{
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  h5{
+    font-size: 1rem;
+    margin: 0;
+  }
+  p{
+    font-size: 0.8rem;
+    margin: 0;
+    color: grey;
+  }
+}
+
+.event-container {
+  background-color: #f7f7f7;
+  padding: 12px;
+}
+
+time.icon
+{
+  font-size: 12px; /* change icon size */
+  display: block;
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  border-radius: 0.6em;
+  box-shadow: 0 1px 0 #bdbdbd, 0 2px 0 #fff, 0 3px 0 #bdbdbd, 0 4px 0 #fff, 0 5px 0 #bdbdbd, 0 0 0 1px #bdbdbd;
+  overflow: hidden;
+}
+time.icon * {
+  display: block;
+  width: 100%;
+  font-size: 1em;
+  font-weight: bold;
+  font-style: normal;
+  text-align: center;
+}
+
+time.icon strong {
+  position: absolute;
+  top: 0;
+  padding: 0.4em 0;
+  color: #fff;
+  background-color: #fd9f1b;
+  border-bottom: 1px dashed #f37302;
+}
+
+time.icon em
+{
+  position: absolute;
+  bottom: 0.3em;
+  color: #fd9f1b;
+}
+time.icon span
+{
+  font-size: 2em;
+  letter-spacing: -0.05em;
+  padding-top: 1.2em;
+  color: #2f2f2f;
+}
 
 .orange {
   color: #e27835;
+  margin-bottom: 0.5rem;
 }
 
 a {
