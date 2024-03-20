@@ -26,7 +26,7 @@
 
   <div class="container mb-5">
     <div class="row">
-      <% @users.each do |user| %>
+      <% @users.reject { |user| user == current_user }.each do |user| %>
         <% user.dogs.each do |dog| %>
           <div class="user-card-container col-6">
             <div class="d-flex">
