@@ -4,8 +4,8 @@ body{
 }
 .community-card {
   width: 150px;
-  height: 200px;
-  border-radius: 8px;
+  height: 190px;
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -13,11 +13,12 @@ body{
   text-align: center;
   background: rgb(255, 255, 255);
   text-wrap: wrap;
-  padding: 10px;
+  padding: 4px;
   margin-bottom: 10px;
   border: 1px solid white;
   p{
     font-size: 14px;
+    margin-top: 4px;
   }
 }
 

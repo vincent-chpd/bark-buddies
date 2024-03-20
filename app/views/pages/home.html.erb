@@ -60,12 +60,18 @@
     <%=  link_to "See more", events_path, class:"orange" %>
   </div>
   <div class="row mt-4">
-    <% @events.take(4).each do |event| %>
+    <% @events.first(4).each do |event| %>
         <div class="events-cards">
           <div class="">
-            <time datetime="2014-09-20" class="icon">
-              <strong>Sept.</strong>
-              <span>20</span>
+            <time datetime="20-April-2024" class="icon">
+              <% if event.date.to_s.split("-")[1] == "03"  %>
+                <strong>March</strong>
+              <% elsif event.date.to_s.split("-")[1] == "04" %>
+                <strong>April</strong>
+              <% else %>
+                <strong>May</strong>
+              <% end %>
+              <span><%= event.date.to_s.split("-")[2] %></span>
             </time>
           </div>
           <div class="mx-2">
