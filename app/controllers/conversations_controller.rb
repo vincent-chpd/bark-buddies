@@ -26,8 +26,6 @@ class ConversationsController < ApplicationController
     respond_to do |format|
       format.json { render json: { status: :ok } }
     end
-
-    reach_to_notification_channel
   end
 
   def create

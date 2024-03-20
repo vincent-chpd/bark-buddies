@@ -40,6 +40,10 @@
   align-items: center;
   justify-content: center;
 
+  small {
+    margin:0;
+  }
+
   &:hover {
     color: rgb(0, 0, 0);
   }
@@ -47,6 +51,7 @@
 
 .icon {
   font-size: 38px;
+  margin:0;
 }
 
 .navbar-dropdown {
