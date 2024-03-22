@@ -1,0 +1,39 @@
+<div class="appear-if-small">
+  <div class="menu">
+
+
+    <ul>
+      <li class="link ">
+        <%= link_to root_path, class: "icon" do %>
+          <i class="fas fa-home"></i>
+        <% end %>
+        <small>HOME</small>
+      </li>
+      <li class="link" data-notifications-target="notificationsDot">
+        <%= link_to conversations_path, class: "icon" do %>
+          <i class="fas fa-envelope"></i>
+        <% end %>
+        <small>CHATS</small>
+      </li>
+      <li class="link">
+        <%= link_to users_path, class: "icon" do %>
+          <i class="fas fa-user-friends"></i>
+        <% end %>
+        <small>EXLORE</small>
+      </li>
+      <li class="link">
+        <%= link_to events_path, class: "icon" do %>
+          <i class="fas fa-calendar-alt"></i>
+        <% end %>
+        <small>EVENTS</small>
+      </li>
+      <li class="link">
+        <%= link_to communities_path, class: "icon" do %>
+          <i class="fas fa-users"></i>
+        <% end %>
+        <small>COMMUNITY</small>
+      </li>
+    </ul>
+
+  </div>
+</div>
