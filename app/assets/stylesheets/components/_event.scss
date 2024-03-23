@@ -36,7 +36,6 @@
 
 .months-of-event{
   margin-left:10px;
-  // margin-bottom: 10px
 }
 
 .card-event {
@@ -64,35 +63,34 @@
   }
 
   .card-event-info {
-    padding: 16px;// Add padding to the card content
-    background-color: #ffffff; // Set background color for card content
-    border-bottom-left-radius: 8px; // Ensure rounded corners for the card content
+    padding: 16px;
+    background-color: #ffffff;
+    border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
 
     h5 {
-      font-size: 1rem; // Adjust font size for event title
-      margin-top: 5px;// Add margin at the bottom of the title
+      font-size: 1rem;
+      margin-top: 5px;
     }
 
     .event-details {
-      // display: flex;
       align-items: center;
       margin-bottom: 8px;
     }
 
     p {
-      font-size: 1rem; // Adjust font size for paragraph text
-      margin-top: 8px; // Add margin at the top of paragraphs for spacing
+      font-size: 1rem;
+      margin-top: 8px;
       opacity: 0.7;
       margin-bottom: 10px;
     }
   }
 }
 
-// Media query for smaller screens
+
 @media (max-width: 480px) {
   .card-event {
-    margin-bottom: 20px; // Adjust margin between cards for smaller screens
+    margin-bottom: 20px;
   }
 }
 .modal-header{
@@ -118,3 +116,18 @@
   height: 40px;
   text-decoration: none;
 }
+.logo-button{
+    button{
+      height: 50px;
+      width: 100px;
+      margin-left: 10px;
+    }
+  }
+
+  .fake-attendees{
+    margin-left: 8px;
+    margin-top:5px;
+    color: gray;
+    text-align: right;
+    margin-right: 30px;
+  }
