@@ -16,10 +16,10 @@
   <% end %>
 </div>
 
-  <div class="container-event">
+<div class="container-event">
     <div class="featured">
       <h3>Featured events</h3>
-          <% months = { "04" => "April", "05" => "May", "06" => "June" } %>
+          <%  months = { "04" => "April", "05" => "May", "06" => "June" } %>
           <% @events.each_with_index do |event, index| %>
           <% current_month = event.date.strftime("%m") %>
             <% if index == 0 || current_month != @events[index - 1].date.strftime("%m") %>
@@ -32,7 +32,7 @@
               <h5><%= event.title %></h5>
                 <div class="event-details">
                   <p><small><i class="fa-solid fa-location-dot"></i> <%= event.location %></small></p>
-                  <p>🗓️<span><%= event.date.strftime("%d %B %Y")%></span></p>
+                  <p><small>🗓️ <%= event.date.strftime("%d %B %Y")%></small></p>
                 </div>
             </div>
         </div>
@@ -45,32 +45,30 @@
         <h1 class="modal-title fs-5" id="staticBackdropLabel"><%= event.title %> 🎉</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body" data-controller="attend">
+        <div class="modal-body" data-controller="attend">
         <%= image_tag event.photo.url, class: "modal-image" %>
-        <div class="event-details" style="margin-left: 8px; margin-right: 8px; margin-bottom: 8px;">
+        <div class="event-details" style="margin-left: 5px; margin-right: 5px; margin-bottom: 8px;">
           <p class="fw-bold">Event Details:</p>
           <p><%= event.description %></p>
         </div>
-        <div class="event-info" style="margin-left: 8px; margin-right: 8px; margin-bottom: 8px;">
+        <div class="event-info" style="margin-left: 5px; margin-right: 5px; margin-bottom: 8px;">
           <div class="d-flex justify-content-between" style="width: 300px;">
-            <div>
-              <p class="fw-bold">Location:</p>
-              <p><small><i class="fa-solid fa-location-dot"></i> <%= event.location %></small></p>
-            </div>
-            <div>
-              <p class="fw-bold">Date:</p>
-              <p><span><%= event.date.strftime("%d %B %Y")%></span></p>
-            </div>
+              <div>
+                <p><small><i class="fa-solid fa-location-dot"></i> <%= event.location %></small></p>
+              </div>
+              <div>
+                <p><small>🗓️ <%= event.date.strftime("%d %B %Y")%></small></p>
+              </div>
           </div>
         </div>
-        <div class="position-right" style="margin-left: 8px; margin-right: 8px; margin-bottom: 8px;">
-          <button class="attend-button" data-action="click->attend#toggle" data-attend-target="button">Attend</button>
-        </div>
-          <div class="fake-attendees" data-attend-target="fakeAttendees">
-        </div>
+          <div class="logo-button d-flex-justify-content-between">
+              <button type="button" class="btn btn-warning" data-action="click->attend#toggle"  data-attend-target="button">Attend</button>
+                <div class="fake-attendees" data-attend-target="fakeAttendees"></div>
+          </div>
       </div>
     </div>
   </div>
   </div>
 <% end %>
+</div>
 </div>
