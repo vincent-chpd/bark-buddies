@@ -9,10 +9,22 @@ export default class extends Controller {
   connect() {
     this.channel = createConsumer().subscriptions.create(
       { channel: "ConversationChannel", id: this.conversationIdValue },
-      { received: (data) => { this.insertMessageAndScrollDown(data) }}
+      { received: (data) => {
+        this.insertMessageAndScrollDown(data)
+      }}
     )
-    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
+
+    // this.readStatusChannel = createConsumer().subscriptions.create(
+    //   { channel: "ReadStatusChannel"},
+    //   { received: data => console.log(data)}
+    // )
     this.markMessagesAsRead()
+    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
+  }
+
+  disconnect() {
+    this.channel.unsubscribe()
+    // this.readStatusChannel.unsubscribe()
   }
 
   resetForm(event) {
@@ -35,10 +47,8 @@ export default class extends Controller {
       body: JSON.stringify({ read: true })
     }).then(response => {
       if (response.ok) {
-        // Optionally handle success
         console.log('Messages updated successfully');
       } else {
-        // Handle error
         console.error('Error updating messages');
       }
     }).catch(error => {

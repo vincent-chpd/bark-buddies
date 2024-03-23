@@ -23,6 +23,8 @@ class ConversationsController < ApplicationController
     @messages = @conversation.messages.where.not(user_id: current_user.id).where(read: false)
     @messages.update_all(read: true)
 
+    reach_to_notification_channel
+
     respond_to do |format|
       format.json { render json: { status: :ok } }
     end
@@ -57,12 +59,11 @@ class ConversationsController < ApplicationController
   end
 
   def reach_to_notification_channel
-    # other_user = @conversation.sender == current_user ? @conversation.recipient : @conversation.sender
+    user_total_conversations = current_user.received_conversations.or(current_user.conversations)
 
-    # Find unread messages for the conversation between current_user and other_user
-    my_unread_messages = @conversation.messages.where.not(user_id: current_user.id).where(read: false)
+    my_unread_messages = Message.where(conversation_id: user_total_conversations.select(:id))
+    .where.not(user_id: current_user.id).where(read: false)
 
-    # Broadcast the conversation ID along with the unread messages count to the other_user
     NotificationChannel.broadcast_to(
       current_user,
       data: {
