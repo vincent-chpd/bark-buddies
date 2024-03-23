@@ -3,7 +3,8 @@
   padding: 50px 0;
   max-width: 100%;
 
-.banner-text h3 {
+
+  .banner-text h3 {
   margin: 0;
   color: rgb(255, 255, 255);
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
@@ -11,10 +12,6 @@
   font-weight: bold;
   text-align: center;
   padding: 8px;
-  }
-
-  .page-bottom{
-  margin-bottom: 70px;
   }
 
   .text-center{
@@ -27,11 +24,23 @@
 }
 
 .container-event {
-  margin-bottom: 20px;
+  background-color: #e27c3d1c;
+  padding-bottom: 60px;
+}
+
+.featured {
+  padding-top: 10px;
+  margin-left:10px;
+  margin-bottom: 10px
+  }
+
+.months-of-event{
+  margin-left:10px;
+  // margin-bottom: 10px
 }
 
 .card-event {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   border-radius: 8px;
   height: 140px;
   border: 1px solid lightgrey;
@@ -51,11 +60,8 @@
   .event-image {
     width: 140px;
     height: auto;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
     object-fit: cover;
   }
-
 
   .card-event-info {
     padding: 16px;// Add padding to the card content
@@ -64,10 +70,12 @@
     border-bottom-right-radius: 8px;
 
     h5 {
-      font-size: 1rem;
+      font-size: 1rem; // Adjust font size for event title
+      margin-top: 5px;// Add margin at the bottom of the title
     }
 
     .event-details {
+      // display: flex;
       align-items: center;
       margin-bottom: 8px;
     }
@@ -84,8 +92,11 @@
 // Media query for smaller screens
 @media (max-width: 480px) {
   .card-event {
-    margin-bottom: 20px;
+    margin-bottom: 20px; // Adjust margin between cards for smaller screens
   }
+}
+.modal-header{
+    background: #e27c3d1c;
 }
 
 .modal-body {
@@ -105,4 +116,5 @@
   border: 0px;
   width: auto;
   height: 40px;
+  text-decoration: none;
 }

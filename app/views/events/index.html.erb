@@ -1,6 +1,6 @@
 
 <div class="banner-img" >
-    <div class="container">
+    <div class="container-form">
       <div class="banner-text">
         <h3>Events</h3>
           <h5 class="text-center">Discover more!</h5>
@@ -16,54 +16,61 @@
   <% end %>
 </div>
 
-<div class="container-event">
-  <h3 style="margin-left: 10px; margin-top: 20px">Featured events</h3>
-  <% @events.each do |event| %>
-    <div class="card-event">
-      <%= image_tag event.photo.url, class: "event-image" %>
+  <div class="container-event">
+    <div class="featured">
+      <h3>Featured events</h3>
+          <% months = { "04" => "April", "05" => "May", "06" => "June" } %>
+          <% @events.each_with_index do |event, index| %>
+          <% current_month = event.date.strftime("%m") %>
+            <% if index == 0 || current_month != @events[index - 1].date.strftime("%m") %>
+            <h4><%= months[current_month] %></h4>
+          <% end %>
       <a data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= event.id %>">
-        <div class="card-event-info">
-          <h5><%= event.title %></h5>
-            <div class="event-details">
-              <p><small><i class="fa-solid fa-location-dot"></i> <%= event.location %></small></p>
-              <p>🗓️<span><%= event.date.strftime("%d %B %Y")%></span></p>
+        <div class="card-event">
+          <%= image_tag event.photo.url, class: "event-image" %>
+            <div class="card-event-info">
+              <h5><%= event.title %></h5>
+                <div class="event-details">
+                  <p><small><i class="fa-solid fa-location-dot"></i> <%= event.location %></small></p>
+                  <p>🗓️<span><%= event.date.strftime("%d %B %Y")%></span></p>
+                </div>
             </div>
-          </div>
+        </div>
       </a>
-    </div>
-</div>
-
     <!-- Modal -->
   <div class="modal fade" id="staticBackdrop<%= event.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel<%= event.id %>" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel"><%= event.title %> 🎉</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel"><%= event.title %> 🎉</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" data-controller="attend">
+        <%= image_tag event.photo.url, class: "modal-image" %>
+        <div class="event-details" style="margin-left: 8px; margin-right: 8px; margin-bottom: 8px;">
+          <p class="fw-bold">Event Details:</p>
+          <p><%= event.description %></p>
         </div>
-        <div class="modal-body" data-controller="attend">
-              <%= image_tag event.photo.url, class: "modal-image" %>
-            <div class="event-details" style= "margin-left: 8px; margin-right: 8px; margin-bottom: 8px;">
-              <p class="fw-bold">Event Details:</p>
-              <p><%= event.description %></p>
+        <div class="event-info" style="margin-left: 8px; margin-right: 8px; margin-bottom: 8px;">
+          <div class="d-flex justify-content-between" style="width: 300px;">
+            <div>
+              <p class="fw-bold">Location:</p>
+              <p><small><i class="fa-solid fa-location-dot"></i> <%= event.location %></small></p>
             </div>
-              <div class="event-info" style= "margin-left: 8px; margin-right: 8px; margin-bottom: 8px;">
-                  <div class="d-flex justify-content-between" style ="width: 300px;">
-                <div>
-                  <p class="fw-bold">Location:</p>
-                    <p><small><i class="fa-solid fa-location-dot"></i> <%= event.location %></small></p>
-                </div>
-              <div>
-                <p class="fw-bold">Date:</p>
-                <p><span><%= event.date.strftime("%d %B %Y")%></span></p>
-              </div>
+            <div>
+              <p class="fw-bold">Date:</p>
+              <p><span><%= event.date.strftime("%d %B %Y")%></span></p>
             </div>
           </div>
-            <div class="postion-right" style= "margin-left: 8px; margin-right: 8px; margin-bottom: 8px;">
-              <button class="attend-button" data-action="click->attend#attend" data-target="attend.button">Attend</button>
-            </div>
+        </div>
+        <div class="position-right" style="margin-left: 8px; margin-right: 8px; margin-bottom: 8px;">
+          <button class="attend-button" data-action="click->attend#toggle" data-attend-target="button">Attend</button>
+        </div>
+          <div class="fake-attendees" data-attend-target="fakeAttendees">
         </div>
       </div>
     </div>
   </div>
-  <% end %>
+  </div>
+<% end %>
+</div>
