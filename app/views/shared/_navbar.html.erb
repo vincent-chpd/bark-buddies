@@ -1,106 +1,24 @@
 <div class="navbar-container" >
   <div class="navbar-barkbuddies px-4 pt-2">
+
     <%= link_to root_path, class: "logo-container appear-if-large" do %>
       <%= image_tag ("https://res.cloudinary.com/drqv8g5uf/image/upload/v1710167061/Bark_Buddies_1_rg5mi8"), alt: "Bark Buddies Logo", class: "logo" %>
     <% end %>
 
-
-
     <div class="navbar-items " data-controller="notifications">
+      <% if user_signed_in? %>
 
-        <% if user_signed_in? %>
+        <%= render "shared/navbar-partials/top_nav" %>
+        <%=  render "shared/navbar-partials/bottom_nav" %>
+        <%= render "shared/navbar-partials/avatar_nav" %>
 
-          <div class="appear-if-large">
-            <div class="menu">
-              <div class="menu-selections mt-2">
-                <div class="link">
-                  <%= link_to "Home", root_path, class: "" %>
-                </div>
-                <div class="link">
-                  <%= link_to "Explore", users_path, class: "" %>
-                </div>
-                <%# notifications here %>
-                <div class="link" data-notifications-target="chatNotifications">
-                  <%= link_to "Messages", conversations_path, class: "" %>
-                </div>
-                <div class="link">
-                  <%= link_to "Events", events_path, class: "" %>
-                </div>
-                <div class="link">
-                  <%= link_to "Communities", communities_path, class: "" %>
-                </div>
-              </div>
-            </div>
-          </div>
+      <% else %>
 
-          <div class="appear-if-small">
-            <div class="menu">
-
-
-              <ul>
-                <li class="link ">
-                  <%= link_to root_path, class: "icon" do %>
-                    <i class="fas fa-home"></i>
-                  <% end %>
-                  <small>HOME</small>
-                </li>
-                <li class="link" data-notifications-target="notificationsDot">
-                  <%= link_to conversations_path, class: "icon" do %>
-                    <i class="fas fa-envelope"></i>
-                  <% end %>
-                  <small>CHATS</small>
-                </li>
-                <li class="link">
-                  <%= link_to users_path, class: "icon" do %>
-                    <i class="fas fa-user-friends"></i>
-                  <% end %>
-                  <small>EXLORE</small>
-                </li>
-                <li class="link">
-                  <%= link_to events_path, class: "icon" do %>
-                    <i class="fas fa-calendar-alt"></i>
-                  <% end %>
-                  <small>EVENTS</small>
-                </li>
-                <li class="link">
-                  <%= link_to communities_path, class: "icon" do %>
-                    <i class="fas fa-users"></i>
-                  <% end %>
-                  <small>COMMUNITY</small>
-                </li>
-              </ul>
-
-          </div>
-          </div>
-
-          <div class="avatar-container">
-            <div class="dropdown-image">
-
-            <div class="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-notifications-target="notificationsDot">
-              <%# <div class="notification-dot">3</div> %>
-              <div class="avatar">
-                <%= image_tag current_user.photo, class: "avatar", alt: "dropdown menu" if current_user.photo.present? %>
-              </div>
-
-            </div>
-
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <%= link_to "Profile", user_path(current_user), class: "dropdown-item active" %>
-                <%= link_to "Messages", conversations_path, class: "dropdown-item appear-if-large" %>
-                <%= link_to "Buddies", "#", class: "dropdown-item appear-if-large" %>
-                <%= link_to "Communitites", "#", class: "dropdown-item appear-if-large" %>
-                <%= link_to "Events", "#", class: "dropdown-item appear-if-large" %>
-                <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-              </div>
-
-            </div>
-        <% else %>
-            <div class="login-item">
-              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-            </div>
-        <% end %>
+        <div class="login-item">
+          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         </div>
 
+      <% end %>
     </div>
 
   </div>
