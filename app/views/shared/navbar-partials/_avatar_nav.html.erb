@@ -1,0 +1,18 @@
+<div class="avatar-container">
+  <div class="dropdown-image">
+
+    <div class="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-notifications-target="notificationsDot">
+
+      <div class="avatar">
+        <%= image_tag current_user.photo, class: "avatar", alt: "dropdown menu" if current_user.photo.present? %>
+      </div>
+
+    </div>
+
+    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+      <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
+      <%= link_to "Buddies", "#", class: "dropdown-item appear-if-large" %>
+      <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+    </div>
+  </div>
+</div>

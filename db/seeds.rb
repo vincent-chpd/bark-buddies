@@ -168,18 +168,18 @@ events = [
     # turn this into a date.
     date: "06 April 2024",
     location: 'Kings Cross, London',
-    img: "https://media.istockphoto.com/id/162055755/photo/martini-dog.jpg?s=612x612&w=0&k=20&c=AQV8oHGakter-SuLHvHPuWj9btrbUQ2JpDelsQjwM7I="
+    img: "https://i2-prod.liverpoolecho.co.uk/whats-on/food-drink-news/article14921477.ece/ALTERNATES/s615/0_JS157770132.jpg"
   },
   {
-    title: "Kindness Day: Spreading Love and Compassion to All",
+    title: "Kindness Day: Spreading Love to All!",
     description: "Join us for a heartwarming celebration of kindness, where small acts of compassion make differences!",
     date: "13 April 2024",
-    location: 'Earlsfield',
+    location: 'Earlsfield, London',
     img: "https://k9nation.dog/k9nation/wp-content/uploads/2022/03/Dog-Events-Feature.jpeg"
   },
 
   {
-    title: "Glits and Grace: A Spectacular Pageant Show",
+    title: "Glits and Grace: A Pageant Show!",
     description: "Step into the spotlight and experience the magic of Glamour and Grace!",
     date: "18 May 2024",
     location: 'Shoredtich, London',
@@ -195,7 +195,7 @@ events = [
   },
 
   {
-    title: "Grooming Glamour: Pamper Your Paws at Grooming Day!",
+    title: "Grooming Glamour: Pamper Your Paws!",
     description: "Treat your furry friends to a day of luxury and relaxation at Grooming Glamour!",
     date: "22 June 2024",
     location: 'Hackney, London',

@@ -24,11 +24,23 @@
 }
 
 .container-event {
-  margin-bottom: 20px;
+  background-color: #e27c3d1c;
+  padding-bottom: 60px;
+}
+
+.featured {
+  padding-top: 10px;
+  margin-left:10px;
+  margin-bottom: 10px
+  }
+
+.months-of-event{
+  margin-left:10px;
+  // margin-bottom: 10px
 }
 
 .card-event {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   border-radius: 8px;
   height: 140px;
   border: 1px solid lightgrey;
@@ -48,8 +60,6 @@
   .event-image {
     width: 140px;
     height: auto;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
     object-fit: cover;
   }
 
@@ -65,7 +75,7 @@
     }
 
     .event-details {
-      display: flex;
+      // display: flex;
       align-items: center;
       margin-bottom: 8px;
     }
@@ -106,4 +116,5 @@
   border: 0px;
   width: auto;
   height: 40px;
+  text-decoration: none;
 }

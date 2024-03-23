@@ -61,33 +61,31 @@
         </div>
       </div>
 
-      <div class="container event-container my-5">
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Events Coming Up</h2>
-          <%=  link_to "See more", events_path, class:"orange" %>
+<div class="container event-container my-5">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2>Events Coming Up</h2>
+    <%=  link_to "See more", events_path, class:"orange" %>
+  </div>
+  <div class="row mt-4">
+    <% @events.first(4).each do |event| %>
+        <div class="events-cards">
+          <div class="">
+            <time datetime="20-April-2024" class="icon">
+              <% if event.date.to_s.split("-")[1] == "03"  %>
+                <strong>March</strong>
+              <% elsif event.date.to_s.split("-")[1] == "04" %>
+                <strong>April</strong>
+              <% else %>
+                <strong>May</strong>
+              <% end %>
+              <span><%= event.date.to_s.split("-")[2] %></span>
+            </time>
+          </div>
+          <div class="mx-2">
+            <h5><%= event.title %></h5>
+              <p><small><i class="fa-solid fa-location-dot"></i> <%= event.location %></small></p>
+          </div>
         </div>
-        <div class="row mt-4">
-          <% @events.first(4).each do |event| %>
-              <div class="events-cards">
-                <div class="">
-                  <time datetime="20-April-2024" class="icon">
-                    <% if event.date.to_s.split("-")[1] == "03"  %>
-                      <strong>March</strong>
-                    <% elsif event.date.to_s.split("-")[1] == "04" %>
-                      <strong>April</strong>
-                    <% else %>
-                      <strong>May</strong>
-                    <% end %>
-                    <span><%= event.date.to_s.split("-")[2] %></span>
-                  </time>
-                </div>
-                <div class="mx-2">
-                  <h5><%= event.title %></h5>
-                  <p>📍 <%= event.location %></p>
-                </div>
-              </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
+    <% end %>
+  </div>
 </div>

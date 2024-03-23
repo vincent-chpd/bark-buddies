@@ -1,15 +1,15 @@
 <% if message.content.present? %>
         <% user = User.find(message.user_id) %>
-        <% align =  user == current_user ? "justify-content:flex-end;" : "justify-content:flex-start;" %>
+        <% custom_style =  user == current_user ? ["justify-content:flex-end;", "user-message"] : ["justify-content:flex-start;", "other-user-message"] %>
 
-        <div class="message-block" id="message-<%= message.id %>" style=<%= align %>>
+        <div class="message-block" id="message-<%= message.id %>" style=<%= custom_style[0] %>>
           <div class="message-container">
             <% message_time = Time.strptime(message.message_time, "%m/%d/%y at %I:%M %p") %>
             <% formatted_message_time = message_time.strftime("%H:%M") %>
 
             <small><%= formatted_message_time %></small>
 
-            <div class="message"><p><%= message.content %></p></div>
+            <div class="message <%= custom_style[1] %>"><p><%= message.content %></p></div>
 
           </div>
 
