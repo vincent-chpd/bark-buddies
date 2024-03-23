@@ -35,10 +35,8 @@ export default class extends Controller {
       body: JSON.stringify({ read: true })
     }).then(response => {
       if (response.ok) {
-        // Optionally handle success
         console.log('Messages updated successfully');
       } else {
-        // Handle error
         console.error('Error updating messages');
       }
     }).catch(error => {

@@ -6,43 +6,45 @@ export default class extends Controller {
   connect() {
     this.channel = createConsumer().subscriptions.create(
       { channel: "NotificationChannel" },
-      { received: data => console.log(data) }
+      { received: data => this.handleNotification(data.data.unread_messages_number) }
       )
-
-    // this.updateNotificationsUI()
+    this.updateNotificationsUI()
   }
 
-  // handleNotification(data) {
-  //   this.storeNotificationData(data)
-  //   this.updateNotificationsUI()
-  // }
+  handleNotification(data) {
+    this.storeNotificationData(data)
+    this.updateNotificationsUI()
+  }
 
-  // storeNotificationData(data) {
-  //   localStorage.setItem('notifications', JSON.stringify(data))
-  // }
+  storeNotificationData(data) {
+    localStorage.setItem('notifications', JSON.stringify(data))
+  }
 
-  // updateNotificationsUI() {
-  //   let data = JSON.parse(localStorage.getItem('notifications'))
-  //   this.renderRedDot(data)
-  // }
+  updateNotificationsUI() {
+    let data = JSON.parse(localStorage.getItem('notifications'))
+    this.renderRedDot(data)
+  }
 
-  // renderRedDot(data) {
-  //   const notificationDot = this.notificationsDotTarget
-  //   const chatNotifications = this.chatNotificationsTarget
+  renderRedDot(data) {
+    const notificationDot = this.notificationsDotTarget
+    const chatNotifications = this.chatNotificationsTarget
 
-  //   console.log(data.data.unread_messages_number)
 
-  //   if (data && data.data.unread_messages_number) {
-  //     const unreadMessagesNumber = data.data.unread_messages_number
-  //     const unreadMessagesDisplay = unreadMessagesNumber > 99 ? "99+" : unreadMessagesNumber
+    if (data) {
+      const unreadMessagesDisplay = data > 99 ? "99+" : data
 
-  //     if (unreadMessagesNumber > 0) {
-  //       notificationDot.innerHTML += `<div class="notification-dot">${unreadMessagesDisplay}</div>`
-  //       chatNotifications.innerHTML += `<div class="messages-dot">${unreadMessagesDisplay}</div>`
-  //     } else {
-  //       notificationDot.innerHTML = '<%= link_to conversations_path, class: "icon" do %><i class="fas fa-envelope"></i><% end %>'
-  //       chatNotifications.innerHTML = '<%= link_to "Messages", conversations_path, class: "" %>'
-  //     }
-  //   }
-  // }
+      if (unreadMessagesDisplay > 0) {
+        notificationDot.innerHTML += `<div class="notification-dot">${unreadMessagesDisplay}</div>`
+        chatNotifications.innerHTML += `<div class="messages-dot">${unreadMessagesDisplay}</div>`
+      } else {
+        notificationDot.innerHTML = `
+                                    <a href="/conversations" class="icon">
+                                      <i class="fas fa-envelope"></i>
+                                    </a>
+                                    <small>CHATS</small>
+                                    `
+        chatNotifications.innerHTML = `<a href="/conversations">Messages</a>`
+      }
+    }
+  }
 }
