@@ -1,64 +1,72 @@
-.profile-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0 auto;
-  border-radius: 10px;
-  align-items: center;
-  p {
-    margin: 0;
-    padding: 0;
-  }
-  h5 {
-    margin: 0;
-    padding: 0;
-
-  }
+.banner {
+  background-color: $orange;
+  margin-bottom: 20px;
+  height: 100px;
+  max-width: 430px;
+  position: relative;
 }
 
-.profile_page {
-  margin-bottom: 48px;
+.banner .row {
+  height: 100%;
 }
 
-.dog.profile-container{
-  width: 100%;
+.banner .row a {
+  margin-right: 10px;
+  color: white;
 }
 
-.user-profile {
-  margin-top: 20px;
-  display: flex;
+.banner h1 {
+  margin: 0;
+  color: white;
+  flex-grow: 1;
+  text-align: center;
+  font-size: 42px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  margin: auto 0;
+}
+
+.back-button {
+  font-size: 30px;
+  position: absolute;
+  top: 25px;
+  left: 10px;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .carousel-inner {
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 4px;
+  width: 100%;
 }
 
-.profile-details {
-  align-items: center;
+.dog_details {
   margin-top: 10px;
+  text-align: left;
+  margin-bottom: 30px;
 }
-
 
 .user-card {
   border-radius: 8px;
   padding: 10px;
-  margin-bottom: 30px;
   margin-top: 30px;
-  align-items: center;
+  text-align: left;
 }
 
 .user-profile {
   display: flex;
   align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
 }
 
 .profile-info {
   margin-left: 15px;
-}
-
-.user-bio {
-  margin-top: 15px;
   text-align: left;
 }
 
@@ -68,54 +76,33 @@
   border-radius: 50%;
   object-fit: cover;
   margin-right: 20px;
-}
-
-.profile-info {
-  text-align: left;
-}
-
-.actions {
-  margin-top: 20px;
-}
-
-.sub-head {
-  font-weight: lighter;
+  justify-content: left;
+  align-items: center;
 }
 
 .lighter-font {
   font-weight: 350;
 }
 
-.modal_button {
-  background-color: $orange;
-  outline: $orange;
-  color: black;
-}
-
-.modal-header {
+.modal-content {
+  padding: 20px;
   background-color: white;
-  border-radius: 4px;
-  border-bottom: none;
+  box-shadow: rgb(223, 148, 58) 0px 30px 60px -20px, $orange 0px 15px 40px -10px, rgb(88, 88, 88) 0px -2px 6px 0px inset;
 }
 
-.pending {
-  background-color: white;
-  outline: $orange;
+.action-buttons {
+  display: flex;
+  justify-content: center;
 }
 
-.form-control.is-valid {
-  border-color: $orange;
-  border-right: solid 1px $orange;
-  margin: 4px;
-  border-radius: 4px;
+.actions {
+  margin-bottom: 60px;
 }
 
 .submit {
   margin: 8px;
 }
 
-.modal-content {
-  padding: 20px;
+.unfollow {
   background-color: white;
-  box-shadow: $orange (100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
