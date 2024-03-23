@@ -1,84 +1,93 @@
-<div class="navbar-barkbuddies appear-if-small  mt-3 mx-2">
-    <%= link_to root_path, class: "logo-container " do %>
-      <%= image_tag ("https://res.cloudinary.com/drqv8g5uf/image/upload/v1710167061/Bark_Buddies_1_rg5mi8"), alt: "Bark Buddies Logo", class: "logo" %>
-    <% end %>
-    <% if user_signed_in? %>
-      <h3>Hi, <%= current_user.name %>!</h3>
-    <% else %>
-      <h3>Hi, there!</h3>
-    <% end %>
-</div>
+<div data-controller="remove-landing-page">
+  <div data-remove-landing-page-target="landing" id="landing-page">
+      <h2 class="landing-text">Connecting Paws to People</h2>
+      <button id="toggle-button" data-action="click->remove-landing-page#remove">Join the Pawmunity!</button>
+  </div>
 
-<div class="mt-4 container profiles-container">
-  <div class="d-flex justify-content-between align-items-center">
-    <h2>Buddies near you</h2>
-    <%=  link_to "See more", users_path %>
-  </div>
-  <div class="d-flex scroll">
-    <% @users.reject { |user| user == current_user }.take(10).each do |user| %>
-      <% user.dogs.each do |dog| %>
-        <%=  link_to user_path(user) do %>
-          <% first_photo = dog.photos.first %>
-          <div class="profile-card my-2 ">
-            <div class= "card-image" style="background-image: url('<%= image_path first_photo.url %>')">
-              <%= image_tag user.photo.url, height: 80, width: 80, class: "user-avatar", style: "border-radius: 50%;" %>
-            </div>
-            <div class="mx-2 my-1 d-flex flex-column justify-content-center">
-              <h5><%= user.name %> & <%= dog.name %> </h5>
-                <p><%= dog.breed %></p>
-                <p><small><%= dog.gender %>, <%= dog.age %> years old</small></p>
-              <p><small><i class="fa-solid fa-location-dot"></i> <%= user.location %></small></p>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    <% end %>
-  </div>
-</div>
-
-<div class="container mt-5">
-  <div class="d-flex justify-content-between align-items-center">
-    <h2>Suggested Communties</h2>
-    <%=  link_to "See more", communities_path, class:"orange" %>
-  </div>
-  <div class="d-flex scroll">
-    <% @communities.all.each do |community| %>
-        <div class="d-flex flex-column my-4">
-          <%= link_to community_path(community) do %>
-            <div class= "d-flex card-community text-center justify-content-center align-items-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('<%= image_path community.photo.url if community.photo.try(:url).present? %>')">
-            <h2><%= community.name %></h2>
+    <div class="dashboard-container d-none" data-remove-landing-page-target="dashboard">
+      <div class="navbar-barkbuddies appear-if-small  mt-3 mx-2">
+          <%= link_to root_path, class: "logo-container " do %>
+            <%= image_tag ("https://res.cloudinary.com/drqv8g5uf/image/upload/v1710167061/Bark_Buddies_1_rg5mi8"), alt: "Bark Buddies Logo", class: "logo" %>
           <% end %>
-          </div>
-        </div>
-    <% end %>
-  </div>
-</div>
+          <% if user_signed_in? %>
+            <h3>Hi, <%= current_user.name %>!</h3>
+          <% else %>
+            <h3>Hi, there!</h3>
+          <% end %>
+      </div>
 
-<div class="container event-container my-5">
-  <div class="d-flex justify-content-between align-items-center">
-    <h2>Events Coming Up</h2>
-    <%=  link_to "See more", events_path, class:"orange" %>
-  </div>
-  <div class="row mt-4">
-    <% @events.first(4).each do |event| %>
-        <div class="events-cards">
-          <div class="">
-            <time datetime="20-April-2024" class="icon">
-              <% if event.date.to_s.split("-")[1] == "03"  %>
-                <strong>March</strong>
-              <% elsif event.date.to_s.split("-")[1] == "04" %>
-                <strong>April</strong>
-              <% else %>
-                <strong>May</strong>
-              <% end %>
-              <span><%= event.date.to_s.split("-")[2] %></span>
-            </time>
-          </div>
-          <div class="mx-2">
-            <h5><%= event.title %></h5>
-            <p>📍 <%= event.location %></p>
-          </div>
+      <div class="mt-4 container profiles-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Buddies near you</h2>
+          <%=  link_to "See more", users_path %>
         </div>
-    <% end %>
-  </div>
+        <div class="d-flex scroll">
+          <% @users.reject { |user| user == current_user }.take(10).each do |user| %>
+            <% user.dogs.each do |dog| %>
+              <%=  link_to user_path(user) do %>
+                <% first_photo = dog.photos.first %>
+                <div class="profile-card my-2 ">
+                  <div class= "card-image" style="background-image: url('<%= image_path first_photo.url %>')">
+                    <%= image_tag user.photo.url, height: 80, width: 80, class: "user-avatar", style: "border-radius: 50%;" %>
+                  </div>
+                  <div class="mx-2 my-1 d-flex flex-column justify-content-center">
+                    <h5><%= user.name %> & <%= dog.name %> </h5>
+                      <p><%= dog.breed %></p>
+                      <p><small><%= dog.gender %>, <%= dog.age %> years old</small></p>
+                    <p><small><i class="fa-solid fa-location-dot"></i> <%= user.location %></small></p>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Suggested Communties</h2>
+          <%=  link_to "See more", communities_path, class:"orange" %>
+        </div>
+        <div class="d-flex scroll">
+          <% @communities.all.each do |community| %>
+              <div class="d-flex flex-column my-4">
+                <%= link_to community_path(community) do %>
+                  <div class= "d-flex card-community text-center justify-content-center align-items-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('<%= image_path community.photo.url if community.photo.try(:url).present? %>')">
+                  <h2><%= community.name %></h2>
+                <% end %>
+                </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="container event-container my-5">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Events Coming Up</h2>
+          <%=  link_to "See more", events_path, class:"orange" %>
+        </div>
+        <div class="row mt-4">
+          <% @events.first(4).each do |event| %>
+              <div class="events-cards">
+                <div class="">
+                  <time datetime="20-April-2024" class="icon">
+                    <% if event.date.to_s.split("-")[1] == "03"  %>
+                      <strong>March</strong>
+                    <% elsif event.date.to_s.split("-")[1] == "04" %>
+                      <strong>April</strong>
+                    <% else %>
+                      <strong>May</strong>
+                    <% end %>
+                    <span><%= event.date.to_s.split("-")[2] %></span>
+                  </time>
+                </div>
+                <div class="mx-2">
+                  <h5><%= event.title %></h5>
+                  <p>📍 <%= event.location %></p>
+                </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
 </div>
