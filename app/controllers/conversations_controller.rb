@@ -25,8 +25,6 @@ class ConversationsController < ApplicationController
 
     reach_to_notification_channel
 
-    reach_to_read_status_channel(@conversation)
-
     respond_to do |format|
       format.json { render json: { status: :ok } }
     end
@@ -70,15 +68,6 @@ class ConversationsController < ApplicationController
       current_user,
       data: {
         unread_messages_number: my_unread_messages.count
-      }
-    )
-  end
-
-  def reach_to_read_status_channel(conversation)
-    ReadStatusChannel.broadcast_to(
-      current_user,
-      data: {
-        conversation_id: conversation.id
       }
     )
   end
