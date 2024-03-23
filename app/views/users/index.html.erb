@@ -1,30 +1,35 @@
-<div class="container-users mt-2">
+<div class="container-users">
+  <div class="banner-img">
+    <h3 class="text-banner text-center">Explore</h3>
+    <h5 class="text-center">Browse for more buddies!</h5>
+      <%= form_with url: users_path, method: :get, class: "d-flex justify-content-center", id: "search-form" do  %>
+      <div class="search-container">
+        <%= text_field_tag :query,
+              params[:query],
+              class: "input-search",
+              placeholder: "🔍 Type a location...",
+              id: "search-bar"
+        %>
+        <button type="button" id="clear-button"><i class="fa-solid fa-xmark"></i></button>
+        <%= javascript_include_tag 'search_form' %>
+        <% end %>
 
-  <h2 class="text-center">Search for buddies 🐶</h2>
-    <%= form_with url: users_path, method: :get, class: "d-flex justify-content-center", id: "search-form" do  %>
-    <div class="search-container">
-      <%= text_field_tag :query,
-            params[:query],
-            class: "input-search",
-            placeholder: "🔍 Type a location...",
-            id: "search-bar"
-      %>
-      <button type="button" id="clear-button"><i class="fa-solid fa-xmark"></i></button>
-    <%= javascript_include_tag 'search_form' %>
+      </div>
+  </div>
+</div>
+
+<% if @message.present? %>
+  <div class="container text-center">
+    <h5 class="user-error" style="margin-top: 20px;"> <%= @message.html_safe %> </h5>
+    <img class="doge-pic" src="https://mystickermania.com/cdn/stickers/into_the_web/sticker_2020-512x512.png" alt="error" style="width: 100%;">
+  </div>
 <% end %>
 
-</div>
-</div>
-
-<div class="container mt-4 text-center">
-  <h5 class="user-error"> <%= @message.html_safe if @message %> </h5>
-</div>
-
-  <div class="container">
+  <div class="container mb-5">
     <div class="row">
-      <% @users.each do |user| %>
+      <% @users.reject { |user| user == current_user }.each do |user| %>
         <% user.dogs.each do |dog| %>
-          <div class="col-6">
+          <div class="user-card-container col-6">
             <div class="d-flex">
               <%=  link_to user_path(user) do %>
                 <% first_photo = dog.photos.first %>

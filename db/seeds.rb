@@ -15,7 +15,7 @@ vincent = User.create(
   name: "Vincent",
   email: "vincent@vincent.com",
   password: '123456',
-  location: "Hoxton",
+  location: "shoreditch",
   age: 28,
   bio: "Just moved to London and looking for some dog friends. Send me a message if you want to meet up for a walk!"
 )
@@ -33,8 +33,8 @@ vincent_dog = Dog.create(
 )
 
 luffy_photos = [
-  'https://pethelpful.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:eco%2Cw_1200/MTkyNjM2NjExNzgxOTkzOTA4/shutterstock_1342321847.jpg',
-  'https://corgicare.com/wp-content/uploads/how-much-attention-do-corgis-need-fun-activities.jpg'
+  'https://primary.jwwb.nl/unsplash/uc3JhSWITMo.jpg',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoI2mumTT5En-_rlEV1DMLe0UD08A-9Eucqdw08PJT-0owKjtGL-LcQxjIwW-BUAvTchE&usqp=CAU'
 ]
 
 luffy_photos.each do |photo, index|
@@ -48,7 +48,7 @@ luca = User.create(
   name: "Luca",
   email: "luca@luca.com",
   password: '123456',
-  location: "Kilburn",
+  location: "Shoreditch",
   age: 30,
   bio: "Looking to meet other dog owners in the area. I have a friendly golden retriever who loves to play with other dogs!"
 )
@@ -75,6 +75,39 @@ ceasar_photos.each do |photo, index|
   luca_dog.photos.attach(io: file, filename: "ceasar#{index}.png", content_type: 'image/png')
 end
 luca_dog.save
+
+## Tom's profile
+tom = User.create(
+  name: "Tom",
+  email: "tom@tom.com",
+  password: '123456',
+  location: "Shoreditch",
+  age: 25,
+  bio: "I'm a dog lover and have a friendly pug named Max. Looking to meet other dog owners in the area!"
+)
+file = URI.open('https://ca.slack-edge.com/T02NE0241-U046DRSC3J4-2405583ed0d5-512')
+tom.photo.attach(io: file, filename: "tom.png", content_type: 'image/png')
+tom.save
+
+tom_dog = Dog.create(
+  name: "Max",
+  age: 2,
+  breed: "Pug",
+  gender: "male",
+  bio: " I'm a jolly pug who's always up for a playdate and making new fur-iends!",
+  user_id: tom.id
+)
+
+max_photos = [
+  'https://res.cloudinary.com/lancaster-puppies-laravel/image/upload/v1671129781/breeds/ifuk3gus6xxasf8c7ehz.jpg',
+  'https://www.wallmonkeys.com/cdn/shop/products/5837886-LRG_530x.jpg?v=1578662125'
+]
+
+max_photos.each do |photo, index|
+  file = URI.open(photo)
+  tom_dog.photos.attach(io: file, filename: "max#{index}.png", content_type: 'image/png')
+end
+tom_dog.save
 
 puts "Real users created!"
 puts "Creating fake users..."
@@ -122,25 +155,25 @@ puts "Dogs created!"
 puts "Creating events!"
 events = [
   {
-    title: "Yappy Hour: A Tail-Wagging Extravaganza!",
-    description: "Unleash the joy and let the fur fly at our Happy Hour for Hounds! Indulge in delicious treats for both humans and dogs alike, mingle with fellow dog lovers, and enjoy a variety of activities guaranteed to make tails wag.",
-    # turn this into a date.
-    date: "20 April 2024",
-    location: 'Reading',
-    img: "https://media.istockphoto.com/id/162055755/photo/martini-dog.jpg?s=612x612&w=0&k=20&c=AQV8oHGakter-SuLHvHPuWj9btrbUQ2JpDelsQjwM7I="
-  },
-  {
     title: "Paws in Motion: Walkathon for Dogs!",
     description: "Get ready to put your best paw forward at Paws in Motion, the ultimate event for dogs!
     Embark on an adventure like no other as we transform the park into a playground for pups of all shapes and sizes.",
-    date: "29 April 2024",
-    location: 'Surrey',
+    date: "24 March 2024",
+    location: 'Victoria Park, London',
     img: "https://www.rauanimalhospital.com/sites/default/files/summertime-events-for-dogs-blog-header.jpg"
+  },
+  {
+    title: "Yappy Hour: A Tail-Wagging Extravaganza!",
+    description: "Unleash the joy and let the fur fly at our Happy Hour for Hounds! Indulge in delicious treats for both humans and dogs alike, mingle with fellow dog lovers, and enjoy a variety of activities guaranteed to make tails wag.",
+    # turn this into a date.
+    date: "06 April 2024",
+    location: 'Kings Cross, London',
+    img: "https://media.istockphoto.com/id/162055755/photo/martini-dog.jpg?s=612x612&w=0&k=20&c=AQV8oHGakter-SuLHvHPuWj9btrbUQ2JpDelsQjwM7I="
   },
   {
     title: "Kindness Day: Spreading Love and Compassion to All",
     description: "Join us for a heartwarming celebration of kindness, where small acts of compassion make differences!",
-    date: "1 May 2024",
+    date: "13 April 2024",
     location: 'Earlsfield',
     img: "https://k9nation.dog/k9nation/wp-content/uploads/2022/03/Dog-Events-Feature.jpeg"
   },
@@ -149,7 +182,7 @@ events = [
     title: "Glits and Grace: A Spectacular Pageant Show",
     description: "Step into the spotlight and experience the magic of Glamour and Grace!",
     date: "18 May 2024",
-    location: 'Essex',
+    location: 'Shoredtich, London',
     img: "https://ichef.bbci.co.uk/news/976/cpsprodpb/DF88/production/_106642275_tv053643519.jpg"
   },
 
@@ -165,7 +198,7 @@ events = [
     title: "Grooming Glamour: Pamper Your Paws at Grooming Day!",
     description: "Treat your furry friends to a day of luxury and relaxation at Grooming Glamour!",
     date: "22 June 2024",
-    location: 'London',
+    location: 'Hackney, London',
     img: "https://www.mutneys.com/wp-content/uploads/2019/08/OpawzBlowPens-Dog-Sample.jpg"
   }
 ]
@@ -183,32 +216,32 @@ puts "Creating communities..."
 
 communities = [
   {
-    name: "Corgi lovers",
+    name: "Corgilicious",
     description: "A community for all corgi lovers to share their love for the breed and meet other corgi owners!",
     photo: "https://www.akc.org/wp-content/uploads/2017/11/Pembroke-Welsh-Corgi-standing-outdoors-in-the-fall.jpg"
   },
   {
-    name: "Pomeranian lovers",
+    name: "Pom-Pom Pals",
     description: "A community for all pomeranian lovers to share their love for the breed and meet other pomeranian owners!",
     photo: "https://media-be.chewy.com/wp-content/uploads/2021/04/18141250/iStock-1422682177-923x615.jpg"
   },
   {
-    name: "Pug lovers",
+    name: "Pugtastic Pals",
     description: "A community for all pugs lovers to share their love for the breed and meet other pugs owners!",
     photo: "https://www.vettimes.co.uk/app/uploads/2022/05/pug-2035675-scaled.jpg"
   },
   {
-    name: "Yorkshire Terrier",
+    name: " Yorkie Yodelers",
     description: "A community for all Yorkshire Terrier lovers to share their love for the breed and meet other Yorkshire Terrier owners!",
     photo: "https://www.yorkshire.com/wp-content/uploads/2022/10/yorkshire-terrier-on-grass.jpg"
   },
   {
-    name: "Golden retriever",
+    name: "Goldie Gigglers",
     description: "A community for all Golden retriever lovers to share their love for the breed and meet other Golden retriever owners!",
     photo: "https://13630656.rocketcdn.me/wp-content/uploads/2020/01/Golden4.jpg"
   },
   {
-    name: "French bulldog",
+    name: "Frenchie Funsters",
     description: "A community for all French bulldog lovers to share their love for the breed and meet other French bulldog owners!",
     photo: "https://cdn.britannica.com/44/233844-050-A0F9F39C/French-bulldog.jpg"
   },
@@ -221,6 +254,16 @@ communities = [
     name: "Cool dogs of shoreditch",
     description: "The coolest dogs in Shoreditch! Join us for meetups and events in the area.",
     photo: "https://static.standard.co.uk/s3fs-public/thumbnails/image/2014/06/05/10/dogphoto10.jpg?crop=8:5,smart&quality=75&auto=webp&width=1024"
+  },
+  {
+    name: "Clapham Canines",
+    description: "The coolest dogs in Shoreditch! Join us for meetups and events in the area.",
+    photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTccpfXB_m-g84W3jDB3csWX3q9zYYmXZnioA&usqp=CAU"
+  },
+  {
+    name: "Battersea buddies",
+    description: "The coolest dogs in Shoreditch! Join us for meetups and events in the area.",
+    photo: "https://metro.co.uk/wp-content/uploads/2015/12/battersea-pic.jpg?quality=80&strip=all"
   }
 ]
 

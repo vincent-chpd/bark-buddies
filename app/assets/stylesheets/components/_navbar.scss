@@ -40,6 +40,10 @@
   align-items: center;
   justify-content: center;
 
+  small {
+    margin:0;
+  }
+
   &:hover {
     color: rgb(0, 0, 0);
   }
@@ -47,6 +51,7 @@
 
 .icon {
   font-size: 38px;
+  margin:0;
 }
 
 .navbar-dropdown {
@@ -83,6 +88,16 @@
     small {
       font-size: 9px;
     }
+  }
+}
+
+.menu-selections{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  .icon{
+    font-size: 20px;
   }
 }
 
@@ -145,6 +160,7 @@
     }
     .icon{
       font-size: 20px;
+      margin: 0;
     }
   }
   .navbar-container{

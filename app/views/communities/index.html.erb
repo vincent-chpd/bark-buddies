@@ -22,31 +22,8 @@
     <div class="row mt-4 mx-3" >
       <h2>Search results for: <%= params[:query] %></h2>
       <% @communities.first(6).each do |community| %>
-        <div class="col-6">
-          <div class="community-card">
-            <div class="modal fade" id="staticBackdrop<%= community.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog" >
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel"><%= community.name %></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <%= image_tag community.photo.url %>
-                  <div class="modal-body">
-                    <p><%= community.description %></p>
-                  </div>
-                  <div class="modal-footer" data-controller="join-community">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-warning" data-action="click->join-community#toggle"  data-join-community-target="button">Join community</button>
-                    <%= link_to "Chat", community_path(community), class:"btn btn-warning d-none", data: { target: "join-community.chat" }  %>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <%= image_tag community.photo.url, height:100, width: 130, crop: :fill, style: "border-radius: 8px; outline: 2px solid white ;" %>
-            <p><%= community.name %></p>
-              <%= link_to "Join Community", "#", class: "btn-community", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" } %>
-          </div>
+        <div class="col-6 col-lg-2">
+          <%= render "communities/community_card", community: community  %>
         </div>
       <% end %>
     </div>
@@ -56,65 +33,19 @@
       <h2>Popular Breed Groups</h2>
     <div class="row mt-4 mx-3" >
       <% @communities.first(6).each do |community| %>
-        <div class="col-6">
-          <div class="community-card">
-            <div class="modal fade" id="staticBackdrop<%= community.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel"><%= community.name %></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <%= image_tag community.photo.url %>
-                  <div class="modal-body">
-                    <p><%= community.description %></p>
-                  </div>
-                  <div class="modal-footer" data-controller="join-community" >
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-warning" data-action="click->join-community#toggle" data-join-community-target="button">Join community</button>
-                    <%= link_to "Chat", community_path(community), class:"btn btn-warning d-none", data: { target: "join-community.chat" } %>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <%= image_tag community.photo.url, height:100, width: 130, crop: :fill, style: "border-radius: 4px; outline: 2px solid white ;" %>
-            <p><%= community.name %></p>
-              <%= link_to "Join Community", "#", class: "btn-community", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" } %>
-          </div>
+        <div class="col-6 col-lg-2">
+          <%= render "communities/community_card", community: community  %>
         </div>
       <% end %>
     </div>
   </div>
-  <div class="my-5 pt-3 container-lg px-2">
+
+  <div class="mb-5 py-5 container-lg px-2" style="background: #e27c3d1c;">
+    <h2 class="mb-4">City & Neighborhood Groups</h2>
     <div class="row mt-4 mx-2">
-      <h2>City & Neighborhood Groups</h2>
-      <% @communities.last(2).each do |community| %>
-        <div class="col-6">
-          <div class="community-card my-4 mx-1">
-          <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop<%= community.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel"><%= community.name %></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <%= image_tag community.photo.url %>
-                  <div class="modal-body">
-                    <p><%= community.description %></p>
-                  </div>
-                  <div class="modal-footer" data-controller="join-community">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-warning"  data-action="click->join-community#toggle" data-join-community-target="button">Join community</button>
-                    <%= link_to "Chat", community_path(community), class:"btn btn-warning d-none", data: { target: "join-community.chat" } %>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <%= image_tag community.photo.url, height: 100, width: 130, crop: :fill, style: "border-radius: 4px; outline: 2px solid white ;" %>
-            <p><%= community.name %></p>
-              <%= link_to "Join Community", "#", class: "btn-community", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" } %>
-          </div>
+      <% @communities.last(4).each do |community| %>
+        <div class="col-6 col-lg-2">
+          <%= render "communities/community_card", community: community  %>
         </div>
       <% end %>
     </div>

@@ -1,6 +1,14 @@
-<div class="conversations mt-3">
-  <h2>Messages</h2>
-  <div class="ui list mt-4">
+<div class="conversations">
+  <div class="banner-img">
+  <div class="container">
+    <div class="banner-text">
+      <h3>Messages</h3>
+        <%# <h5 class="text-center">Join the Bark Buddies community!</h5> %>
+    </div>
+  </div>
+</div>
+
+  <div class="ui list mt-4 conversations-container">
       <% @conversations.each do |conversation| %>
         <%= render "conversation_card", conversation: conversation %>
       <% end %>
