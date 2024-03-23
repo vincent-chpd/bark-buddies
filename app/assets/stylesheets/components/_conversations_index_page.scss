@@ -73,6 +73,10 @@ a {
   }
 }
 
+.conversation-images {
+  display:  flex;
+}
+
 @media (min-width: 768px) {
   .full-card {
     max-width: 70%;

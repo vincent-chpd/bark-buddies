@@ -1,14 +1,3 @@
-<div class="navbar-barkbuddies appear-if-small  mt-3 mx-2">
-    <%= link_to root_path, class: "logo-container " do %>
-      <%= image_tag ("https://res.cloudinary.com/drqv8g5uf/image/upload/v1710167061/Bark_Buddies_1_rg5mi8"), alt: "Bark Buddies Logo", class: "logo" %>
-    <% end %>
-    <% if user_signed_in? %>
-      <h3>Hi, <%= current_user.name %>!</h3>
-    <% else %>
-      <h3>Hi, there!</h3>
-    <% end %>
-</div>
-
 <div class="mt-4 container profiles-container">
   <div class="d-flex justify-content-between align-items-center">
     <h2>Buddies near you</h2>
