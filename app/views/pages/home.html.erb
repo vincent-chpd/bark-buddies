@@ -50,6 +50,7 @@
     </div>
     <div class="">
       <% @events.first(4).each do |event| %>
+        <a data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= event.id %>">
           <div class="events-cards">
             <div class="">
               <time datetime="20-April-2024" class="icon">
@@ -68,6 +69,9 @@
                 <p><small><i class="fa-solid fa-location-dot"></i> <%= event.location %></small></p>
             </div>
           </div>
+        </a>
+        <!-- Modal -->
+        <%= render "events/event_modal", event: event %>
       <% end %>
     </div>
   </div>

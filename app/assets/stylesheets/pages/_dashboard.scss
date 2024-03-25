@@ -75,7 +75,7 @@
   align-items: start;
   margin-bottom:16px;
   gap: 8px;
-  height: 63px;
+
   h5{
     font-size: 16px;
     margin: 0;
@@ -91,6 +91,9 @@
   background-color: #f7f7f7;
   margin: 32px 0 50px 0 ;
   padding: 16px;
+  a {
+    margin: 0;
+  }
 }
 
 time.icon
@@ -98,8 +101,8 @@ time.icon
   font-size: 12px; /* change icon size */
   display: block;
   position: relative;
-  width: 40px;
-  height: 45px;
+  width: 33px;
+  height: 36px;
   background-color: #fff;
   border-radius: 0.6em;
   box-shadow: 0 1px 0 #bdbdbd, 0 2px 0 #fff, 0 3px 0 #bdbdbd, 0 4px 0 #fff, 0 5px 0 #bdbdbd, 0 0 0 1px #bdbdbd;
@@ -108,7 +111,7 @@ time.icon
 time.icon * {
   display: block;
   width: 100%;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
   font-style: normal;
   text-align: center;
@@ -117,7 +120,7 @@ time.icon * {
 time.icon strong {
   position: absolute;
   top: 0;
-  padding: 2px;
+  padding: 0px;
   color: #fff;
   background-color: #fd9f1b;
   border-bottom: 1px dashed #f37302;
@@ -131,9 +134,9 @@ time.icon em
 }
 time.icon span
 {
-  font-size: 18px;
+  font-size: 14px;
   letter-spacing: -0.05em;
-  padding-top: 21px;
+  padding-top: 17px;
   color: #2f2f2f;
 }
 

@@ -17,7 +17,7 @@
     <% end %>
     <% if request.path == "/" %>
       <% if user_signed_in? %>
-        <h3>Hi, <%= current_user.name %>!</h3>
+        <h5>Hi, <%= current_user.name %> !</h5>
       <% else %>
         <h3>Hi, there!</h3>
       <% end %>
