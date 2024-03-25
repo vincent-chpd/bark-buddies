@@ -3,16 +3,20 @@
 }
 
 .months-of-event{
-  margin-left:10px;
-  // margin-bottom: 10px
+  margin-left: 10px;
 }
 
+.event-calendar-icon{
+  position: absolute;
+  top: 4px;
+  right: 8px;
+}
 .card-event {
+  position: relative;
   display: flex;
-  gap: 16px;
-  border-radius: 8px;
+  border-radius: 12px;
   height: 140px;
-  border: 1px solid lightgrey;
+  border: 1px solid $light-gray;
   overflow: hidden;
   height: 140px;
   background: white;
@@ -30,35 +34,38 @@
   }
 
   .card-event-info {
-    padding: 16px;// Add padding to the card content
-    background-color: #ffffff; // Set background color for card content
-    border-bottom-left-radius: 8px; // Ensure rounded corners for the card content
-    border-bottom-right-radius: 8px;
+    padding: 8px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     h5 {
       font-size: 1rem; // Adjust font size for event title
       margin-top: 5px;// Add margin at the bottom of the title
     }
 
-    .event-details {
-      // display: flex;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-
     p {
-      font-size: 1rem; // Adjust font size for paragraph text
-      margin-top: 8px; // Add margin at the top of paragraphs for spacing
-      opacity: 0.7;
-      margin-bottom: 10px;
+      margin: 0;
     }
+  }
+}
+
+.event-details {
+  margin-bottom: 8px;
+  p{
+    color: gray;
+    font-size: 14px;
+  }
+  i{
+    color: $orange;
   }
 }
 
 // Media query for smaller screens
 @media (max-width: 480px) {
   .card-event {
-    margin-bottom: 20px; // Adjust margin between cards for smaller screens
+    margin-bottom: 16px;
   }
 }
 .modal-header{

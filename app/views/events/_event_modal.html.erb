@@ -7,12 +7,12 @@
       </div>
       <div class="modal-body" data-controller="attend">
         <%= image_tag event.photo.url, class: "modal-image" %>
-        <div class="event-details" style="margin-left: 8px; margin-right: 8px; margin-bottom: 8px;">
+        <div class="event-details">
           <p class="fw-bold">Event Details:</p>
           <p><%= event.description %></p>
         </div>
-        <div class="event-info" style="margin-left: 8px; margin-right: 8px; margin-bottom: 8px;">
-          <div class="d-flex justify-content-between" style="width: 300px;">
+        <div class="event-info">
+          <div class="d-flex justify-content-between">
             <div>
               <p class="fw-bold">Location:</p>
               <p><small><i class="fa-solid fa-location-dot"></i> <%= event.location %></small></p>
@@ -23,7 +23,7 @@
             </div>
           </div>
         </div>
-        <div class="position-right" style="margin-left: 8px; margin-right: 8px; margin-bottom: 8px;">
+        <div class="position-right">
           <button class="attend-button" data-action="click->attend#toggle" data-attend-target="button">Attend</button>
         </div>
         <div class="fake-attendees" data-attend-target="fakeAttendees">

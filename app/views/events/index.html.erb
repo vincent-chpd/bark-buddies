@@ -13,26 +13,24 @@
 </div>
 
 <div class="container-event">
-  <h4 class="mb-3">Featured events</h4>
+  <h4 class="mb-3">Coming soon</h4>
   <% months = { "04" => "April", "05" => "May", "06" => "June" } %>
-  <% @events.each_with_index do |event, index| %>
-    <% current_month = event.date.strftime("%m") %>
-    <% if index == 0 || current_month != @events[index - 1].date.strftime("%m") %>
-      <h4 class="mb-3"><%= months[current_month] %></h4>
-    <% end %>
+  <% @events.each_with_index do |event| %>
     <a data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= event.id %>">
       <div class="card-event">
+        <div class="event-calendar-icon">
+          <%= render "pages/calendar_icon", event: event %>
+        </div>
         <%= image_tag event.photo.url, class: "event-image" %>
         <div class="card-event-info">
           <h5><%= event.title %></h5>
           <div class="event-details">
-            <p><small><i class="fa-solid fa-location-dot"></i> <%= event.location %></small></p>
-            <p>🗓️<span><%= event.date.strftime("%d %B %Y")%></span></p>
+            <p><i class="fa-solid fa-location-dot"></i> <%= event.location %></p>
+            <p><i class="fa-regular fa-user"></i> <%= rand(10..20) %> Buddies going</p>
           </div>
         </div>
       </div>
     </a>
-    <!-- Modal -->
     <%= render "event_modal", event: event %>
   <% end %>
 </div>

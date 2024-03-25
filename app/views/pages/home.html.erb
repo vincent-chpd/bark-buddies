@@ -54,18 +54,7 @@
       <% @events.first(4).each do |event| %>
         <a data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= event.id %>">
           <div class="events-cards">
-            <div class="">
-              <time datetime="20-April-2024" class="icon">
-                <% if event.date.to_s.split("-")[1] == "03"  %>
-                  <strong>APR</strong>
-                <% elsif event.date.to_s.split("-")[1] == "04" %>
-                  <strong>MAY</strong>
-                <% else %>
-                  <strong>JUN</strong>
-                <% end %>
-                <span><%= event.date.to_s.split("-")[2] %></span>
-              </time>
-            </div>
+            <%=  render "pages/calendar_icon", event: event %>
             <div class="mx-2">
               <h5><%= event.title %></h5>
                 <p><small><i class="fa-solid fa-location-dot"></i> <%= event.location %></small></p>
