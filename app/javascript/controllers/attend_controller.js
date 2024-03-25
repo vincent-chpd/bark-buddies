@@ -1,74 +1,41 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="controller"
 export default class extends Controller {
   static targets = ["button", "fakeAttendees"];
 
   toggle() {
-    if (this.buttonTarget.textContent ==='attending'){
-      this.unattend();
+    if (this.buttonTarget.textContent === "Attend") {
+      this.join();
     } else {
-      this.attend();
+      this.leave();
     }
   }
 
-  attend() {
-    // Change button appearance
-    this.buttonTarget.textContent = "Attending Event";
-    this.buttonTarget.style.backgroundColor = "green";
-    this.buttonTarget.style.color = "black";
-    this.buttonTarget.disabled = true;
-    this.buttonTarget.classList.add('attending'); // Add attending class
+  join() {
+    this.buttonTarget.textContent = "Attending";
+    this.buttonTarget.style.backgroundColor = "#e27c3d1c;";
+    this.buttonTarget.style.color = "white";
 
-    // Simulate generating fake attendees
-    const fakeAttendees = [
-      { name: 'John Doe'},
-      { name: 'Jane Smith'},
-    ];
+    const fakeAttendeeNames = ["John", "Emily", "Alex", "Sophia", "Tom", "Isaac", "Luca", "Harry"];
 
-    const firstAttendee = fakeAttendees[0];
-    const otherAttendees = fakeAttendees.slice(1);
+    const randomNameIndex = Math.floor(Math.random() * fakeAttendeeNames.length);
+    const randomName = fakeAttendeeNames[randomNameIndex];
 
-    // Clear existing fake attendees
     this.fakeAttendeesTarget.innerHTML = '';
+    const fakeAttendeesContainer = document.createElement('div');
+    fakeAttendeesContainer.classList.add('fake-attendees');
 
-    // Append first attendee
-    if (firstAttendee) {
-      const firstAttendeeElement = document.createElement('div');
-      firstAttendeeElement.classList.add('fake-attendee');
-      firstAttendeeElement.innerHTML = `
-        <p>${firstAttendee.name}</p>
-      `;
-      this.fakeAttendeesTarget.appendChild(firstAttendeeElement);
-    }
-
-    // Append "others" group
-    if (otherAttendees.length > 0) {
-      const othersGroupElement = document.createElement('div');
-      othersGroupElement.classList.add('fake-attendee');
-      othersGroupElement.innerHTML = `
-        <p>Others:</p>
-      `;
-      this.fakeAttendeesTarget.appendChild(othersGroupElement);
-
-      // Append other attendees
-      otherAttendees.forEach(attendee => {
-        const attendeeElement = document.createElement('div');
-        attendeeElement.innerHTML = `
-          <p>${attendee.name}</p>
-        `;
-        othersGroupElement.appendChild(attendeeElement);
-      });
-    }
+    const fakeAttendeeElement = document.createElement('div');
+    fakeAttendeeElement.textContent = `${randomName} is going and others`;
+    fakeAttendeeElement.classList.add('small-text');
+    fakeAttendeesContainer.appendChild(fakeAttendeeElement);
+    this.fakeAttendeesTarget.appendChild(fakeAttendeesContainer);
   }
 
-  unattend() {
-    // Reset button appearance
+  leave() {
     this.buttonTarget.textContent = "Attend";
-    this.buttonTarget.style.backgroundColor = "";
-    this.buttonTarget.style.color = "red";
-    this.buttonTarget.disabled = false;
-    this.buttonTarget.classList.remove('attending');
+    this.buttonTarget.style.backgroundColor = "#e27835";
+    this.buttonTarget.style.color = "white";
     this.fakeAttendeesTarget.innerHTML = '';
   }
 }

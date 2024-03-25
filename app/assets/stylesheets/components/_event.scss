@@ -41,8 +41,8 @@
     justify-content: space-between;
 
     h5 {
-      font-size: 1rem; // Adjust font size for event title
-      margin-top: 5px;// Add margin at the bottom of the title
+      font-size: 1rem;
+      margin-top: 5px;
     }
 
     p {
@@ -69,7 +69,7 @@
   }
 }
 .modal-header{
-    background: $light-orange;
+
 }
 
 .modal-body {
@@ -91,3 +91,18 @@
   height: 40px;
   text-decoration: none;
 }
+.logo-button{
+    button{
+      height: 50px;
+      width: 100px;
+      margin-left: 10px;
+    }
+  }
+
+  .fake-attendees{
+    margin-left: 8px;
+    margin-top:5px;
+    color: gray;
+    text-align: right;
+    margin-right: 30px;
+  }
