@@ -1,20 +1,12 @@
 <div class="navbar-container" >
-  <div class="navbar-barkbuddies">
-
-    <div class="navbar-items " data-controller="notifications">
-      <% if user_signed_in? %>
-
-        <%= render "shared/navbar-partials/top_nav" %>
-        <%=  render "shared/navbar-partials/bottom_nav" %>
-
-      <% else %>
-
-        <div class="login-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </div>
-
-      <% end %>
-    </div>
-
+  <div class="navbar-items " data-controller="notifications">
+    <% if user_signed_in? %>
+      <%= render "shared/navbar-partials/top_nav" %>
+      <%=  render "shared/navbar-partials/bottom_nav" %>
+    <% else %>
+      <div class="login-item">
+        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+      </div>
+    <% end %>
   </div>
 </div>

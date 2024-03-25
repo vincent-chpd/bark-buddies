@@ -1,22 +1,22 @@
 <div class="appear-if-large">
-            <div class="menu">
-              <div class="menu-selections mt-2">
-                <div class="link">
-                  <%= link_to "Home", root_path, class: "" %>
-                </div>
-                <div class="link">
-                  <%= link_to "Explore", users_path, class: "" %>
-                </div>
-                <%# notifications here %>
-                <div class="link" data-notifications-target="chatNotifications">
-                  <%= link_to "Messages", conversations_path, class: "" %>
-                </div>
-                <div class="link">
-                  <%= link_to "Events", events_path, class: "" %>
-                </div>
-                <div class="link">
-                  <%= link_to "Communities", communities_path, class: "" %>
-                </div>
-              </div>
-            </div>
-          </div>
+  <div class="menu">
+    <div class="menu-selections">
+      <div class="link">
+        <%= link_to "Home", root_path%>
+      </div>
+      <div class="link">
+        <%= link_to "Explore", users_path %>
+      </div>
+      <%# notifications here %>
+      <div class="link" data-notifications-target="chatNotifications">
+        <%= link_to "Messages", conversations_path %>
+      </div>
+      <div class="link">
+        <%= link_to "Events", events_path %>
+      </div>
+      <div class="link">
+        <%= link_to "Communities", communities_path %>
+      </div>
+    </div>
+  </div>
+</div>
