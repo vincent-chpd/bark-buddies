@@ -1,43 +1,38 @@
-<div class="banner-img">
-  <div class="container-form">
-    <div class="banner-text">
-      <h3>Events</h3>
-      <h5 class="text-center">Discover more!</h5>
-      <%= form_with url: events_path, method: :get, class: "d-flex justify-content-center" do  %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control input-search",
-          placeholder: "🔍 Explore..",
-          id: "search-bar"
-        %>
-      <% end %>
-    </div>
+<div class="header">
+  <div class="header-inner">
+    <h3>Events</h3>
+    <%= form_with url: events_path, method: :get, class: "d-flex justify-content-center" do  %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "input-search",
+        placeholder: "🔍 Explore..",
+        id: "search-bar"
+      %>
+    <% end %>
   </div>
 </div>
 
 <div class="container-event">
-  <div class="featured">
-    <h3>Featured events</h3>
-    <% months = { "04" => "April", "05" => "May", "06" => "June" } %>
-    <% @events.each_with_index do |event, index| %>
-      <% current_month = event.date.strftime("%m") %>
-      <% if index == 0 || current_month != @events[index - 1].date.strftime("%m") %>
-        <h4><%= months[current_month] %></h4>
-      <% end %>
-      <a data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= event.id %>">
-        <div class="card-event">
-          <%= image_tag event.photo.url, class: "event-image" %>
-          <div class="card-event-info">
-            <h5><%= event.title %></h5>
-            <div class="event-details">
-              <p><small><i class="fa-solid fa-location-dot"></i> <%= event.location %></small></p>
-              <p>🗓️<span><%= event.date.strftime("%d %B %Y")%></span></p>
-            </div>
+  <h4 class="mb-3">Featured events</h4>
+  <% months = { "04" => "April", "05" => "May", "06" => "June" } %>
+  <% @events.each_with_index do |event, index| %>
+    <% current_month = event.date.strftime("%m") %>
+    <% if index == 0 || current_month != @events[index - 1].date.strftime("%m") %>
+      <h4 class="mb-3"><%= months[current_month] %></h4>
+    <% end %>
+    <a data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= event.id %>">
+      <div class="card-event">
+        <%= image_tag event.photo.url, class: "event-image" %>
+        <div class="card-event-info">
+          <h5><%= event.title %></h5>
+          <div class="event-details">
+            <p><small><i class="fa-solid fa-location-dot"></i> <%= event.location %></small></p>
+            <p>🗓️<span><%= event.date.strftime("%d %B %Y")%></span></p>
           </div>
         </div>
-      </a>
-      <!-- Modal -->
-      <%= render "event_modal", event: event %>
-    <% end %>
-  </div>
+      </div>
+    </a>
+    <!-- Modal -->
+    <%= render "event_modal", event: event %>
+  <% end %>
 </div>

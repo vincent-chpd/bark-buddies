@@ -72,6 +72,7 @@
 .menu{
   width: 100%;
   display: flex;
+  padding: 4px 0;
   ul{
     width:100%;
     display: flex;
@@ -160,12 +161,13 @@
     .icon{
       font-size: 20px;
       margin: 0;
+      text-shadow: 0 0 3px white;
     }
   }
   .navbar-container{
     border-top: solid 1px rgb(169, 167, 167);
     position: fixed;
-    background: #fcf1ea;
+    background: $light-orange;
     z-index: 1000;
     width: 100%;
     bottom: 0;

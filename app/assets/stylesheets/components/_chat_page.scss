@@ -6,32 +6,39 @@
 }
 
 .chat {
-  height: 83vh;
+  height: 77dvh;
+}
+
+.back-btn {
+  position: absolute;
+  top: 45px;
+  left: 16px;
+  font-size: 20px;
 }
 
 .chat-header{
+  position: relative;
   display: flex;
   justify-content: center;
   gap: 5px;
-  background-color: $orange;
-  padding: 10px 0px;
-  border-bottom: 2px solid rgb(255, 255, 255);
+  background-color: $light-orange;
+  padding: 16px;
 }
 
 .user-image{
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 1px solid white;
+    border: 2px solid white;
   }
 
 .dog-image{
     margin-top: 30px;
     margin-left: -20px;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    border-right: 1px solid white;
+    border: 3px solid white;
   }
 
 .header-text{
@@ -86,8 +93,7 @@
 }
 
 .chat-form{
-  width:95%;
-  margin: 10px auto;
+  margin: 16px 16px 71px 16px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -98,7 +104,7 @@
   height: 50px;
   width: 100%;
   padding: 10px;
-  border-radius: 10px 0px 0px 10px;
+  border-radius: 12px 0px 0px 12px;
   resize: none;
   border-right: none;
   border-left: 1px solid rgb(133, 133, 133);
@@ -113,7 +119,7 @@
   height: 50px;
   width: 100%;
   padding: 10px;
-  border-radius: 10px 0px 0px 10px;
+  border-radius: 12px 0px 0px 12px;
   resize: none;
   border-right: none;
   border-left: 1px solid rgb(133, 133, 133);
@@ -124,7 +130,7 @@
 .form-button{
   width: 20%;
   height: 50px;
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 0px 12px 12px 0px;
   background-color: $orange;
   color: white;
   border: none;
@@ -140,16 +146,21 @@
   }
 }
 
+#message_content:focus{
+  outline: none
+}
+
 @media (min-width: 768px) {
   .conversation-container {
     margin: 0 auto;
     max-width: 60%;
     background-color: $light-gray;
-    border-radius: 10px;
+    border-radius: 12px;
   }
 
   .text-area {
     width: 85%;
+    width: 90%;
   }
 
   .form-button{
@@ -159,8 +170,6 @@
   body{
     background-color: white;
   }
-
-
 }
 
 @media (min-width: 968px) {
@@ -168,11 +177,12 @@
     margin: 0 auto;
     max-width: 60%;
     background-color: $light-gray;
-    border-radius: 10px;
+    border-radius: 12px;
   }
 
   .text-area {
     width: 90%;
+
   }
 
   .form-button{
@@ -182,6 +192,4 @@
   body{
     background-color: white;
   }
-
-
 }

@@ -1,38 +1,6 @@
-.banner-img {
-  background-color: $orange;
-  padding: 50px 0;
-  max-width: 100%;
-
-
-  .banner-text h3 {
-  margin: 0;
-  color: rgb(255, 255, 255);
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 42px;
-  font-weight: bold;
-  text-align: center;
-  padding: 8px;
-  }
-
-  .text-center{
-    color: rgb(255, 255, 255);
-  }
-
-  @media (max-width: 480px) {
-    padding: 20px;
-  }
-}
-
 .container-event {
-  background-color: #e27c3d1c;
-  padding-bottom: 60px;
+  margin: 16px 16px 71px 16px;
 }
-
-.featured {
-  padding-top: 10px;
-  margin-left:10px;
-  margin-bottom: 10px
-  }
 
 .months-of-event{
   margin-left:10px;
@@ -40,16 +8,14 @@
 }
 
 .card-event {
-  margin-bottom: 30px;
+  display: flex;
+  gap: 16px;
   border-radius: 8px;
   height: 140px;
   border: 1px solid lightgrey;
   overflow: hidden;
   height: 140px;
   background: white;
-  display: flex;
-  margin-left: 20px;
-  margin-right: 20px;
   transition: box-shadow 0.4s ease;
   cursor: pointer;
 
@@ -96,7 +62,7 @@
   }
 }
 .modal-header{
-    background: #e27c3d1c;
+    background: $light-orange;
 }
 
 .modal-body {

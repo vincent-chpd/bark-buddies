@@ -18,34 +18,40 @@
 </div>
 
 <% if params[:query].present? %>
-  <div class="pt-3 pb-5 container-lg px-2" style="background: #e27c3d1c;">
+  <div class="pt-3 pb-5 container-lg px-2" style="background: $light-orange;">
     <div class="row mt-4 mx-3" >
       <h2>Search results for: <%= params[:query] %></h2>
       <% @communities.first(6).each do |community| %>
         <div class="col-6 col-lg-2">
-          <%= render "communities/community_card", community: community  %>
+          <div class="community-card">
+            <%= render "communities/community_card", community: community  %>
+          </div>
         </div>
       <% end %>
     </div>
   </div>
 <% else %>
-  <div class="py-3 container-lg px-2" style="background: #e27c3d1c;">
+  <div class="py-3 container-lg px-2" style="background: $light-orange;">
       <h2>Popular Breed Groups</h2>
     <div class="row mt-4 mx-3" >
       <% @communities.first(6).each do |community| %>
         <div class="col-6 col-lg-2">
-          <%= render "communities/community_card", community: community  %>
+          <div class="community-card">
+            <%= render "communities/community_card", community: community  %>
+          </div>
         </div>
       <% end %>
     </div>
   </div>
 
-  <div class="mb-5 py-5 container-lg px-2" style="background: #e27c3d1c;">
+  <div class="mb-5 py-5 container-lg px-2" style="background: $light-orange;">
     <h2 class="mb-4">City & Neighborhood Groups</h2>
     <div class="row mt-4 mx-2">
       <% @communities.last(4).each do |community| %>
         <div class="col-6 col-lg-2">
-          <%= render "communities/community_card", community: community  %>
+          <div class="community-card">
+            <%= render "communities/community_card", community: community  %>
+          </div>
         </div>
       <% end %>
     </div>

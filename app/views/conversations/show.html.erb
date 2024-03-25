@@ -7,6 +7,9 @@
   <%# messages displayed here %>
   <div class="chat" >
     <div class="chat-header">
+      <div class="back-btn">
+        <a href="/conversations"><i class="fa-solid fa-chevron-left orange"></i></a>
+      </div>
       <div class="header-images">
         <%= image_tag @other_user.photo.url, alt: "#{@other_user.name} Profile Picture", class: "user-image" %>
         <%= image_tag @other_user_dog.photos.first, alt: "#{@other_user_dog.name} Profile Picture", class: "dog-image" %>
@@ -15,7 +18,6 @@
         <h2>
           <%= @other_user.name %><br></h2>
           <h4><em> & <%= @other_user_dog.name %></em></h4>
-
       </div>
     </div>
 
@@ -29,9 +31,11 @@
 
   <%# form to add a new message %>
   <%= form_for [@conversation, @message], html: {class: "chat-form", data: { action: "turbo:submit-end->conversation-subscription#resetForm" }} do |f| %>
-      <%= f.text_area :content, placeholder: "Message...", class: "text-area"%>
+    <%= f.text_area :content, placeholder: "Message...", class: "text-area"%>
     <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.submit "Send",  class: "form-button"%>
+    <%= button_tag type: "submit", class: "form-button" do %>
+      <i class="fa-solid fa-paper-plane"></i>
+    <% end %>
   <% end %>
 
 </div>

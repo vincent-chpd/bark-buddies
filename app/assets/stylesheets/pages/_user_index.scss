@@ -1,31 +1,28 @@
-.banner-img {
-  background-color: $orange;
-  padding: 50px 0;
-  max-width: 100%;
-
-  .text-center{
-    color: rgb(255, 255, 255);
-  }
-
-  @media (max-width: 480px) {
-    padding: 20px;
-  }
+.explore-container {
+  margin: 16px 16px 71px 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
 
-
-.text-banner {
-  margin: 0;
-  color: rgb(255, 255, 255);
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 36px;
-  font-weight: bold;
-  text-align: center;
-  padding: 8px;
+.explore-profile-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 12px;
+  border: 1px solid lightgray;
+  background-color: white;
+  a{
+    text-decoration: none;
+    color: #212121;
   }
-
-  .user-card-container {
-    background: #e27c3d1c;
+  p{
+    color: gray;
   }
+  i {
+    color: $orange;
+  }
+}
 
 .user-avatar {
   position: absolute;
@@ -35,18 +32,19 @@
 }
 
 .dog-picture-users {
-  height: 200px;
-  width: 200px;
+  height: 120px;
+  width: 100%;
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 4px 4px 0px 0;
+  background-position: center;
+  border-radius: 12px 12px 0px 0;
 }
 
-.profile-card-users {
-  border-radius: 4px;
-  border: 1px solid lightgray;
+.small-profile-card {
+  border-radius: 12px;
   background-color: white;
+
 
   h5 {
     margin: 0;
@@ -67,7 +65,6 @@
 
 }
 
-
 .profile-card-users p {
   color: gray;
 }
@@ -78,12 +75,6 @@
   margin-left: 4px;
 }
 
-
-.smaller {
-  font-size: 12px;
-  margin-left: 4px;
-}
-
 .btn-view-profile {
   color: black;
   text-decoration: none;
@@ -91,10 +82,11 @@
 
 
 .input-search {
-  width: 300px;
-  border-radius: 20px;
+  width: 250px;
+  border-radius: 12px;
   padding: 8px;
-  margin-top: 8px;
+  border: none;
+  font-size: 14px;
 }
 
 .search-container {
@@ -113,47 +105,4 @@
 
 #clear-button {
   display: none;
-}
-
-
-@media (max-width: 992px) {
-
-  .cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-}
-
-
-@media (max-width: 768px) {
-
-  .cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 500px) {
-  .dog-picture-users {
-    width: 100%;
-  }
-
-  .h5 {
-    font-size: 12px;
-  }
-
-  .dog-picture-users {
-    height: 150px;
-    width: 150px;
-  }
-
-  .input-search {
-    width: 300px;
-  }
-
-  .remove-width {
-    display: none;
-  }
 }

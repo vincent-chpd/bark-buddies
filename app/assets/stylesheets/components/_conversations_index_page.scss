@@ -1,20 +1,12 @@
-.conversations {
-  h2{
-    text-align: center;
-  }
-}
-
 .full-card{
   margin: 0 auto;
-  width: 90%;
-  border-radius: 16px;
+  width: 100%;
   position: relative;
-  border: 1px solid #e0e0e0;
+  border-bottom: 1px solid $light-orange;
   transition: transform 0.3s;
   cursor: pointer;
   &:hover{
-    // transition to bigger size
-    border: 1px solid orange;
+    border: 1px solid $light-orange;
   }
 }
 
@@ -22,40 +14,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  margin-top: 20px;
-
 }
 
 .conversation-card {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 95%;
+  width: 100%;
   gap: 10px;
-  padding: 10px 30px;
+  padding: 8px 16px;
 
-
-  h2{
-    font-size: 24px;
-    margin-left: -30px;
-  }
   p {
-    font-size: 16px;
     color: grey;
+    margin: 0;
   }
-
-
-}
-
-a {
-  margin-bottom: 10px;
 }
 
 .names {
   text-decoration: none;
   color: black;
-  margin-bottom: 10px ;
 }
 
 .delete {
@@ -64,17 +41,20 @@ a {
   color: rgb(0, 0, 0);
   cursor: pointer;
   position: absolute;
-  top: 10px;
+  top: 38px;
   right: 20px;
   i{
-    &:hover{
-      color: red;
-    }
+    font-size: 20px;
+    color: $orange;
   }
 }
 
 .conversation-images {
   display:  flex;
+}
+
+.conversation-text{
+  flex-grow: 1;
 }
 
 @media (min-width: 768px) {

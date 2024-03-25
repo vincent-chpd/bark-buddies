@@ -1,37 +1,38 @@
   <div class="profiles-container">
-    <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="d-flex justify-content-between align-items-center mb-3 profiles-title">
       <h2>Buddies near you</h2>
-      <%=  link_to "See more", users_path, class: "underlined" %>
+      <%=  link_to "See more", users_path, class: "underlined-link" %>
     </div>
-    <div class="d-flex scroll">
-      <% @users.reject { |user| user == current_user }.take(10).each do |user| %>
-        <% user.dogs.each do |dog| %>
-          <%=  link_to user_path(user) do %>
-            <% first_photo = dog.photos.first %>
-            <div class="profile-card">
-              <div class= "card-image" style="background-image: url('<%= image_path first_photo.url %>')">
-                <%= image_tag user.photo.url, height: 80, width: 80, class: "user-avatar", style: "border-radius: 50%;" %>
+    <div class="scroll-container">
+      <div class="d-flex scroll px-3">
+        <% @users.reject { |user| user == current_user }.take(10).each do |user| %>
+          <% user.dogs.each do |dog| %>
+            <%=  link_to user_path(user) do %>
+              <% first_photo = dog.photos.first %>
+              <div class="profile-card">
+                <div class= "card-image" style="background-image: url('<%= image_path first_photo.url %>')">
+                  <%= image_tag user.photo.url, height: 80, width: 80, class: "user-avatar", style: "border-radius: 50%;" %>
+                </div>
+                <div class="py-2 px-2 d-flex flex-column justify-content-center">
+                  <h5><%= user.name %> & <%= dog.name %> </h5>
+                  <p><small><i class="fa-solid fa-location-dot"></i> <%= user.location %></small></p>
+                </div>
               </div>
-              <div class="mx-2 my-1 d-flex flex-column justify-content-center">
-                <h5><%= user.name %> & <%= dog.name %> </h5>
-                  <p><%= dog.breed %></p>
-                  <p><small><%= dog.gender %>, <%= dog.age %> years old</small></p>
-                <p><small><i class="fa-solid fa-location-dot"></i> <%= user.location %></small></p>
-              </div>
-            </div>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 
   <div class="suggested-community-container">
     <div class="d-flex justify-content-between align-items-center mb-3">
-      <h2>Suggested communities</h2>
-      <%=  link_to "See more", communities_path, class:"orange underlined" %>
+      <h2>Popular communities</h2>
+      <%=  link_to "See more", communities_path, class:"orange underlined-link" %>
     </div>
-    <div class="d-flex scroll" style="gap: 8px;">
+    <div class="d-flex scroll">
       <% @communities.all.each do |community| %>
+        <%= link_to community_path(community) do %>
           <div class="d-flex flex-column">
             <%= link_to community_path(community) do %>
               <div class= "d-flex card-community text-center justify-content-center align-items-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('<%= image_path community.photo.url if community.photo.try(:url).present? %>')">
@@ -39,6 +40,7 @@
             <% end %>
             </div>
           </div>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -46,7 +48,7 @@
   <div class="upcoming-events-container">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h2>Upcoming events</h2>
-      <%=  link_to "See more", events_path, class:"orange underlined" %>
+      <%=  link_to "See more", events_path, class:"orange underlined-link" %>
     </div>
     <div class="">
       <% @events.first(4).each do |event| %>
