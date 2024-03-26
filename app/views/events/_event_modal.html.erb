@@ -7,7 +7,7 @@
       </div>
       <div class="modal-body" data-controller="attend">
         <%= image_tag event.photo.url, class: "modal-image" %>
-        <div class="event-details">
+        <div class="event-details-modal">
           <p class="fw-bold">Event Details:</p>
           <p><%= event.description %></p>
         </div>
@@ -19,15 +19,17 @@
             </div>
             <div>
               <p class="fw-bold">Date:</p>
-              <p><span><%= event.date.strftime("%d %B %Y")%></span></p>
+              <p><small><%= event.date.strftime("%d %B %Y")%></small></p>
             </div>
           </div>
         </div>
+      <div class="attend-button-container">
         <div class="position-right">
           <button class="attend-button" data-action="click->attend#toggle" data-attend-target="button">Attend</button>
         </div>
-        <div class="fake-attendees" data-attend-target="fakeAttendees">
-        </div>
+          <div class="fake-attendees" data-attend-target="fakeAttendees" style="font-size: small;">
+          </div>
+            </div>
       </div>
     </div>
   </div>

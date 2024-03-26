@@ -16,7 +16,7 @@ export default class extends Controller {
     this.buttonTarget.style.backgroundColor = "#e27c3d1c;";
     this.buttonTarget.style.color = "white";
 
-    const fakeAttendeeNames = ["John", "Emily", "Alex", "Sophia", "Tom", "Isaac", "Luca", "Harry"];
+    const fakeAttendeeNames = ["John", "Emily", "Alex", "Amy", "Tom", "Isaac", "Luca", "Harry"];
 
     const randomNameIndex = Math.floor(Math.random() * fakeAttendeeNames.length);
     const randomName = fakeAttendeeNames[randomNameIndex];
@@ -34,7 +34,7 @@ export default class extends Controller {
 
   leave() {
     this.buttonTarget.textContent = "Attend";
-    this.buttonTarget.style.backgroundColor = "#e27835";
+    this.buttonTarget.style.backgroundColor = "#e27c3d1c;";
     this.buttonTarget.style.color = "white";
     this.fakeAttendeesTarget.innerHTML = '';
   }
