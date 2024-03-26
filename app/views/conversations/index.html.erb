@@ -1,16 +1,14 @@
 <div class="conversations">
-  <div class="banner-img">
-  <div class="container">
-    <div class="banner-text">
-      <h3>Messages</h3>
-        <%# <h5 class="text-center">Join the Bark Buddies community!</h5> %>
+  <div class="header">
+    <div class="header-inner">
+      <h2>Messages</h2>
+      <a href="#"><i class="fa-solid fa-circle-plus orange"></i></a>
     </div>
   </div>
-</div>
 
-  <div class="ui list mt-4 conversations-container">
-      <% @conversations.each do |conversation| %>
-        <%= render "conversation_card", conversation: conversation %>
-      <% end %>
+  <div class="ui list conversations-container">
+    <% @conversations.each do |conversation| %>
+      <%= render "conversation_card", conversation: conversation %>
+    <% end %>
   </div>
 </div>

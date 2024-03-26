@@ -1,0 +1,34 @@
+<div class="modal fade" id="staticBackdrop<%= event.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel<%= event.id %>" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel"><%= event.title %> 🎉</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" data-controller="attend">
+        <%= image_tag event.photo.url, class: "modal-image" %>
+        <div class="event-details">
+          <p class="fw-bold">Event Details:</p>
+          <p><%= event.description %></p>
+        </div>
+        <div class="event-info">
+          <div class="d-flex justify-content-between">
+            <div>
+              <p class="fw-bold">Location:</p>
+              <p><small><i class="fa-solid fa-location-dot"></i> <%= event.location %></small></p>
+            </div>
+            <div>
+              <p class="fw-bold">Date:</p>
+              <p><span><%= event.date.strftime("%d %B %Y")%></span></p>
+            </div>
+          </div>
+        </div>
+        <div class="position-right">
+          <button class="attend-button" data-action="click->attend#toggle" data-attend-target="button">Attend</button>
+        </div>
+        <div class="fake-attendees" data-attend-target="fakeAttendees">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

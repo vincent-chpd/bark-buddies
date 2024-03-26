@@ -1,11 +1,16 @@
-<div class="mx-2" id="message-<%= message.id %>">
-  <small>
-    <strong><%= message.user.name %></strong>
-    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-  </small>
-  <div class="message-block">
+<% if message.content.present? %>
+  <% user = User.find(message.user_id) %>
+  <% custom_style =  user == current_user ? ["justify-content:flex-end;", "user-message"] : ["justify-content:flex-start;", "other-users-message"] %>
+
+  <div class="message-block" id="message-<%= message.id %>" style=<%= custom_style[0] %>>
     <div class="message-container">
-      <div class="message"><p><%= message.content %></p></div>
+      <div class="message <%= custom_style[1] %>">
+        <% unless current_user && current_user == message.user %>
+          <p><strong><%= message.user.name %></strong></p>
+        <% end %>
+        <p><%= message.content %></p>
+        <small><%= message.created_at.strftime("%H:%M") %></small>
+      </div>
     </div>
   </div>
-</div>
+<% end %>

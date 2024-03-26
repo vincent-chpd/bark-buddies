@@ -1,39 +1,42 @@
 <div class="appear-if-small">
   <div class="menu">
-
-
     <ul>
-      <li class="link ">
+      <li class= '<%="link #{request.path == "/" ? "orange" : ""}"%>'>
         <%= link_to root_path, class: "icon" do %>
-          <i class="fas fa-home"></i>
+          <i class='<%="fas fa-home #{request.path == "/" ? "orange" : ""}"%>'></i>
         <% end %>
         <small>HOME</small>
       </li>
-      <li class="link" data-notifications-target="notificationsDot">
+      <li class='<%="link #{request.path == "/conversations" ? "orange" : ""}"%>' data-notifications-target="notificationsDot">
         <%= link_to conversations_path, class: "icon" do %>
-          <i class="fas fa-envelope"></i>
+          <i class='<%="fas fa-envelope #{request.path == "/conversations" ? "orange" : ""}"%>'></i>
         <% end %>
         <small>CHATS</small>
       </li>
-      <li class="link">
+      <li class='<%="link #{request.path == "/users" ? "orange" : ""}"%>'>
         <%= link_to users_path, class: "icon" do %>
-          <i class="fas fa-user-friends"></i>
+          <i class='<%="fas fa-user-friends #{request.path == "/users" ? "orange" : ""}"%>'></i>
         <% end %>
-        <small>EXLORE</small>
+        <small>EXPLORE</small>
       </li>
-      <li class="link">
+      <li class='<%="link #{request.path == "/events" ? "orange" : ""}"%>'>
         <%= link_to events_path, class: "icon" do %>
-          <i class="fas fa-calendar-alt"></i>
+          <i class='<%="fas fa-calendar-alt #{request.path == "/events" ? "orange" : ""}"%>'></i>
         <% end %>
         <small>EVENTS</small>
       </li>
-      <li class="link">
+      <li class='<%="link #{request.path == "/communities" ? "orange" : ""}"%>'>
         <%= link_to communities_path, class: "icon" do %>
-          <i class="fas fa-users"></i>
+          <i class='<%="fas fa-users #{request.path == "/communities" ? "orange" : ""}"%>'></i>
         <% end %>
         <small>COMMUNITY</small>
       </li>
+      <li>
+        <%= link_to root_path, class: "logo-container appear-if-large" do %>
+          <%= image_tag ("https://res.cloudinary.com/drqv8g5uf/image/upload/v1710167061/Bark_Buddies_1_rg5mi8"), alt: "Bark Buddies Logo", class: "logo" %>
+        <% end %>
+        <%= render "shared/navbar-partials/avatar_nav" %>
+      </li>
     </ul>
-
   </div>
 </div>

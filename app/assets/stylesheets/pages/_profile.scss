@@ -1,64 +1,98 @@
 .profile-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0 auto;
-  border-radius: 10px;
-  align-items: center;
-  p {
-    margin: 0;
-    padding: 0;
-  }
-  h5 {
-    margin: 0;
-    padding: 0;
-
-  }
+  margin: 40px 16px 71px 16px;
 }
 
-.profile_page {
-  margin-bottom: 48px;
-}
-
-.dog.profile-container{
-  width: 100%;
+.back-btn-profile {
+  position: absolute;
+  top: 68px;
+  left: 16px;
+  font-size: 20px;
 }
 
 .user-profile {
-  margin-top: 20px;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stats-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow:1;
+  gap: 16px;
+}
+
+.stats{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  p{
+    margin: 0;
+  }
+}
+
+.user-bio{
+  margin: 16px 0;
+  p{
+    margin: 8px 0;
+  }
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 16px;
+}
+
+.btn-profile{
+  border-radius: 12px;
+  background-color: $orange;
+  padding: 8px 40px;
+  color: white;
+  border: none;
+  font-size: 14px;
+  width: 177px;
+  border: 2px solid $orange;
+}
+
+.back-button {
+  font-size: 30px;
+  position: absolute;
+  top: 25px;
+  left: 10px;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .carousel-inner {
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 4px;
+  width: 100%;
 }
 
-.profile-details {
-  align-items: center;
+.dog_details {
   margin-top: 10px;
+  text-align: left;
+  margin-bottom: 30px;
 }
-
 
 .user-card {
   border-radius: 8px;
   padding: 10px;
-  margin-bottom: 30px;
   margin-top: 30px;
-  align-items: center;
+  text-align: left;
 }
 
-.user-profile {
-  display: flex;
-  align-items: center;
-}
+
+
+
 
 .profile-info {
   margin-left: 15px;
-}
-
-.user-bio {
-  margin-top: 15px;
   text-align: left;
 }
 
@@ -68,54 +102,35 @@
   border-radius: 50%;
   object-fit: cover;
   margin-right: 20px;
-}
-
-.profile-info {
-  text-align: left;
-}
-
-.actions {
-  margin-top: 20px;
-}
-
-.sub-head {
-  font-weight: lighter;
+  justify-content: left;
+  align-items: center;
 }
 
 .lighter-font {
   font-weight: 350;
 }
 
-.modal_button {
-  background-color: $orange;
-  outline: $orange;
-  color: black;
-}
-
-.modal-header {
+.modal-content {
+  padding: 20px;
   background-color: white;
-  border-radius: 4px;
-  border-bottom: none;
 }
 
-.pending {
-  background-color: white;
-  outline: $orange;
+.action-buttons {
+  display: flex;
+  justify-content: center;
 }
 
-.form-control.is-valid {
-  border-color: $orange;
-  border-right: solid 1px $orange;
-  margin: 4px;
-  border-radius: 4px;
+.actions {
+  margin-bottom: 60px;
 }
 
 .submit {
   margin: 8px;
 }
 
-.modal-content {
-  padding: 20px;
-  background-color: white;
-  box-shadow: $orange (100, 100, 111, 0.2) 0px 7px 29px 0px;
+.unfollow {
+  background-color: $white;
+  border: 2px solid $orange;
+  color: $orange;
+  width: 175px !important;
 }

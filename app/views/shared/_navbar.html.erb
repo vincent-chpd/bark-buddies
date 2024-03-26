@@ -1,25 +1,12 @@
 <div class="navbar-container" >
-  <div class="navbar-barkbuddies px-4 pt-2">
-
-    <%= link_to root_path, class: "logo-container appear-if-large" do %>
-      <%= image_tag ("https://res.cloudinary.com/drqv8g5uf/image/upload/v1710167061/Bark_Buddies_1_rg5mi8"), alt: "Bark Buddies Logo", class: "logo" %>
+  <div class="navbar-items " data-controller="notifications">
+    <% if user_signed_in? %>
+      <%= render "shared/navbar-partials/top_nav" %>
+      <%=  render "shared/navbar-partials/bottom_nav" %>
+    <% else %>
+      <div class="login-item">
+        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+      </div>
     <% end %>
-
-    <div class="navbar-items " data-controller="notifications">
-      <% if user_signed_in? %>
-
-        <%= render "shared/navbar-partials/top_nav" %>
-        <%=  render "shared/navbar-partials/bottom_nav" %>
-        <%= render "shared/navbar-partials/avatar_nav" %>
-
-      <% else %>
-
-        <div class="login-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </div>
-
-      <% end %>
-    </div>
-
   </div>
 </div>

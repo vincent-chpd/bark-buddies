@@ -1,0 +1,12 @@
+<div class="calendar-icon">
+  <time datetime="20-April-2024" class="icon">
+    <% if event.date.to_s.split("-")[1] == "03"  %>
+      <strong>APR</strong>
+    <% elsif event.date.to_s.split("-")[1] == "04" %>
+      <strong>MAY</strong>
+    <% else %>
+      <strong>JUN</strong>
+    <% end %>
+    <span><%= event.date.to_s.split("-")[2] %></span>
+  </time>
+</div>
