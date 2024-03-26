@@ -14,17 +14,8 @@ export default class extends Controller {
       }}
     )
 
-    // this.readStatusChannel = createConsumer().subscriptions.create(
-    //   { channel: "ReadStatusChannel"},
-    //   { received: data => console.log(data)}
-    // )
-    this.markMessagesAsRead()
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
-  }
-
-  disconnect() {
-    this.channel.unsubscribe()
-    // this.readStatusChannel.unsubscribe()
+    this.markMessagesAsRead()
   }
 
   resetForm(event) {
