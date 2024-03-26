@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   end
 
   root to: "pages#home"
+  get 'landing', to: 'pages#landing'
+
   resources :conversations do
     resources :messages, only: [:create]
   end
