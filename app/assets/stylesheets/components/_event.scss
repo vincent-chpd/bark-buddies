@@ -83,8 +83,11 @@
     padding: 0px;
 }
 
+
+
 .attend-button{
   background-color: rgb(252, 160, 0);
+  color: white;
   border-radius: 6px;
   border: 0px;
   width: auto;
@@ -105,4 +108,9 @@
     color: gray;
     text-align: right;
     margin-right: 30px;
+  }
+
+  .attend-button-container {
+    display: flex;
+    align-items: center;
   }
