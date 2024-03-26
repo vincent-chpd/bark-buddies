@@ -2,6 +2,11 @@
 
   <div class="chat">
     <div class="community-chat-header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(' <%= image_path @community.photo.url, class: "user-image" %>');">
+      <div class="back-btn-community">
+        <%= link_to :back do %>
+          <i class="fa-solid fa-chevron-left"></i>
+        <% end %>
+      </div>
       <h2><%= @community.name %><br></h2>
     </div>
 
