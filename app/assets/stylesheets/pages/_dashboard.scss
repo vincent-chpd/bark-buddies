@@ -13,26 +13,33 @@
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 4px 4px 0px 0;
+  border-radius: 12px 12px 0px 0;
 }
 
 .profiles-container {
-  background: #e27c3d1c;
-  padding: 1rem 1rem;
+  background: $light-orange;
   overflow: hidden;
+  width: 100%;
+  padding: 16px 0;
+  margin: 16px 0;
   a {
-    color:#e27835;
-    margin-bottom: 0.5rem;
+    color: $orange;
   }
+}
+.suggested-community-container {
+  margin: 32px 16px;
+}
+
+.profiles-title {
+  padding: 0 16px;
 }
 
 .profile-card{
   color: black;
-  border-radius: 4px;
+  border-radius: 12px;
   background: white;
   transition: ease-in-out 0.3s;
-  padding-bottom: 10px;
-  margin-right: 15px;
+  margin-right: 16px;
   h5{
     margin: 0;
   }
@@ -41,10 +48,19 @@
     padding: 0;
     margin: 0;
     color: gray;
+    font-size: 14px;
+  }
+  i{
+    color: $orange;
   }
   &:hover {
     transform: scale(1.04);
   }
+}
+
+.scroll-container {
+  mask-image: linear-gradient(90deg, transparent, #000 16px, #000 calc(100% - 32px), transparent calc(100% - 16px));
+  overflow: hidden;
 }
 
 .scroll {
@@ -53,11 +69,11 @@
 
 .card-community{
   height: 200px;
-  width: 400px;
-  margin-right: 8px;
+  width: 398px;
+  margin-right: 16px;
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 4px;
+  border-radius: 12px;
   color: white;
   text-shadow: 2px 2px 4px #000000;
   a {
@@ -68,22 +84,32 @@
 }
 .events-cards{
   display: flex;
-  align-items: center;
-  margin-bottom: 16px;
+  align-items: start;
+  margin-bottom:16px;
+  gap: 8px;
+
   h5{
-    font-size: 1rem;
+    font-size: 16px;
     margin: 0;
+    width: 250px;
   }
   p{
-    font-size: 0.8rem;
+    font-size: 16px;
     margin: 0;
     color: grey;
   }
 }
 
-.event-container {
+.upcoming-events-container {
   background-color: #f7f7f7;
-  padding: 12px;
+  margin: 32px 0 50px 0 ;
+  padding: 16px;
+  a {
+    margin: 0;
+  }
+  i{
+    color: $orange;
+  }
 }
 
 time.icon
@@ -91,8 +117,8 @@ time.icon
   font-size: 12px; /* change icon size */
   display: block;
   position: relative;
-  width: 60px;
-  height: 60px;
+  width: 33px;
+  height: 36px;
   background-color: #fff;
   border-radius: 0.6em;
   box-shadow: 0 1px 0 #bdbdbd, 0 2px 0 #fff, 0 3px 0 #bdbdbd, 0 4px 0 #fff, 0 5px 0 #bdbdbd, 0 0 0 1px #bdbdbd;
@@ -101,7 +127,7 @@ time.icon
 time.icon * {
   display: block;
   width: 100%;
-  font-size: 1em;
+  font-size: 11px;
   font-weight: bold;
   font-style: normal;
   text-align: center;
@@ -110,10 +136,9 @@ time.icon * {
 time.icon strong {
   position: absolute;
   top: 0;
-  padding: 0.4em 0;
+  padding: 0px;
   color: #fff;
   background-color: #fd9f1b;
-  border-bottom: 1px dashed #f37302;
 }
 
 time.icon em
@@ -124,9 +149,9 @@ time.icon em
 }
 time.icon span
 {
-  font-size: 2em;
+  font-size: 14px;
   letter-spacing: -0.05em;
-  padding-top: 1.2em;
+  padding-top: 17px;
   color: #2f2f2f;
 }
 
@@ -135,8 +160,15 @@ time.icon span
   margin-bottom: 0.5rem;
 }
 
+.underlined-link {
+  text-decoration: underline;
+  margin: 0;
+
+}
+
 a {
   text-decoration: none;
+  margin: 0;
 }
 
 li {

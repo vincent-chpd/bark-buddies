@@ -1,28 +1,29 @@
 
 <div class="full-card" >
   <%= link_to conversation_path(conversation), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "delete" do %>
-  <i class="fa-solid fa-trash-can"></i>
+    <i class="fa-regular fa-trash-can"></i>
   <% end %>
-  <%=  link_to conversation_path(conversation), class: "names" do %>
+  <%= link_to conversation_path(conversation), class: "names" do %>
     <div class="conversation-card">
-      <% the_other_person = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
-      <% the_other_person_dog = the_other_person.dogs.first %>
-      <%= image_tag the_other_person.photo.url, alt: "#{the_other_person.name} Profile Picture", class:"user-image" %>
-      <%= image_tag the_other_person_dog.photos.first.url, alt: "#{the_other_person_dog.name} Profile Picture", class:"dog-image" %>
-    <div>
-      <h2><%= the_other_person.name %> <small><em> & <%= the_other_person.dogs.first.name %></em></small></h2>
-      <% if conversation.messages.any? %>
-        <% last_message = conversation.messages.last %>
-        <% last_message_received = conversation.messages.last.user_id != current_user.id %>
-        <%# if the last message is a received message and it's not read it would be highlighted %>
-        <% font_style = !last_message.read && last_message_received ? [900, "black"] : [500, "gray"] %>
-        <%# the card displays the last message of the conversation %>
-        <p style="font-weight: <%= font_style[0] %>; color: <%= font_style[1]%>"><%= last_message.content %></p>
-      <% else %>
-        <p>No messages yet</p>
-      <% end %>
+      <div class="conversation-images">
+        <% the_other_person = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
+        <% the_other_person_dog = the_other_person.dogs.first %>
+        <%= image_tag the_other_person.photo.url, alt: "#{the_other_person.name} Profile Picture", class:"user-image" %>
+        <%= image_tag the_other_person_dog.photos.first.url, alt: "#{the_other_person_dog.name} Profile Picture", class:"dog-image" %>
+      </div>
+      <div class="conversation-text">
+        <h4><%= the_other_person.name %> & <%= the_other_person.dogs.first.name %></h4>
+        <% if conversation.messages.any? %>
+          <% last_message = conversation.messages.last %>
+          <% last_message_received = conversation.messages.last.user_id != current_user.id %>
+          <%# if the last message is a received message and it's not read it would be highlighted %>
+          <% font_style = !last_message.read && last_message_received ? [900, "black"] : [500, "gray"] %>
+          <%# the card displays the last message of the conversation %>
+          <p style="font-weight: <%= font_style[0] %>; color: <%= font_style[1]%>"><%= last_message.content %></p>
+        <% else %>
+          <p>No messages yet</p>
+        <% end %>
+      </div>
     </div>
-
-  </div>
   <% end %>
 </div>

@@ -2,8 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: gray;
-  padding: 4px;
+  color: rgb(0, 0, 0);
+  margin: 16px;
+
   a{
     color: gray;
   }
@@ -30,6 +31,10 @@
   justify-content: flex-end;
   gap:10px;
   align-items: center;
+  a{
+    color: gray;
+
+  }
 }
 
 .link {
@@ -64,26 +69,21 @@
   position: relative;
 }
 
-.menu {
-  // border: solid 1px blue;
+.menu{
   width: 100%;
-  flex-grow: 1;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-
+  padding: 4px 0;
   ul{
-    // border: solid 1px green;
     width:100%;
     display: flex;
     justify-content: space-around;
     list-style: none;
-    gap: 12px;
     padding: 0;
     margin: 0;
     li{
       margin: 0 10px;
       text-align: center;
+      width: 54px;
     }
     small {
       font-size: 9px;
@@ -161,13 +161,13 @@
     .icon{
       font-size: 20px;
       margin: 0;
+      text-shadow: 0 0 3px white;
     }
   }
   .navbar-container{
     border-top: solid 1px rgb(169, 167, 167);
-    padding-top:  2px;
     position: fixed;
-    background: #fcf1ea;
+    background: $light-orange;
     z-index: 1000;
     width: 100%;
     bottom: 0;

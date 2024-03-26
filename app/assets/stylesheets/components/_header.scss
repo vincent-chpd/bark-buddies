@@ -1,0 +1,20 @@
+.header {
+  background-color: $light-orange;
+  width: 100%;
+  padding: 16px 0;
+}
+
+.header-inner{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 45px;
+  margin: 0 16px;
+  a{
+    font-size: 30px;
+    margin: 0;
+  }
+  i{
+    margin: 0;
+  }
+}

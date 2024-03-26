@@ -14,14 +14,15 @@ export default class extends Controller {
 
   join() {
     this.buttonTarget.textContent = "Leave community";
-    this.buttonTarget.style.backgroundColor = "red";
-    this.buttonTarget.style.color = "white";
+    this.buttonTarget.style.backgroundColor = "white";
+    this.buttonTarget.style.border = "1px solid #E67E22";
+    this.buttonTarget.style.color = '##E67E22';
     this.chatTarget.classList.remove("d-none");
   }
 
   leave() {
+    this.buttonTarget.style.backgroundColor = '#E67E22';
     this.buttonTarget.textContent = "Join community";
-    this.buttonTarget.style.backgroundColor = "#e27835";
     this.buttonTarget.style.color = "black";
     this.chatTarget.classList.add("d-none");
   }

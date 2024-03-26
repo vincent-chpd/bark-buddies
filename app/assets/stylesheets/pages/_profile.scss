@@ -1,28 +1,62 @@
-.banner {
-  background-color: $orange;
-  margin-bottom: 20px;
-  height: 100px;
-  max-width: 430px;
-  position: relative;
+.profile-container {
+  margin: 40px 16px 71px 16px;
 }
 
-.banner .row {
-  height: 100%;
+.back-btn-profile {
+  position: absolute;
+  top: 68px;
+  left: 16px;
+  font-size: 20px;
 }
 
-.banner .row a {
-  margin-right: 10px;
-  color: white;
+.user-profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.banner h1 {
+.stats-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow:1;
+  gap: 16px;
+}
+
+.stats{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 0;
+  p{
+    margin: 0;
+  }
+}
+
+.user-bio{
+  margin: 16px 0;
+  p{
+    margin: 8px 0;
+  }
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 16px;
+}
+
+.btn-profile{
+  border-radius: 12px;
+  background-color: $orange;
+  padding: 8px 40px;
   color: white;
-  flex-grow: 1;
-  text-align: center;
-  font-size: 42px;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  margin: auto 0;
+  border: none;
+  font-size: 14px;
+  width: 177px;
+  border: 2px solid $orange;
 }
 
 .back-button {
@@ -53,17 +87,9 @@
   text-align: left;
 }
 
-.user-profile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
 
-.action-buttons {
-  display: flex;
-  justify-content: center;
-}
+
+
 
 .profile-info {
   margin-left: 15px;
@@ -87,7 +113,6 @@
 .modal-content {
   padding: 20px;
   background-color: white;
-  box-shadow: rgb(223, 148, 58) 0px 30px 60px -20px, $orange 0px 15px 40px -10px, rgb(88, 88, 88) 0px -2px 6px 0px inset;
 }
 
 .action-buttons {
@@ -104,5 +129,8 @@
 }
 
 .unfollow {
-  background-color: white;
+  background-color: $white;
+  border: 2px solid $orange;
+  color: $orange;
+  width: 175px !important;
 }

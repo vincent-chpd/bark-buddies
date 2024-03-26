@@ -1,56 +1,45 @@
-<div class="container-users">
-  <div class="banner-img">
+<div class="header">
+  <div class="header-inner">
     <h3 class="text-banner text-center">Explore</h3>
-    <h5 class="text-center">Browse for more buddies!</h5>
-      <%= form_with url: users_path, method: :get, class: "d-flex justify-content-center", id: "search-form" do  %>
-      <div class="search-container">
-        <%= text_field_tag :query,
-              params[:query],
-              class: "input-search",
-              placeholder: "🔍 Type a location...",
-              id: "search-bar"
+    <%= form_with url: users_path, method: :get, class: "d-flex justify-content-center", id: "search-form" do  %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "input-search",
+        placeholder: "🔍  Type a location...",
+        id: "search-bar"
         %>
-        <button type="button" id="clear-button"><i class="fa-solid fa-xmark"></i></button>
-        <%= javascript_include_tag 'search_form' %>
-        <% end %>
-
-      </div>
+      <button type="button" id="clear-button"><i class="fa-solid fa-xmark"></i></button>
+      <%= javascript_include_tag 'search_form' %>
+    <% end %>
   </div>
 </div>
 
 <% if @message.present? %>
-  <div class="container text-center">
-    <h5 class="user-error" style="margin-top: 20px;"> <%= @message.html_safe %> </h5>
-    <img class="doge-pic" src="https://mystickermania.com/cdn/stickers/into_the_web/sticker_2020-512x512.png" alt="error" style="width: 100%;">
+  <div class="mx-3 text-center">
+    <h5 class="my-3  user-error"> <%= @message.html_safe %> </h5>
   </div>
 <% end %>
 
-  <div class="container mb-5">
-    <div class="row">
-      <% @users.reject { |user| user == current_user }.each do |user| %>
-        <% user.dogs.each do |dog| %>
-          <div class="user-card-container col-6">
-            <div class="d-flex">
-              <%=  link_to user_path(user) do %>
-                <% first_photo = dog.photos.first %>
+<div class="explore-container">
+  <% @users.reject { |user| user == current_user }.each do |user| %>
+    <% user.dogs.each do |dog| %>
+      <div class="explore-profile-card">
+        <div class="">
+          <%=  link_to user_path(user) do %>
+            <% first_photo = dog.photos.first %>
 
-                <div class="profile-card-users my-4 mx-4">
-                  <div class= "dog-picture-users" style="background-image: url('<%= image_path first_photo.url %>')">
-                    <%= image_tag user.photo.url, height: 80, width: 80, class: "user-avatar", style: "border-radius: 50%;" %>
-                  </div>
-                  <h5 class="black-link mt-2"><%= user.name %> & <%= dog.name %> </h5>
-
-                  <div class="d-flex">
-                    <p class="remove-width"><%= dog.breed %> •</p>
-                    <p class="remove-width"> <i class="fa-solid fa-mars"></i></p>
-                  </div>
-
-                  <p><small class="smaller"><i class="fa-solid fa-location-dot "></i> <%= user.location %></small></p>
-                </div>
-              <% end %>
+            <div class="small-profile-card">
+              <div class= "dog-picture-users" style="background-image: url('<%= image_path first_photo.url %>')">
+                <%= image_tag user.photo.url, height: 100, width: 100, class: "user-avatar", style: "border-radius: 50%;" %>
+              </div>
+              <div class="py-2 px-2">
+                <h5><%= user.name %> & <%= dog.name %> </h5>
+                <p><small><i class="fa-solid fa-location-dot "></i> <%= user.location %></small></p>
+              </div>
             </div>
-          </div>
-        <% end %>
-      <% end %>
-  </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 </div>

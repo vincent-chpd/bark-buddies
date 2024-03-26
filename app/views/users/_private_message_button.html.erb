@@ -1,5 +1,5 @@
 <div>
-  <%= button_to conversations_path(recipient_id: user.id, sender_id: current_user.id), method: :post, class: 'btn btn-warning mx-3' do %>
-    <i class="fas fa-envelope"></i> Message
+  <%= button_to conversations_path(recipient_id: user.id, sender_id: current_user.id), method: :post, class: 'btn-profile' do %>
+    <i class="fas fa-envelope"></i><span class="mx-2">Message</span>
   <% end %>
 </div>
