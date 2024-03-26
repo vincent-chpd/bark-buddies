@@ -1,59 +1,53 @@
-<div class="banner-img">
-  <div class="container ">
-    <div class="banner-text">
-      <h3>  Communities</h3>
-        <h5 class="text-center">Join the Bark Buddies community!</h5>
-          <%= form_with url: communities_path, method: :get, class: "d-flex justify-content-center" do  %>
-            <%= text_field_tag :query,
-              params[:query],
-              class: "form-control input-search",
-              placeholder: "🔍 Search...",
-              id: "search-bar"
-              %>
-              <button type="button" id="clear-button"><i class="fa-solid fa-xmark"></i></button>
-            <%= javascript_include_tag 'search_form' %>
-          <% end %>
-    </div>
+<div class="header">
+  <div class="header-inner">
+    <h3>  Communities</h3>
+        <%= form_with url: communities_path, method: :get do  %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "input-search-small",
+            placeholder: "🔍 Search...",
+            id: "search-bar"
+            %>
+            <button type="button" id="clear-button"><i class="fa-solid fa-xmark"></i></button>
+          <%= javascript_include_tag 'search_form' %>
+        <% end %>
   </div>
 </div>
-
-<% if params[:query].present? %>
-  <div class="pt-3 pb-5 container-lg px-2" style="background: $light-orange;">
-    <div class="row mt-4 mx-3" >
-      <h2>Search results for: <%= params[:query] %></h2>
-      <% @communities.first(6).each do |community| %>
-        <div class="col-6 col-lg-2">
-          <div class="community-card">
-            <%= render "communities/community_card", community: community  %>
-          </div>
-        </div>
+<div class="community-container">
+  <% if params[:query].present? %>
+    <h2>Search results for: <%= params[:query] %></h2>
+    <div class="community-grid">
+      <% @communities.each do |community| %>
+        <%= link_to "Join Community", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" } do %>
+          <div class="community-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path community.photo.url %>');">
+            <p><%= community.name %></p>
+            </div>
+        <% end %>
       <% end %>
     </div>
-  </div>
-<% else %>
-  <div class="py-3 container-lg px-2" style="background: $light-orange;">
-      <h2>Popular Breed Groups</h2>
-    <div class="row mt-4 mx-3" >
+  <% else %>
+    <h2>Popular Breeds</h2>
+    <div class="community-grid">
       <% @communities.first(6).each do |community| %>
-        <div class="col-6 col-lg-2">
-          <div class="community-card">
-            <%= render "communities/community_card", community: community  %>
+        <%= render "communities/community_modal", community: community  %>
+        <%= link_to "Join Community", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" } do %>
+          <div class="community-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path community.photo.url %>');">
+            <p><%= community.name %></p>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
-  </div>
 
-  <div class="mb-5 py-5 container-lg px-2" style="background: $light-orange;">
-    <h2 class="mb-4">City & Neighborhood Groups</h2>
-    <div class="row mt-4 mx-2">
+    <h2>City & Neighborhood</h2>
+    <div class="community-grid">
       <% @communities.last(4).each do |community| %>
-        <div class="col-6 col-lg-2">
-          <div class="community-card">
-            <%= render "communities/community_card", community: community  %>
+        <%= render "communities/community_modal", community: community  %>
+        <%= link_to "Join Community", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" } do %>
+          <div class="community-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path community.photo.url %>');">
+            <p><%= community.name %></p>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

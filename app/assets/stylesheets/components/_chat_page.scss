@@ -2,11 +2,16 @@
   min-height: 85vh;
   display: flex;
   flex-direction: column;
-
+  background-image: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('https://www.shutterstock.com/image-vector/dog-bone-seamless-pattern-french-600nw-1656988378.jpg');
 }
 
 .chat {
   height: 77dvh;
+}
+
+.community-chat {
+  height: 79vh;
+
 }
 
 .back-btn {
@@ -23,6 +28,17 @@
   gap: 5px;
   background-color: $light-orange;
   padding: 16px;
+}
+
+.community-chat-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  padding: 16px;
+  background-position-y: -50px;
+  background-size: cover;
+  color: white;
 }
 
 .user-image{
@@ -66,30 +82,66 @@
 
 .message-container{
   max-width: 80%;
-  margin: 0 2%;
-
+  margin: 8px 16px;
+  color: white;
+  small{
+    font-size: 11px;
+    margin-left: 10px;
+    text-align: right;
+  }
 }
 
+
 .message {
-  max-width: 100%;
-  margin-bottom: 10px;
+  position: relative;
+  max-width: 200px;
+  margin-top: 16px;
   border-radius: 10px;
-  padding: 5px 10px;
+  padding: 8px 10px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   word-wrap: break-word; /* For older browsers */
+  text-wrap: wrap;
   overflow-wrap: break-word;
   p{
     margin: 0;
+  }
+  strong{
+    position:absolute;
+    top: 2px;
+    left: 8px;
+    font-size: 14px;
+    color: $light-orange;
   }
 }
 
 .user-message{
   background-color: $orange;
+  margin: 0;
+  small {
+    color: $light-orange;
+  }
 }
 
 .other-user-message{
-  background-color: $green;
+  background-color: grey;
+  margin: 0;
+  small {
+    color: $light-gray;
+  }
+}
+
+.other-users-message{
+  background-color: grey;
+  margin: 0;
+  padding-top: 18px;
+  p{
+    padding-right: 20px;
+
+  }
+  small {
+    color: $light-gray;
+  }
 }
 
 .chat-form{
@@ -139,11 +191,6 @@
   border-top: 1px solid rgb(133, 133, 133);
   border-bottom: 1px solid rgb(133, 133, 133);
   border-right: 1px solid rgb(133, 133, 133);
-
-  &:hover{
-    background-color: black;
-    color: $orange;
-  }
 }
 
 #message_content:focus{

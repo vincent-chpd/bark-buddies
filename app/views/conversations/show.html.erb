@@ -8,7 +8,9 @@
   <div class="chat" >
     <div class="chat-header">
       <div class="back-btn">
-        <a href="/conversations"><i class="fa-solid fa-chevron-left orange"></i></a>
+        <%= link_to :back do %>
+          <i class="fa-solid fa-chevron-left orange"></i>
+        <% end %>
       </div>
       <div class="header-images">
         <%= image_tag @other_user.photo.url, alt: "#{@other_user.name} Profile Picture", class: "user-image" %>
