@@ -1,0 +1,4 @@
+<% message_time = Time.strptime(message.message_time, "%m/%d/%y at %I:%M %p") %>
+<% formatted_message_time = message_time.strftime("%H:%M") %>
+<p><%= message.content %></p>
+<small ><%= formatted_message_time %></small>

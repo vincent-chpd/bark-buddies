@@ -3,7 +3,7 @@ import { createConsumer } from "@rails/actioncable"
 
 // Connects to data-controller="conversation-subscription"
 export default class extends Controller {
-  static values = { conversationId: Number }
+  static values = { conversationId: Number, currentUserId: Number }
   static targets = ["messages"]
 
   connect() {
@@ -33,9 +33,49 @@ export default class extends Controller {
 }
 
   insertMessageAndScrollDown(data){
-      this.messagesTarget.insertAdjacentHTML("beforeend", data)
-      this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
+    const currentUserIsSender = this.currentUserIdValue === data.sender_id
+    this.messagesTarget.insertAdjacentHTML("beforeend", data)
+    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
+
+    // Creating the whole message from the `data.message` String
+    const messageElement = this.buildMessageElement(currentUserIsSender, data.message)
+
+    // Inserting the `message` in the DOM
+    this.messagesTarget.insertAdjacentHTML("beforeend", messageElement)
+    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
+
+  buildMessageElement(currentUserIsSender, message) {
+    return `
+    <div class="message-block" style="${this.justifyClass(currentUserIsSender)}">
+    <div class="message-container">
+      <div class="message ${this.userStyleClass(currentUserIsSender)}">
+        ${message}
+      </div>
+    </div>
+    </div>
+    `
+  }
+
+  // <div class="message-block" style=<%= custom_style[0] %>>
+  //   <div class="message-container">
+  //     <% message_time = Time.strptime(message.message_time, "%m/%d/%y at %I:%M %p") %>
+  //     <% formatted_message_time = message_time.strftime("%H:%M") %>
+  //     <div class="message <%= custom_style[1] %>">
+  //       <%= render "messages/message_content", message: message %>
+  //       <small ><%= formatted_message_time %></small>
+  //     </div>
+  //   </div>
+  // </div>
+
+  justifyClass(currentUserIsSender) {
+    return currentUserIsSender ? "justify-content:flex-end;" : "justify-content:flex-start;"
+  }
+
+  userStyleClass(currentUserIsSender) {
+    return currentUserIsSender ? "user-message" : "other-user-message"
+  }
+
 
   markMessagesAsRead() {
     fetch(`/conversations/${this.conversationIdValue}/update_read_status`, {

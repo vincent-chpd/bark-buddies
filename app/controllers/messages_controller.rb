@@ -17,7 +17,8 @@ class MessagesController < ApplicationController
   def reach_to_conversation_channel
     ConversationChannel.broadcast_to(
       @conversation,
-      render_to_string(partial: "messages/message", locals: { message: @message })
+      message: render_to_string(partial: "messages/message_content", locals: { message: @message }),
+      sender_id: @message.user.id
     )
   end
 
