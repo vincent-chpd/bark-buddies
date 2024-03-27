@@ -26,8 +26,13 @@ class MessagesController < ApplicationController
   def reach_to_notification_channel
     other_user = @conversation.sender == current_user ? @conversation.recipient : @conversation.sender
 
+    other_total_conversations = other_user.received_conversations.or(other_user.conversations)
+
     # Find unread messages for the conversation between current_user and other_user
-    other_user_unread_messages = @conversation.messages.where.not(user_id: other_user.id).where(read: false)
+    other_user_unread_messages = Message.joins(:conversation)
+                                    .where(conversations: { id: other_total_conversations })
+                                    .where.not(user_id: other_user.id)
+                                    .where(read: false)
 
     # Broadcast the conversation ID along with the unread messages count to the other_user
     NotificationChannel.broadcast_to(
