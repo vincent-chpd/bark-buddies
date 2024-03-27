@@ -13,18 +13,12 @@ export default class extends Controller {
         this.insertMessageAndScrollDown(data)
       }}
     )
-
-    // this.readStatusChannel = createConsumer().subscriptions.create(
-    //   { channel: "ReadStatusChannel"},
-    //   { received: data => console.log(data)}
-    // )
     this.markMessagesAsRead()
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
 
   disconnect() {
     this.channel.unsubscribe()
-    // this.readStatusChannel.unsubscribe()
   }
 
   resetForm(event) {
@@ -33,40 +27,29 @@ export default class extends Controller {
 }
 
   insertMessageAndScrollDown(data){
-    const currentUserIsSender = this.currentUserIdValue === data.sender_id
-    this.messagesTarget.insertAdjacentHTML("beforeend", data)
-    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
+    const currentUserIsSender = this.currentUserIdValue == data.sender_id
+
 
     // Creating the whole message from the `data.message` String
-    const messageElement = this.buildMessageElement(currentUserIsSender, data.message)
+    const messageElement = this.buildMessageElement(currentUserIsSender, data.message, data.time)
 
     // Inserting the `message` in the DOM
-    this.messagesTarget.insertAdjacentHTML("beforeend", messageElement)
+    this.messagesTarget.innerHTML += messageElement
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
 
-  buildMessageElement(currentUserIsSender, message) {
+  buildMessageElement(currentUserIsSender, message, time) {
     return `
     <div class="message-block" style="${this.justifyClass(currentUserIsSender)}">
     <div class="message-container">
       <div class="message ${this.userStyleClass(currentUserIsSender)}">
         ${message}
+        <small>${time}</small>
       </div>
     </div>
     </div>
     `
   }
-
-  // <div class="message-block" style=<%= custom_style[0] %>>
-  //   <div class="message-container">
-  //     <% message_time = Time.strptime(message.message_time, "%m/%d/%y at %I:%M %p") %>
-  //     <% formatted_message_time = message_time.strftime("%H:%M") %>
-  //     <div class="message <%= custom_style[1] %>">
-  //       <%= render "messages/message_content", message: message %>
-  //       <small ><%= formatted_message_time %></small>
-  //     </div>
-  //   </div>
-  // </div>
 
   justifyClass(currentUserIsSender) {
     return currentUserIsSender ? "justify-content:flex-end;" : "justify-content:flex-start;"

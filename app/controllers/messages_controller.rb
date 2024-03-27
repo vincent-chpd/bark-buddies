@@ -18,7 +18,8 @@ class MessagesController < ApplicationController
     ConversationChannel.broadcast_to(
       @conversation,
       message: render_to_string(partial: "messages/message_content", locals: { message: @message }),
-      sender_id: @message.user.id
+      sender_id: @message.user_id,
+      time: @message.created_at.strftime("%H:%M")
     )
   end
 

@@ -4,9 +4,9 @@
 
   <div class="message-block" style=<%= custom_style[0] %>>
     <div class="message-container">
+      <div class="message <%= custom_style[1] %>">
       <% message_time = Time.strptime(message.message_time, "%m/%d/%y at %I:%M %p") %>
       <% formatted_message_time = message_time.strftime("%H:%M") %>
-      <div class="message <%= custom_style[1] %>">
         <%= render "messages/message_content", message: message %>
         <small ><%= formatted_message_time %></small>
       </div>
