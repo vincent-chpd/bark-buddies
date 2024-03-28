@@ -21,8 +21,7 @@ export default class extends Controller {
   }
 
   updateNotificationsUI() {
-    let data = JSON.parse(localStorage.getItem('notifications'))
-    this.renderRedDot(data)
+    this.renderRedDot(JSON.parse(localStorage.getItem('notifications')))
   }
 
   renderRedDot(data) {
