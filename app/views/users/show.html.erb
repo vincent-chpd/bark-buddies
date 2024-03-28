@@ -8,11 +8,11 @@
     <%= image_tag @user.photo.url, alt: "#{@user.name} Profile Picture", class: 'profile-image-small align-self-start' %>
     <div class="stats-container">
       <div class="stats">
-        <p><strong>0</strong></p>
+        <p><strong><%= @user.followers + @friends_number %></strong></p>
         <p>followers</p>
       </div>
       <div class="stats">
-        <p><strong>0</strong></p>
+        <p><strong><%= @user.communities %></strong></p>
         <p>communities</p>
       </div>
     </div>
@@ -34,11 +34,9 @@
     <div class="btn-container">
       <%= render "private_message_button", user: @user, method: :get, class: 'btn-profile' %>
       <% if @friendship %>
-        <% unless @friendship.confirmed %>
-          <%= button_to friendship_path(@friendship), method: :delete, class: 'btn-profile unfollow' do %>
+          <%= button_to friendship_path(@friendship, receiver_id: @user.id), method: :delete, class: 'btn-profile unfollow' do %>
             <i class="fa-regular fa-circle-xmark"></i><span class="mx-2">Unfollow</span>
           <% end %>
-        <% end %>
       <% else %>
         <%= button_to friendships_path(receiver_id: @user.id), method: :post, class: 'btn-profile' do %>
           <i class="fa-solid fa-user-plus"></i><span class="mx-2">Follow</span>
@@ -103,8 +101,9 @@
   </div>
   <!-- Dog Details -->
   <div class="my-3 dog_details text-left">
-    <h5><strong><%= @dog.breed %></strong></h5>
-    <p><%= @dog.age %> years old, <%= @dog.gender %></p>
+    <h5><strong><%= @dog.name %></strong></h5>
+    <h6><%= @dog.breed %></h6>
+    <p><em><%= @dog.age %> years old, <%= @dog.gender %></em></p>
     <p>Fun fact about me - <%= @dog.bio %></p>
   </div>
 </div>

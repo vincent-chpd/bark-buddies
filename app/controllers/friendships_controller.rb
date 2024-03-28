@@ -10,8 +10,9 @@ class FriendshipsController < ApplicationController
 
   def destroy
     @friendship = Friendship.find(params[:id])
+    other_user = User.find(params[:receiver_id])
     @friendship.destroy
-    redirect_to root_path, notice: "Unfollowed #{User.find(@friendship.receiver_id).name}."
+    redirect_to user_path(other_user), notice: "Unfollowed #{User.find(@friendship.receiver_id).name}."
   end
 
   def index
