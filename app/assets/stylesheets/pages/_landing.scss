@@ -9,11 +9,9 @@
   height: 100vh;
   z-index: 9999;
   background-color: white;
-  // background-image: url('BarkBuddiesLogoLanding.png');
-  // background-size: cover;
-  // background-position: center 130px;
+  background-image: url('landing-page2.png');
+  background-size: cover;
   // background-repeat: no-repeat;
-  // background-size: 25% auto;
   // animation: fadeIn 2s ease-in-out;
 }
 
@@ -38,17 +36,15 @@
   #toggle-button {
     position: absolute;
     top: 450px;
-    right: 110px;
-
-
+    right: 100px;
     display: inline-block;
     padding: 10px 20px;
     color: black;
-    background-color: #ffffff;
-    border: 1px solid black;
-    border-radius: 5px;
+    background-color: #dd6d1e;
+    border-radius: 100px;
     text-decoration: none;
     font-size: 1.2em;
+    font-weight: bold;
   }
 
   .landing-text {
