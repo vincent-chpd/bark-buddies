@@ -17,7 +17,7 @@
 
 .stats-container{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-grow:1;
   gap: 16px;
@@ -43,19 +43,18 @@
 
 .btn-container {
   display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin: 16px;
+  justify-content: space-between;
+  margin: 16px 0;
 }
 
 .btn-profile{
   border-radius: 12px;
   background-color: $orange;
-  padding: 8px 40px;
+  padding: 10px 40px;
   color: white;
   border: none;
-  font-size: 14px;
-  width: 177px;
+  font-size: 16px;
+  max-width: 200px;
   border: 2px solid $orange;
 }
 
