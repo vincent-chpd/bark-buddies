@@ -14,8 +14,10 @@
         <% end %>
       </div>
       <div class="header-images">
+      <%= link_to user_path(@other_user) do %>
         <%= image_tag @other_user.photo.url, alt: "#{@other_user.name} Profile Picture", class: "user-image" %>
         <%= image_tag @other_user_dog.photos.first, alt: "#{@other_user_dog.name} Profile Picture", class: "dog-image" %>
+      <% end %>
       </div>
       <div class="header-text">
         <h2>
