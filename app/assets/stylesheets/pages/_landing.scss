@@ -24,8 +24,9 @@
 
 @media (max-width: 500px) {
   .landing-image {
+    padding: 0 24px;
     width: 100vw;
-    background: none;
+    margin-bottom: 48px;
     }
 
   #toggle-button {
