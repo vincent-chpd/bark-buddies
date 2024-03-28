@@ -61,8 +61,10 @@ class ConversationsController < ApplicationController
   def reach_to_notification_channel
     user_total_conversations = current_user.received_conversations.or(current_user.conversations)
 
-    my_unread_messages = Message.where(conversation_id: user_total_conversations.select(:id))
-    .where.not(user_id: current_user.id).where(read: false)
+    my_unread_messages = Message.joins(:conversation)
+                             .where(conversations: { id: user_total_conversations })
+                             .where.not(user_id: current_user.id)
+                             .where(read: false)
 
     NotificationChannel.broadcast_to(
       current_user,

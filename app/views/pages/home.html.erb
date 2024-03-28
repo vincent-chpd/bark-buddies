@@ -1,7 +1,9 @@
   <div class="profiles-container">
     <div class="d-flex justify-content-between align-items-center mb-3 profiles-title">
       <h2>Buddies near you</h2>
-      <%=  link_to "See more", users_path, class: "underlined-link" %>
+      <%=  link_to users_path, class: "underlined-link" do %>
+        <i class="fa-solid fa-arrow-right-long"></i>
+      <% end %>
     </div>
     <div class="scroll-container">
       <div class="d-flex scroll px-3">
@@ -28,7 +30,9 @@
   <div class="suggested-community-container">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h2>Popular communities</h2>
-      <%=  link_to "See more", communities_path, class:"orange underlined-link" %>
+      <%=  link_to communities_path, class:"orange underlined-link" do %>
+        <i class="fa-solid fa-arrow-right-long"></i>
+      <% end %>
     </div>
     <div class="d-flex scroll">
       <% @communities.all.each do |community| %>
@@ -45,7 +49,9 @@
   <div class="upcoming-events-container">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h2>Upcoming events</h2>
-      <%=  link_to "See more", events_path, class:"orange underlined-link" %>
+      <%=  link_to events_path, class:"orange underlined-link" do %>
+        <i class="fa-solid fa-arrow-right-long"></i>
+      <% end %>
     </div>
     <div class="">
       <% @events.first(4).each do |event| %>
