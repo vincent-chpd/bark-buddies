@@ -13,7 +13,7 @@
   <body>
 
     <div class="<%= 'hide-navbar' if request.path == '/landing' %> navbar-barkbuddies appear-if-small">
-    <%= link_to root_path, class: "logo-container " do %>
+    <%= link_to landing_path, class: "logo-container " do %>
       <%= image_tag ("https://res.cloudinary.com/drqv8g5uf/image/upload/v1710167061/Bark_Buddies_1_rg5mi8"), alt: "Bark Buddies Logo", class: "logo" %>
     <% end %>
     <% if request.path == "/" %>
