@@ -11,6 +11,7 @@ export default class extends Controller {
       { received: data => this.#insertMessageAndScrollDown(data) }
     )
     console.log(`Subscribe to the community with the id ${this.communityIdValue}.`)
+    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
 
   resetForm(event) {

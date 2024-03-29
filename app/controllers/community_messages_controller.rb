@@ -22,6 +22,6 @@ class CommunityMessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:community_message).permit(:content)
+    params.require(:community_message).permit(:content, :user_id)
   end
 end
