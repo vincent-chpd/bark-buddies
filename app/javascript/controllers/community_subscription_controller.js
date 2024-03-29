@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import { createConsumer } from "@rails/actioncable"
 
 export default class extends Controller {
-  static values = { communityId: Number }
+  static values = { communityId: Number, currentUserId: Number }
   static targets = ["messages"]
 
   connect() {
@@ -14,6 +14,7 @@ export default class extends Controller {
   }
 
   resetForm(event) {
+    event.preventDefault()
     event.target.reset()
   }
 
@@ -23,7 +24,33 @@ export default class extends Controller {
   }
 
   #insertMessageAndScrollDown(data) {
-    this.messagesTarget.insertAdjacentHTML("beforeend", data)
+    const currentUserIsSender = this.currentUserIdValue == data.sender_id
+    const messageElement = this.buildMessageElement(currentUserIsSender, data.message, data.time, data.sender_name)
+
+    this.messagesTarget.insertAdjacentHTML("beforeend", messageElement)
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
+  }
+
+  buildMessageElement(currentUserIsSender, message, time, name) {
+    const sender = currentUserIsSender ? "" : `<p><strong>${name}</strong></p>`
+    return `
+    <div class="message-block" style="${this.justifyClass(currentUserIsSender)}">
+    <div class="message-container">
+      <div class="message ${this.userStyleClass(currentUserIsSender)}">
+        ${sender}
+        ${message}
+        <small>${time}</small>
+      </div>
+    </div>
+    </div>
+    `
+  }
+
+  justifyClass(currentUserIsSender) {
+    return currentUserIsSender ? "justify-content:flex-end;" : "justify-content:flex-start;"
+  }
+
+  userStyleClass(currentUserIsSender) {
+    return currentUserIsSender ? "user-message" : "other-user-message"
   }
 }
