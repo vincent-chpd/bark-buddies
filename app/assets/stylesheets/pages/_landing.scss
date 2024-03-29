@@ -1,0 +1,47 @@
+
+
+#landing-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 9999;
+  background-image: url('landing-page2.png');
+  background-size: cover;
+  // background-repeat: no-repeat;
+  // animation: fadeIn 2s ease-in-out;
+}
+
+
+.landing-text {
+  text-align: center;
+}
+
+
+
+@media (max-width: 500px) {
+  .landing-image {
+    padding: 0 24px;
+    width: 100vw;
+    margin-bottom: 48px;
+    }
+
+  #toggle-button {
+    top: 450px;
+    right: 100px;
+    padding: 10px 20px;
+    color: rgb(255, 255, 255);
+    background-color: $orange;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  .landing-text {
+    text-align: center;
+  }
+}
