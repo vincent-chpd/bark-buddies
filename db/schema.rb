@@ -100,6 +100,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_28_203137) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
+  create_table "favorite_communities", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "community_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["community_id"], name: "index_favorite_communities_on_community_id"
+    t.index ["user_id"], name: "index_favorite_communities_on_user_id"
+  end
+
   create_table "friendships", force: :cascade do |t|
     t.bigint "sender_id", null: false
     t.bigint "receiver_id", null: false
@@ -108,6 +117,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_28_203137) do
     t.datetime "updated_at", null: false
     t.index ["receiver_id"], name: "index_friendships_on_receiver_id"
     t.index ["sender_id"], name: "index_friendships_on_sender_id"
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "community_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["community_id"], name: "index_members_on_community_id"
+    t.index ["user_id"], name: "index_members_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -147,8 +165,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_28_203137) do
   add_foreign_key "community_messages", "users"
   add_foreign_key "dogs", "users"
   add_foreign_key "events", "users"
+  add_foreign_key "favorite_communities", "communities"
+  add_foreign_key "favorite_communities", "users"
   add_foreign_key "friendships", "users", column: "receiver_id"
   add_foreign_key "friendships", "users", column: "sender_id"
+  add_foreign_key "members", "communities"
+  add_foreign_key "members", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
 end
