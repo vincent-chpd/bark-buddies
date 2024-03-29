@@ -14,11 +14,13 @@ export default class extends Controller {
       }}
     )
     this.markMessagesAsRead()
+
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
 
   disconnect() {
     this.channel.unsubscribe()
+    this.markMessagesAsRead()
   }
 
   resetForm(event) {
@@ -61,7 +63,6 @@ export default class extends Controller {
 
 
   markMessagesAsRead() {
-    console.log('Marking messages as read');
     fetch(`/conversations/${this.conversationIdValue}/update_read_status`, {
       method: 'PATCH',
       headers: {

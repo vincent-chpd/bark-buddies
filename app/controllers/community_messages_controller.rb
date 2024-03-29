@@ -8,7 +8,10 @@ class CommunityMessagesController < ApplicationController
     if @community_message.save
       CommunityChannel.broadcast_to(
         @community,
-        render_to_string(partial: "community_messages/message", locals: { message: @community_message })
+        message: render_to_string(partial: "community_messages/message_content", locals: { message: @community_message }),
+        sender_id: @community_message.user_id,
+        time: @community_message.created_at.strftime("%H:%M"),
+        sender_name: @community_message.user.name
       )
       head :ok
     else
@@ -19,6 +22,6 @@ class CommunityMessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:community_message).permit(:content)
+    params.require(:community_message).permit(:content, :user_id)
   end
 end

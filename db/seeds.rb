@@ -122,7 +122,9 @@ boroughs = %w[Hackney Croydon Camden Stratford Shoreditch Lambeth Newham Greenwi
     password: '123456',
     location: boroughs.sample,
     age: rand(25..30),
-    bio: Faker::Lorem.paragraph
+    bio: Faker::Lorem.paragraph,
+    followers: rand(1..100),
+    communities: rand(1..10)
   )
   file = URI.open('https://thispersondoesnotexist.com')
   user.photo.attach(io: file, filename: "user#{i}.png", content_type: 'image/png')

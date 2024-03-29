@@ -28,6 +28,8 @@ class ConversationsController < ApplicationController
     respond_to do |format|
       format.json { render json: { status: :ok } }
     end
+
+    # redirect_to conversation_path(@conversation)
   end
 
   def create
@@ -69,7 +71,7 @@ class ConversationsController < ApplicationController
     NotificationChannel.broadcast_to(
       current_user,
       data: {
-        unread_messages_number: my_unread_messages.count
+        my_unread_messages_number: my_unread_messages.count
       }
     )
   end

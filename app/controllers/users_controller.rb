@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @friends_number = Friendship.where(receiver_id: @user.id).count
     @dog = @user.dogs.first
     @conversations = Conversation.where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id)
     @friendship = Friendship.find_by(receiver_id: @user.id, sender_id: current_user.id)
@@ -19,6 +20,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+
     if @user.update(user_params)
       redirect_to user_path(@user), notice: 'Profile was successfully updated.'
     else
