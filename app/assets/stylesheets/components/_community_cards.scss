@@ -1,5 +1,5 @@
 .community-container {
-  margin: 16px 16px 71px 16px;
+  margin: 16px 16px 86px 16px;
   h4{
     margin-bottom: 16px;
   }
@@ -13,6 +13,7 @@
   a{
     text-decoration: none;
     color: white;
+    font-weight: 500;
   }
 }
 .community-card {
@@ -26,7 +27,7 @@
   background-size: cover;
   p{
     font-size: 20px;
-    margin: 0;
+    margin: 0 8px;
   }
   a{
     text-decoration: none;
