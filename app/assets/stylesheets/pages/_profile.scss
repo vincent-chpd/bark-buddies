@@ -52,11 +52,20 @@
   gap: 16px;
 }
 
-.btn-follow-container{
-  flex-grow: 1;
+.profile-tools{
+  width:100%;
 }
-.btn-follow {
 
+.btn-follow-container{
+  display: flex;
+  justify-content: center;
+  width:100%;
+  button{
+    margin: 0 auto;
+  }
+}
+
+.btn-follow {
   border-radius: 12px;
   background-color: $white;
   width: 100%;

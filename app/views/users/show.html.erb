@@ -6,6 +6,7 @@
       </div>
   <div class="user-profile">
     <%= image_tag @user.photo.url, alt: "#{@user.name} Profile Picture", class: 'profile-image-small align-self-start' %>
+    <div class= "profile-tools">
     <div class="stats-container">
       <div class="stats">
         <p><strong><%= @user.followers + @friends_number %></strong></p>
@@ -15,7 +16,15 @@
         <p><strong><%= @user.communities %></strong></p>
         <p>communities</p>
       </div>
+      </div>
+      <div class="btn-follow-container">
+      <% if current_user == @user %>
+        <button type="button" class=" btn-profile" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+          Edit Profile
+        </button>
+      <% end %>
     </div>
+   </div>
   </div>
 
 
@@ -23,13 +32,7 @@
   <div class="user-bio">
     <div class=name-container>
       <h5><strong><%= @user.name %>, </strong><span class="lighter-font"><%= @user.age %></span></h5>
-    <div class="btn-follow-container">
-      <% if current_user == @user %>
-        <button type="button" class="btn-follow" data-bs-toggle="modal" data-bs-target="#editProfileModal">
-          Edit Profile
-        </button>
-      <% end %>
-    </div>
+
     </div>
   </div>
 
