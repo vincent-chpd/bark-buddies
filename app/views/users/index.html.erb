@@ -1,16 +1,20 @@
 <div class="header">
   <div class="header-inner">
-    <h3 class="text-banner text-center">Explore</h3>
-    <%= form_with url: users_path, method: :get, class: "d-flex justify-content-center", id: "search-form" do  %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "input-search",
-        placeholder: "🔍  Type a location...",
-        id: "search-bar"
-        %>
-      <button type="button" id="clear-button"><i class="fa-solid fa-xmark"></i></button>
-      <%= javascript_include_tag 'search_form' %>
-    <% end %>
+    <div class="d-flex justify-content-between align-items-center">
+      <h1 class="text-banner text-center">Explore</h1>
+        <a href="#"><i class="fa-solid fa-circle-plus orange"></i>
+        </a>
+    </div>
+      <%= form_with url: users_path, method: :get, class: "d-flex justify-content-center", id: "search-form" do  %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "input-search",
+          placeholder: "🔍  Type a location...",
+          id: "search-bar"
+          %>
+        <button type="button" id="clear-button"><i class="fa-solid fa-xmark"></i></button>
+        <%= javascript_include_tag 'search_form' %>
+      <% end %>
   </div>
 </div>
 

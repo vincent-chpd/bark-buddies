@@ -6,10 +6,11 @@
 
 .header-inner{
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 45px;
+  // justify-content: space-around;
   margin: 0 16px;
+  flex-direction: column;
+  // justify-content: center;
+
   a{
     font-size: 30px;
     margin: 0;

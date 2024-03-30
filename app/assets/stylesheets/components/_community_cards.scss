@@ -1,6 +1,6 @@
 .community-container {
   margin: 16px 16px 71px 16px;
-  h2{
+  h4{
     margin-bottom: 16px;
   }
 }
@@ -35,7 +35,8 @@
 }
 
 .input-search-small {
-  width: 200px;
+  width: 100%;
+  margin-top: 8px;
   border-radius: 12px;
   padding: 8px;
   border: none;

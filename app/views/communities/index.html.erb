@@ -1,21 +1,25 @@
 <div class="header">
   <div class="header-inner">
-    <h3>  Communities</h3>
-        <%= form_with url: communities_path, method: :get do  %>
-          <%= text_field_tag :query,
-            params[:query],
-            class: "input-search-small",
-            placeholder: "🔍 Search...",
-            id: "search-bar"
-            %>
-            <button type="button" id="clear-button"><i class="fa-solid fa-xmark"></i></button>
-          <%= javascript_include_tag 'search_form' %>
-        <% end %>
+    <div class="d-flex justify-content-between align-items-center">
+      <h1> Communities</h1>
+        <a href="#"><i class="fa-solid fa-circle-plus orange"></i>
+        </a>
+    </div>
+          <%= form_with url: communities_path, method: :get do  %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "input-search-small",
+              placeholder: "🔍 Search...",
+              id: "search-bar"
+              %>
+              <button type="button" id="clear-button"><i class="fa-solid fa-xmark"></i></button>
+            <%= javascript_include_tag 'search_form' %>
+          <% end %>
   </div>
 </div>
 <div class="community-container">
   <% if params[:query].present? %>
-    <h2>Search results for: <%= params[:query] %></h2>
+    <h4>Search results for: <%= params[:query] %></h4>
     <div class="community-grid">
       <% @communities.each do |community| %>
         <%= link_to "Join Community", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" } do %>
@@ -26,7 +30,7 @@
       <% end %>
     </div>
   <% else %>
-    <h2>Popular Breeds</h2>
+    <h4>Popular Breeds</h4>
     <div class="community-grid">
       <% @communities.first(6).each do |community| %>
         <%= render "communities/community_modal", community: community  %>
@@ -38,7 +42,7 @@
       <% end %>
     </div>
 
-    <h2>City & Neighborhood</h2>
+    <h4>City & Neighborhood</h4>
     <div class="community-grid">
       <% @communities.last(4).each do |community| %>
         <%= render "communities/community_modal", community: community  %>
