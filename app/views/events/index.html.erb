@@ -1,6 +1,10 @@
 <div class="header">
   <div class="header-inner">
-    <h3>Events</h3>
+    <div class="d-flex justify-content-between align-items-center">
+    <h1>Events</h1>
+      <a href="#"><i class="fa-solid fa-circle-plus orange"></i>
+      </a>
+  </div>
     <%= form_with url: events_path, method: :get, class: "d-flex justify-content-center" do  %>
       <%= text_field_tag :query,
         params[:query],
