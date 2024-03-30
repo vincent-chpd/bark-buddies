@@ -29,7 +29,7 @@ export default class extends Controller {
   leave(button, chat) {
     button.style.backgroundColor = "#E67E22";
     button.textContent = "Join community";
-    button.style.color = "black";
+    button.style.color = "white";
     chat.classList.add("d-none");
   }
 
