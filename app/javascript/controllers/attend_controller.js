@@ -56,3 +56,4 @@ export default class extends Controller {
 //     this.buttonTarget.style.backgroundColor = "#E67E22";
 //     this.buttonTarget.style.color = "white";
 //   }
+}
