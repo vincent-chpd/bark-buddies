@@ -17,19 +17,25 @@
       </div>
     </div>
   </div>
+
+
+
   <div class="user-bio">
-    <h5><strong><%= @user.name %>, </strong><span class="lighter-font"><%= @user.age %></span></h5>
-    <p><i class="fa-solid fa-location-dot"></i> <%= @user.location %></p>
-    <p><%= @user.bio %></p>
+    <div class=name-container>
+      <h5><strong><%= @user.name %>, </strong><span class="lighter-font"><%= @user.age %></span></h5>
+    <div class="btn-follow-container">
+      <% if current_user == @user %>
+        <button type="button" class="btn-follow" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+          Edit Profile
+        </button>
+      <% end %>
+    </div>
+    </div>
   </div>
 
-  <div class="btn-container">
-    <% if current_user == @user %>
-      <button type="button" class="btn-profile" data-bs-toggle="modal" data-bs-target="#editProfileModal">
-        Edit Profile
-      </button>
-    <% end %>
-  </div>
+    <p class="gray"><i class="fa-solid fa-location-dot orange"></i> <%= @user.location.capitalize %></p>
+    <p><%= @user.bio %></p>
+
 
   <% unless current_user == @user %>
     <div class="btn-container">
@@ -55,10 +61,12 @@
         </div>
         <div class="modal-body">
           <!-- Profile Edit Form -->
-          <%= simple_form_for @user, url: user_path(@user), method: :put do |f| %>
+          <%= simple_form_for @user,  url: user_path(@user), method: :put do |f| %>
               <%= f.input :name %>
               <%= f.input :age %>
               <%= f.input :bio %>
+              <%= f.input :location %>
+              <%= f.input :photo, as: :file %>
               <%= f.button :submit, "Save Changes", class: "btn btn-warning submit" %>
           <% end %>
         </div>
@@ -91,20 +99,13 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
-          <!-- Upload Photo Button -->
-    <% if current_user == @user %>
-        <div class="position-absolute bottom-0 end-0 mb-3 me-3" style="z-index: 1;">
-            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#photoModal">
-                <i class="fa-solid fa-pen"></i>
-            </button>
-        </div>
-    <% end %>
+
   </div>
   <!-- Dog Details -->
   <div class="my-3 dog_details text-left">
     <h5><strong><%= @dog.name %></strong></h5>
     <h6><%= @dog.breed %></h6>
-    <p><em><%= @dog.age %> years old, <%= @dog.gender %></em></p>
+    <p class="gray"><em><%= @dog.age %> years old, <%= @dog.gender %></em></p>
     <p>Fun fact about me - <%= @dog.bio %></p>
   </div>
 </div>

@@ -35,7 +35,7 @@
 }
 
 .user-bio{
-  margin: 16px 0;
+  margin-top: 8px;
   p{
     margin: 8px 0;
   }
@@ -44,6 +44,24 @@
 .btn-container {
   display: flex;
   justify-content: space-between;
+}
+
+.name-container{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-follow-container{
+  flex-grow: 1;
+}
+.btn-follow {
+
+  border-radius: 12px;
+  background-color: $white;
+  width: 100%;
+  border: 2px solid $orange;
+  color: $orange;
 }
 
 .btn-profile{
@@ -98,7 +116,9 @@
 
 
 
-
+.gray{
+  color: gray;
+}
 
 .profile-info {
   margin-left: 15px;
