@@ -15,12 +15,12 @@
           <p><small><i class="fa-solid fa-location-dot orange"></i> <%= event.location %></small></p>
           <p><small><i class="fa-regular fa-calendar orange"></i> <%= event.date.strftime("%d %B %Y") %></small></p>
         </div>
-      </div>
-      <div class=" attend-button-container d-flex justify-content-center">
-        <button class="attend-button" data-action="click->attend#toggle" data-attend-target="button">Attend</button>
-      </div>
-      <div class="fake-attendees" data-attend-target="fakeAttendees" style="font-size: small;">
-        <p>Tom and 25 others are going </p>
+        <div class="attend-button-container d-flex flex-column justify-content-center">
+          <button class="attend-button" data-action="click->attend#toggle" data-attend-target="button">Attend</button>
+        </div>
+        <div class="fake-attendees" data-attend-target="fakeAttendees" style="font-size: small;">
+          <p>Tom and 25 others are going</p>
+        </div>
       </div>
     </div>
   </div>
