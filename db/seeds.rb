@@ -184,7 +184,7 @@ events = [
     title: "Glits and Grace: A Pageant Show!",
     description: "Step into the spotlight and experience the magic of Glamour and Grace!",
     date: "18 May 2024",
-    location: 'Shoredtich, London',
+    location: 'Shoreditch, London',
     img: "https://ichef.bbci.co.uk/news/976/cpsprodpb/DF88/production/_106642275_tv053643519.jpg"
   },
 
