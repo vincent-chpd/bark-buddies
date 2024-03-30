@@ -54,7 +54,6 @@
 .event-details {
   margin-bottom: 8px;
   p{
-    color: gray;
     font-size: 14px;
   }
   i{
@@ -83,6 +82,17 @@
   }
 }
 
+.modal-body-event{
+  margin:0px;
+  padding: 0px;
+  img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 8px;
+  }
+}
 .btn-modal{
   background-color: #E67E22;
   border-radius: 12px;
@@ -92,14 +102,15 @@
 }
 
 .attend-button{
-  background-color: rgb(252, 160, 0);
+  background-color: #E67E22;
+  border-radius: 12px;
   color: white;
-  border-radius: 6px;
-  border: 0px;
-  width: auto;
-  height: 40px;
-  text-decoration: none;
+  padding: 6px 10px;
+  border: none;
+  width:200px;
+
 }
+
 .logo-button{
     button{
       height: 50px;
@@ -110,7 +121,8 @@
 
   .fake-attendees {
     color: gray;
-    text-align: right;
+    text-align: center;
+    margin-top: 8px;
   }
 
   .attend-button-container {
