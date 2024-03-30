@@ -13,7 +13,7 @@
         <% end %>
   </div>
 </div>
-<div class="community-container">
+<div class="community-container" data-controller="bubbles">
   <% if params[:query].present? %>
     <h2>Search results for: <%= params[:query] %></h2>
     <div class="community-grid">
@@ -27,11 +27,11 @@
     </div>
   <% else %>
     <h2>Popular Breeds</h2>
-    <div class="community-grid">
+    <div class="community-grid" data-bubbles-target = "popularBubblesContainer">
       <% @communities.first(6).each do |community| %>
         <%= render "communities/community_modal", community: community  %>
         <%= link_to "Join Community", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" } do %>
-          <div class="community-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path community.photo.url %>');">
+          <div class="community-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path community.photo.url %>');" data-bubbles-target = "popularBubbles">
             <p><%= community.name %></p>
           </div>
         <% end %>
@@ -39,11 +39,11 @@
     </div>
 
     <h2>City & Neighborhood</h2>
-    <div class="community-grid">
+    <div class="community-grid" data-bubbles-target = "cityBubblesContainer">
       <% @communities.last(4).each do |community| %>
         <%= render "communities/community_modal", community: community  %>
         <%= link_to "Join Community", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" } do %>
-          <div class="community-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path community.photo.url %>');">
+          <div class="community-card-city" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path community.photo.url %>');" data-bubbles-target = "cityBubbles">
             <p><%= community.name %></p>
           </div>
         <% end %>
