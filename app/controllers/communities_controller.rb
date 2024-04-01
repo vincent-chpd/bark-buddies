@@ -1,15 +1,12 @@
 class CommunitiesController < ApplicationController
 
   def index
-    @communities = if params[:query].present?
-                    Rails.cache.fetch("communities/#{params[:query]}") do
-                      Community.search_by_name(params[:query])
-                    end
-                  else
-                    Rails.cache.fetch('communities/all') do
-                      Community.all
-                    end
-                  end
+    @communities = Community.all
+    if params[:query].present?
+      @communities = Community.search_by_name(params[:query])
+    else
+      @communities = Community.all
+    end
   end
 
   def show
