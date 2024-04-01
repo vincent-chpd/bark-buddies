@@ -43,7 +43,7 @@
     h5 {
       font-size: 1rem;
       margin-top: 5px;
-      margin-right: 12px;
+      margin-right: 14px;
     }
 
     p {
@@ -69,8 +69,13 @@
   }
 }
 .modal-header{
-padding: 16px 0;
+  padding: 16px 0;
+  p{
+    margin: 0;
+    font-size: 14px;
+  }
 }
+
 .modal-header {
   border-bottom: white;
   .btn-close{
@@ -101,15 +106,16 @@ padding: 16px 0;
   }
 }
 .btn-modal{
-  background-color: #E67E22;
+  background-color: #e99852;
   border-radius: 12px;
   color: white;
-  padding: 6px 10px;
+  padding: 10px;
   border: none;
+  width: 200px;
 }
 
 .attend-button{
-  background-color: #E67E22;
+  background-color: #e99852;
   border-radius: 12px;
   color: white;
   padding: 6px 10px;
@@ -130,6 +136,9 @@ padding: 16px 0;
     color: gray;
     text-align: center;
     margin-top: 8px;
+    p{
+      margin: 0;
+    }
   }
 
   .attend-button-container {

@@ -10,7 +10,7 @@ export default class extends Controller {
   toggle(event) {
     const button = event.currentTarget;
     const chat = button.nextElementSibling;
-    if (button.textContent === "Join community") {
+    if (button.textContent === " Join community") {
       this.join(button, chat);
     } else {
       this.leave(button, chat);
@@ -19,16 +19,16 @@ export default class extends Controller {
   }
 
   join(button, chat) {
-    button.textContent = "Leave community";
+    button.innerHTML = "<i class='fa-regular fa-circle-xmark'></i> Leave community";
     button.style.backgroundColor = "white";
-    button.style.border = "1px solid #E67E22";
-    button.style.color = "#E67E22";
+    button.style.border = "1px solid #e99852";
+    button.style.color = "#e99852";
     chat.classList.remove("d-none");
   }
 
   leave(button, chat) {
-    button.style.backgroundColor = "#E67E22";
-    button.textContent = "Join community";
+    button.style.backgroundColor = "#e99852";
+    button.innerHTML = "<i class='fa-solid fa-arrow-right-to-bracket'></i> Join community";
     button.style.color = "white";
     chat.classList.add("d-none");
   }
@@ -49,7 +49,7 @@ export default class extends Controller {
 
   saveState(button) {
     const id = button.dataset.communityId;
-    const isJoined = button.textContent === "Leave community";
+    const isJoined = button.textContent === " Leave community";
     localStorage.setItem(`communityJoined_${id}`, isJoined);
   }
 }

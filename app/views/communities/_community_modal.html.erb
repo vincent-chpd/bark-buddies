@@ -2,17 +2,21 @@
   <div class="modal-dialog modal-dialog-centered" >
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel"><%= community.name %></h1>
+        <div>
+          <h1 class="modal-title fs-5" id="staticBackdropLabel"><%= community.name %></h1>
+          <p><i class="fa-regular fa-user orange"></i> <%= rand(10..20) %> Members</p>
+        </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <%= image_tag community.photo.url %>
       <div class="modal-body">
         <p><%= community.description %></p>
-        <p><i class="fa-regular fa-user orange"></i> <%= rand(10..20) %> Members</p>
       </div>
       <div class="modal-footer" data-controller="join-community">
         <button type="button" class="btn-modal" data-action="click->join-community#toggle"  data-join-community-target="button" data-community-id="<%= community.id %>" >Join community</button>
-        <%= link_to "Chat", community_path(community), class:"btn-modal d-none", data: { target: "join-community.chat" }  %>
+        <%= link_to community_path(community), class:"btn-modal d-none", data: { target: "join-community.chat" } do %>
+          <i class="fa-solid fa-people-group"></i> Enter chatroom
+        <% end %>
       </div>
     </div>
   </div>

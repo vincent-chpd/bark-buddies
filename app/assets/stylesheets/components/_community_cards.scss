@@ -13,7 +13,7 @@
   a{
     text-decoration: none;
     color: white;
-    font-weight: 500;
+    font-weight: 400;
   }
 }
 .community-card {
@@ -25,6 +25,7 @@
   height: 150px;
   background-position: center;
   background-size: cover;
+  position: relative;
   p{
     font-size: 20px;
     margin: 0 8px;
@@ -32,6 +33,13 @@
   a{
     text-decoration: none;
     color: white;
+  }
+  small{
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    font-size: 12px;
+
   }
 }
 
@@ -42,4 +50,11 @@
   padding: 8px;
   border: none;
   font-size: 14px;
+}
+
+
+@media (min-width: 600px) {
+  .community-grid{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }

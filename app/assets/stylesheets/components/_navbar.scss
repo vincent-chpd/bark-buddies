@@ -35,8 +35,7 @@
 
 .navbar-items{
   display: flex;
-  width:60%;
-  justify-content: flex-end;
+  justify-content: center;
   gap:10px;
   align-items: center;
   a{
@@ -142,12 +141,30 @@
   font-size: 12px;
 }
 
-@media (min-width: 575px) {
+@media (min-width: 577px) {
   .appear-if-large {
     display: block;
   }
   .appear-if-small {
     display: none;
+  }
+
+  .navbar-barkbuddies{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navbar-items{
+    display: flex;
+    justify-content: center;
+    gap:10px;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    a{
+      color: rgb(207, 126, 40);
+    }
   }
 }
 
@@ -176,6 +193,7 @@
     width: 100%;
     bottom: 0;
   }
+
 }
 
 .hide-navbar {
