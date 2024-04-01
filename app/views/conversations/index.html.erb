@@ -10,7 +10,9 @@
 
   <div class="ui list conversations-container">
     <% @conversations.each do |conversation| %>
-      <%= render "conversation_card", conversation: conversation %>
+      <% if conversation.messages.any? %>
+        <%= render "conversation_card", conversation: conversation %>
+      <% end %>
     <% end %>
   </div>
 </div>

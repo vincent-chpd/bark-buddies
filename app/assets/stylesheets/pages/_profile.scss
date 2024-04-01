@@ -1,10 +1,10 @@
 .profile-container {
-  margin: 40px 16px 71px 16px;
+  margin: 20px 16px 71px 16px;
 }
 
 .back-btn-profile {
   position: absolute;
-  top: 68px;
+  top: 72px;
   left: 16px;
   font-size: 20px;
 }
@@ -54,6 +54,7 @@
 
 .profile-tools{
   width:100%;
+  padding: 0;
 }
 
 .btn-follow-container{
@@ -61,7 +62,12 @@
   justify-content: center;
   width:100%;
   button{
-    margin: 0 auto;
+    margin: 12px auto -10px auto;
+    padding: 0 16px;
+    i{
+      font-size: 12px;
+
+    }
   }
 }
 
