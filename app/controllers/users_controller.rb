@@ -2,10 +2,10 @@ class UsersController < ApplicationController
 
   def index
     @users = if params[:query].present?
-              User.search_by_location_name(params[:query])
-            else
-              User.includes(:dogs, photo_attachment: :blob).all
-            end
+               User.search_by_location_name(params[:query])
+             else
+               User.includes(:dogs, photo_attachment: :blob).all
+             end
     @message = "No buddies at this location 😢<br/>#{view_context.link_to('Try again', users_path)}" if @users.empty?
   end
 
@@ -27,7 +27,6 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-
 
   def destroy
     @user.destroy

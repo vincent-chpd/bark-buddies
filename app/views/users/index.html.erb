@@ -25,7 +25,7 @@
 <% end %>
 
 <div class="explore-container">
-  <% @users.reject { |user| user == current_user }.each do |user| %>
+  <% @users.includes(:dogs, photo_attachment: :blob).reject { |user| user == current_user }.each do |user| %>
     <% user.dogs.each do |dog| %>
       <div class="explore-profile-card">
         <div class="">
