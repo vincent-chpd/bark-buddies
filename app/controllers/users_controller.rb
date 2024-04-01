@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
 
   def index
-    if params[:query].present?
-      @users = User.search_by_location_name(params[:query])
-      @message = "No buddies at this location 😢<br/>#{view_context.link_to('Try again', users_path)}" if @users.empty?
-    else
-      @users = User.all
-    end
+    @users = if params[:query].present?
+              User.search_by_location_name(params[:query])
+            else
+              User.all
+            end
+    @message = "No buddies at this location 😢<br/>#{view_context.link_to('Try again', users_path)}" if @users.empty?
   end
 
   def show

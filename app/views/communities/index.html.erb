@@ -25,6 +25,7 @@
         <%= link_to "Join Community", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" } do %>
           <div class="community-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path community.photo.url %>');">
             <p><%= community.name %></p>
+            <p><i class="fa-regular fa-user orange"></i> <%= rand(10..20) %></p>
             </div>
         <% end %>
       <% end %>
@@ -37,6 +38,7 @@
         <%= link_to "Join Community", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" } do %>
           <div class="community-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path community.photo.url %>');">
             <p><%= community.name %></p>
+            <p><small><i class="fa-regular fa-user orange"></i> <%= rand(10..20) %></small></p>
           </div>
         <% end %>
       <% end %>

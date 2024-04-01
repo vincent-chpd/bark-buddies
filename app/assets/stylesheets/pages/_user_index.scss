@@ -107,3 +107,9 @@
 #clear-button {
   display: none;
 }
+
+@media (min-width: 600px) {
+  .explore-container{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}

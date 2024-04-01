@@ -16,14 +16,14 @@ export default class extends Controller {
   join(button, fakeAttendees) {
     button.textContent = "Attending";
     button.style.backgroundColor = "white";
-    button.style.border = "1px solid #E67E22";
-    button.style.color = "#E67E22";
+    button.style.border = "1px solid #e99852";
+    button.style.color = "#e99852";
     fakeAttendees.classList.remove("d-none");
     fakeAttendees.innerHTML = 'You and 26 others are going'
   }
 
   leave(button, fakeAttendees) {
-    button.style.backgroundColor = "#E67E22";
+    button.style.backgroundColor = "#e99852";
     button.textContent = "Attend";
     button.style.color = "white";
   }

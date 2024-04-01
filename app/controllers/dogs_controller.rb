@@ -1,20 +1,19 @@
 class DogsController < ApplicationController
   before_action :set_dog, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:create, :destroy]
 
   def new
     @dog = Dog.new
   end
 
   def create
-    @user = current_user
-    @dog = Dog.new(dog_params)
-    @dog.user = @user
+    @dog = @user.dogs.build(dog_params)
 
-    # if @dog.save
-    #   render :show, status: :created
-    # else
-    #   render , status: :unprocessable_entity
-    # end
+    if @dog.save
+      render :show, status: :created
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -25,7 +24,6 @@ class DogsController < ApplicationController
   end
 
   def destroy
-    @user = current_user
     @dog.destroy
     redirect_to user_path(@user)
   end
@@ -36,7 +34,11 @@ class DogsController < ApplicationController
     @dog = Dog.find(params[:id])
   end
 
+  def set_user
+    @user = current_user
+  end
+
   def dog_params
-    params.require(:dog).permit(:name, :breed, :age, :gender, :bio, [:photos])
+    params.require(:dog).permit(:name, :breed, :age, :gender, :bio, photos: [])
   end
 end
