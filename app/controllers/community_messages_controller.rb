@@ -1,9 +1,10 @@
 class CommunityMessagesController < ApplicationController
 
   def create
-    @community = Community.includes(:users).find(params[:community_id])
-    @community_message = @community.community_messages.new(message_params)
-    @community_message.user = current_user
+      @community = Community.find(params[:community_id])
+      @community_message = CommunityMessage.new(message_params)
+      @community_message.community = @community
+      @community_message.user = current_user
     if @community_message.save
       CommunityChannel.broadcast_to(
         @community,
