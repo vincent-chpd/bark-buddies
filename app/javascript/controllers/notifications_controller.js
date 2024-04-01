@@ -16,7 +16,7 @@ export default class extends Controller {
     this.updateNotificationsUI()
   }
 
-  storeNotificationData(data) {
+  storeNotificationData(data = {}) {
     localStorage.setItem('notifications', JSON.stringify(data))
   }
 
