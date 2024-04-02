@@ -40,7 +40,7 @@ export default class extends Controller {
                                     <a href="/conversations" class="icon">
                                       <i class="fas fa-envelope"></i>
                                     </a>
-                                    <small>CHATS</small>
+                                    <small>MESSAGES</small>
                                     `
         chatNotifications.innerHTML = `<a href="/conversations">Messages</a>`
       }

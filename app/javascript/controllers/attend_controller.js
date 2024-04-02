@@ -6,7 +6,7 @@ export default class extends Controller {
   toggle(event) {
     const button = event.currentTarget;
     const fakeAttendees = this.fakeAttendeesTarget
-    if (button.textContent === "Attend") {
+    if (button.textContent === " Attend") {
       this.join(button, fakeAttendees);
     } else {
       this.leave(button, fakeAttendees);
@@ -14,17 +14,18 @@ export default class extends Controller {
   }
 
   join(button, fakeAttendees) {
-    button.textContent = "Attending";
+    button.innerHTML = "<i class='fa-regular fa-square-check'></i> Attending";
     button.style.backgroundColor = "white";
     button.style.border = "1px solid #e99852";
     button.style.color = "#e99852";
     fakeAttendees.classList.remove("d-none");
-    fakeAttendees.innerHTML = 'You and 26 others are going'
+    fakeAttendees.innerHTML = 'You, Tom and others are going'
   }
 
   leave(button, fakeAttendees) {
     button.style.backgroundColor = "#e99852";
-    button.textContent = "Attend";
+    button.innerHTML = "<i class='fa-solid fa-bell-concierge'></i> Attend";
     button.style.color = "white";
+    fakeAttendees.innerHTML = 'Tom and others are going'
   }
 }

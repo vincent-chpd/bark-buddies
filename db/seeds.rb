@@ -99,7 +99,7 @@ tom_dog = Dog.create(
 )
 
 max_photos = [
-  'https://res.cloudinary.com/lancaster-puppies-laravel/image/upload/v1671129781/breeds/ifuk3gus6xxasf8c7ehz.jpg',
+  'https://pug.tips/wp-content/uploads/2019/01/Small-pug-puppy-fawn.jpg',
   'https://www.wallmonkeys.com/cdn/shop/products/5837886-LRG_530x.jpg?v=1578662125'
 ]
 
@@ -115,7 +115,7 @@ puts "Creating fake users..."
 users = [] # Define an empty array to store created users
 boroughs = %w[Hackney Croydon Camden Stratford Shoreditch Lambeth Newham Greenwich Lewisham Southwark Islington Westminster Hoxton Fulham]
 
-20.times do |i|
+15.times do |i|
   user = User.create(
     name: Faker::Name.first_name,
     email: "user#{i}@user.com",
@@ -145,7 +145,7 @@ users.each_with_index do |user, user_index|
       user_id: user.id
     )
 
-    2.times do |photo_index|
+    1.times do |photo_index|
       file = URI.open('https://placedog.net/640/480?random')
       dog.photos.attach(io: file, filename: "dog#{user_index + 1}_photo#{photo_index + 1}.png", content_type: 'image/png')
     end
@@ -157,15 +157,7 @@ puts "Dogs created!"
 puts "Creating events!"
 events = [
   {
-    title: "Paws in Motion: Walkathon for Dogs!",
-    description: "Get ready to put your best paw forward at Paws in Motion, the ultimate event for dogs!
-    Embark on an adventure like no other as we transform the park into a playground for pups of all shapes and sizes.",
-    date: "24 March 2024",
-    location: 'Victoria Park, London',
-    img: "https://www.rauanimalhospital.com/sites/default/files/summertime-events-for-dogs-blog-header.jpg"
-  },
-  {
-    title: "Yappy Hour: A Tail-Wagging Extravaganza!",
+    title: "Yappy Hour Extravaganza!",
     description: "Unleash the joy and let the fur fly at our Happy Hour for Hounds! Indulge in delicious treats for both humans and dogs alike, mingle with fellow dog lovers, and enjoy a variety of activities guaranteed to make tails wag.",
     # turn this into a date.
     date: "06 April 2024",
@@ -173,7 +165,15 @@ events = [
     img: "https://i2-prod.liverpoolecho.co.uk/whats-on/food-drink-news/article14921477.ece/ALTERNATES/s615/0_JS157770132.jpg"
   },
   {
-    title: "Kindness Day: Spreading Love to All!",
+    title: "Paws in Motion Walkathon!",
+    description: "Get ready to put your best paw forward at Paws in Motion, the ultimate event for dogs!
+    Embark on an adventure like no other as we transform the park into a playground for pups of all shapes and sizes.",
+    date: "07 April 2024",
+    location: 'Victoria Park, London',
+    img: "https://www.rauanimalhospital.com/sites/default/files/summertime-events-for-dogs-blog-header.jpg"
+  },
+  {
+    title: "Kindness Day: Love to All!",
     description: "Join us for a heartwarming celebration of kindness, where small acts of compassion make differences!",
     date: "13 April 2024",
     location: 'Earlsfield, London',
@@ -183,15 +183,15 @@ events = [
   {
     title: "Glits and Grace: A Pageant Show!",
     description: "Step into the spotlight and experience the magic of Glamour and Grace!",
-    date: "18 May 2024",
+    date: "11 May 2024",
     location: 'Shoreditch, London',
     img: "https://ichef.bbci.co.uk/news/976/cpsprodpb/DF88/production/_106642275_tv053643519.jpg"
   },
 
   {
-    title: "Cinema Day: A Movie Day for Paws and Claws!",
+    title: "Cinema Day: Movie Day for Paws and Claws!",
     description: "Get ready for a cinematic adventure like no other at Paw and Order - the ultimate movie day for you!",
-    date: "14 June 2024",
+    date: "18 May 2024",
     location: 'Soho, London',
     img: "https://occ-0-2794-2219.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABRsgD-4khUGuGjIj3RrN-Tv8xQWAPLs07geUnat-pifJCdF5DCqj-tTCCh59Y9ZmEZir75VKIG5eTHjQ2hQBiPzW8xDPcJNkRB6RtyD4ERKIFO4GGwFIjOSgxuycoMqmhB0c3Q.jpg?r=f7b"
   },
@@ -199,7 +199,7 @@ events = [
   {
     title: "Grooming Glamour: Pamper Your Paws!",
     description: "Treat your furry friends to a day of luxury and relaxation at Grooming Glamour!",
-    date: "22 June 2024",
+    date: "18 May 2024",
     location: 'Hackney, London',
     img: "https://www.mutneys.com/wp-content/uploads/2019/08/OpawzBlowPens-Dog-Sample.jpg"
   }
