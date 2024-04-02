@@ -8,16 +8,17 @@ static targets = [ "popularBubbles", "cityBubbles", "popularBubblesContainer", "
 
 
 
-    this.animate();
-  }
-
-  animate() {
-    // setInterval(() => {
-    //   requestAnimationFrame(this.animate.bind(this));
-    // }, 2000);
-    //  requestAnimationFrame(this.animate.bind(this));
+    // this.animate();
     this.moveBubbles();
   }
+
+  // animate() {
+  //   // setInterval(() => {
+  //   //   requestAnimationFrame(this.animate.bind(this));
+  //   // }, 2000);
+  //   //  requestAnimationFrame(this.animate.bind(this));
+  //   this.moveBubbles();
+  // }
 
 
   moveBubbles() {
@@ -36,78 +37,55 @@ static targets = [ "popularBubbles", "cityBubbles", "popularBubblesContainer", "
   }
 
   moveBubbleRandomly(bubble, parentElement) {
+    // Get bubble and container dimensions
     const bubbleRect = bubble.getBoundingClientRect();
     const bubbleWidth = bubbleRect.width;
     const bubbleHeight = bubbleRect.height;
+    const containerRect = parentElement.getBoundingClientRect();
+    const containerWidth = containerRect.width;
+    const containerHeight = containerRect.height;
 
+    // Initialize velocity and position
+    let velocityX = (Math.random() - 0.5) * 1;
+    let velocityY = (Math.random() - 0.5) * 1;
+    let x = Math.random() * (containerWidth - bubbleWidth);
+    let y = Math.random() * (containerHeight - bubbleHeight);
 
-    const bubbleTop = bubbleRect.top;
-    const bubbleLeft = bubbleRect.left;
-    const bubbleBottom = bubbleTop + bubbleHeight;
-    const bubbleRight = bubbleLeft + bubbleWidth;
+    // Update bubble position over time
+    const moveBubble = () => {
+        // Update position based on velocity
+        x += velocityX;
+        y += velocityY;
 
-    console.log(bubbleTop, parentElement.getBoundingClientRect().top)
+        // Check if bubble hits the edges and adjust position and velocity accordingly
+        if (x < 0) {
+            x = 0;
+            velocityX = Math.abs(velocityX); // Reverse velocity if hitting left container edge
+        }
+        if (x + bubbleWidth >= containerWidth) {
+            x = containerWidth - bubbleWidth;
+            velocityX = -Math.abs(velocityX); // Reverse velocity if hitting right container edge
+        }
+        if (y < 0) {
+            y = 0;
+            velocityY = Math.abs(velocityY); // Reverse velocity if hitting top container edge
+        }
+        if (y + bubbleHeight >= containerHeight) {
+            y = containerHeight - bubbleHeight;
+            velocityY = -Math.abs(velocityY); // Reverse velocity if hitting bottom container edge
+        }
 
+        // Update bubble position
+        bubble.style.transform = `translate(${x}px, ${y}px)`;
 
-    const dirX = this.getDirection(bubbleTop, bubbleLeft, bubbleBottom, bubbleRight, parentElement)[0];
-    const dirY = this.getDirection(bubbleTop, bubbleLeft, bubbleBottom, bubbleRight, parentElement)[1];
-    //console.log(bubbleTop, bubbleLeft, bubbleBottom, bubbleRight)
+        // Continue moving the bubble
+        requestAnimationFrame(moveBubble);
+    };
 
-    // const bubbleCenterX = bubbleX + bubbleRect.width / 2;
-    // const bubbleCenterY = bubbleY + bubbleRect.height / 2;
-
-    // const containerCenterX = bubbleContainerRect.width / 2;
-    // const containerCenterY = bubbleContainerRect.height / 2;
-
-    // const dx = containerCenterX - bubbleCenterX;
-    // const dy = containerCenterY - bubbleCenterY;
-
-    // Adjusting velocity with a random factor
-    // const randomFactorX = (Math.random() * 2 - 1) * 50; // Random value between -5 and 5
-    // const randomFactorY = (Math.random() * 2 - 1) * 50; // Random value between -5 and 5
-
-    // const newX = bubbleX + dx + randomFactorX;
-    // const newY = bubbleY + dy + randomFactorY;
-
-    // Ensure the new position is within the bounds of the container
-    // const maxX = bubbleContainerRect.width - bubbleRect.width;
-    // const maxY = bubbleContainerRect.height - bubbleRect.height;
-
-
-
-    bubble.style.transform = `translate(${dirX}px, ${dirY}px)`;
+    // Start moving the bubble
+    moveBubble();
 }
 
-  // changeDirection() {
-  //   this.randomFactorX = (Math.random() * 2 - 1) * 50;
-  //   this.randomFactorY = (Math.random() * 2 - 1) * 50;
-  // }
 
-  getDirection(top, left, bottom, right, parentElement) {
-    const bubbleContainerRect = parentElement.getBoundingClientRect();
-    const containerWidth = bubbleContainerRect.width;
-    const containerHeight = bubbleContainerRect.height;
-    const containerTop = bubbleContainerRect.top;
-    const containerLeft = bubbleContainerRect.left;
-    const containerBottom = containerTop + containerHeight;
-    const containerRight = containerLeft + containerWidth;
-
-    let dirX = 0;
-    let dirY = 0;
-
-    if (top <= containerTop || bottom <= containerBottom) {
-      dirY = 1;
-    }else if (bottom >= containerBottom || top >= containerTop) {
-      dirY = -1;
-    }
-
-    if (left <= containerLeft || right <= containerRight) {
-      dirX = 1;
-    } else if (right >= containerRight || left >= containerLeft) {
-      dirX = -1;
-    }
-
-    return [dirX, dirY];
-  }
 
 }
