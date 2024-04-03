@@ -16,9 +16,9 @@ class PagesController < ApplicationController
   private
 
   def load_data
-    @communities = Community.limit(10) # Limit the number of communities fetched
-    @users = User.limit(10) # Limit the number of users fetched
+    @communities = Community.includes(photo_attachment: :blob).limit(10)
+    @users = User.includes(:dogs, photo_attachment: :blob).limit(10) # Eager load dogs association and limit the number of users fetched
     @user = current_user
-    @events = Event.limit(10) # Limit the number of events fetched
+    @events = Event.includes(photo_attachment: :blob).limit(10)
   end
 end

@@ -7,7 +7,7 @@
     </div>
     <div class="scroll-container">
       <div class="d-flex scroll px-3">
-        <% @users.includes(:dogs, :photo_attachment).reject { |user| user == current_user }.each do |user| %>
+        <% @users.reject { |user| user == current_user }.each do |user| %>
           <% user.dogs.each do |dog| %>
             <%=  link_to user_path(user) do %>
               <% first_photo = dog.photos.first %>
@@ -37,7 +37,7 @@
     <div class="d-flex scroll">
       <% @communities.each do |community| %>
         <%= render "communities/community_modal", community: community  %>
-        <%= link_to "Join Community", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" } do %>
+        <%= link_to "#", data: { bs_toggle: "modal", bs_target: "#staticBackdrop#{community.id}" } do %>
           <div class= "d-flex card-community text-center justify-content-center align-items-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('<%= image_path community.photo.url if community.photo.try(:url).present? %>')">
             <h2><%= community.name %></h2>
           </div>

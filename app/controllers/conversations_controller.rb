@@ -2,12 +2,16 @@ class ConversationsController < ApplicationController
   # before_action :authenticate_user
 
   def index
-    @conversations = Conversation.where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id)
+    @conversations = Conversation.includes(:messages, sender: {photo_attachment: :blob})
+                                 .where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id)
     respond_to do |format|
       format.html
-      format.text { render partial: "conversations/conversations_card", locals: { conversations: @conversations } }
+      format.text { render partial: "conversations/conversation_card", locals: { conversations: @conversations } }
     end
   end
+
+
+
 
   def show
     @conversation = Conversation.find(params[:id])
