@@ -20,7 +20,7 @@
       <div class="btn-follow-container">
       <% if current_user == @user %>
         <button type="button" class=" btn-profile" data-bs-toggle="modal" data-bs-target="#editProfileModal">
-          Edit profile
+          <i class="fa-regular fa-pen-to-square"></i> Edit profile
         </button>
       <% end %>
     </div>
@@ -81,13 +81,13 @@
   <div id="carouselExampleIndicators" class="carousel slide position-relative my-3" data-bs-ride="carousel">
     <!-- Carousel Indicators -->
     <div class="carousel-indicators">
-      <% @dog.photos.each_with_index do |photo, index| %>
+      <% @dog.photos.includes(:blob).each_with_index do |photo, index| %>
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="<%= 'active' if index.zero? %>" aria-label="Slide <%= index + 1 %>"></button>
       <% end %>
     </div>
     <!-- Carousel Inner -->
     <div class="carousel-inner">
-      <% @dog.photos.each_with_index do |photo, index| %>
+      <% @dog.photos.includes(:blob).each_with_index do |photo, index| %>
         <div class="carousel-item <%= 'active' if index.zero? %>">
           <%= image_tag photo.url, class: 'd-block w-100', alt: "Slide #{index + 1}" %>
         </div>

@@ -14,11 +14,12 @@
       <h2><%= @community.name %><br></h2>
     </div>
 
-      <div class="messages" data-community-subscription-target="messages">
-        <% @community.community_messages.each do |message| %>
-          <%= render "community_messages/message", message: message %>
-        <% end %>
-      </div>
+    <div class="messages" data-community-subscription-target="messages">
+      <% @community_messages.each do |message| %>
+        <%= render partial: "community_messages/message", locals: { message: message } %>
+      <% end %>
+    </div>
+  </div>
 
   </div>
 

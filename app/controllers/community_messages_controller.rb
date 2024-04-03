@@ -1,6 +1,6 @@
 class CommunityMessagesController < ApplicationController
 
-  def create
+    def create
       @community = Community.find(params[:community_id])
       @community_message = CommunityMessage.new(message_params)
       @community_message.community = @community
@@ -22,6 +22,6 @@ class CommunityMessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:community_message).permit(:content, :user_id)
+    params.require(:community_message).permit(:content)
   end
 end

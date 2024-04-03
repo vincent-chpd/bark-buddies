@@ -91,6 +91,17 @@
   border: 2px solid $orange;
 }
 
+.btn-edit{
+  border-radius: 12px;
+  background-color: $orange;
+  width: 176px;
+  color: white;
+  border: none;
+  font-size: 12px;
+  max-width: 200px;
+  height: 28px;
+}
+
 .unfollow {
   background-color: $white;
   border: 2px solid $orange;
