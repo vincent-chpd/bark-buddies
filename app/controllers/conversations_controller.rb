@@ -13,9 +13,6 @@ class ConversationsController < ApplicationController
     end
   end
 
-
-
-
   def show
     @conversation = Conversation.find(params[:id])
     @messages = @conversation.messages
@@ -35,8 +32,6 @@ class ConversationsController < ApplicationController
     respond_to do |format|
       format.json { render json: { status: :ok } }
     end
-
-    # redirect_to conversation_path(@conversation)
   end
 
   def create
