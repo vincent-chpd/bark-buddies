@@ -97,9 +97,13 @@
   width: 176px;
   color: white;
   border: none;
-  font-size: 12px;
+  font-size: 14px;
   max-width: 200px;
   height: 28px;
+  i  {
+    font-size: 14px !important;
+
+  }
 }
 
 .unfollow {

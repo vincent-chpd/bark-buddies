@@ -16,7 +16,7 @@ vincent = User.create(
   email: "vincent@vincent.com",
   password: '123456',
   location: "shoreditch",
-  age: 28,
+  age: 30,
   bio: "Just moved to London and looking for some dog friends. Send me a message if you want to meet up for a walk!"
 )
 file = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1697808207/fococnbp64dtyybgvzec.jpg')
@@ -34,7 +34,7 @@ vincent_dog = Dog.create(
 
 luffy_photos = [
   'https://primary.jwwb.nl/unsplash/uc3JhSWITMo.jpg',
-  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoI2mumTT5En-_rlEV1DMLe0UD08A-9Eucqdw08PJT-0owKjtGL-LcQxjIwW-BUAvTchE&usqp=CAU'
+  'https://www.petlandsanantonio.com/wp-content/uploads/2023/05/2315792_800-600x450.jpg'
 ]
 
 luffy_photos.each do |photo, index|
@@ -76,7 +76,40 @@ ceasar_photos.each do |photo, index|
 end
 luca_dog.save
 
-## Tom's profile
+## isaac's profile
+isaac = User.create(
+  name: "Isaac",
+  email: "isaac@isaac.com",
+  password: '123456',
+  location: "Shoreditch",
+  age: 29,
+  bio: "I'm a dog lover and have a friendly french bulldog named Erling. Looking to meet other dog owners in the area"
+)
+file = URI.open('https://ca.slack-edge.com/T02NE0241-U046DRSC3J4-2405583ed0d5-512')
+isaac.photo.attach(io: file, filename: "isaac.png", content_type: 'image/png')
+isaac.save
+
+isaac_dog = Dog.create(
+  name: "Erling",
+  age: 4,
+  breed: "French Bulldog",
+  gender: "male",
+  bio: "I love to play ball and snuggle up on the sofa.",
+  user_id: isaac.id
+)
+
+erling_photos = [
+  'https://www.dogsy.co.uk/cdn/shop/files/dogshirt4.jpg?v=1699375757&width=1000',
+  'https://www.purina.co.uk/sites/default/files/styles/crop_breed_ugc_image/public/webform/breed_ugc/161244/aa27217c-107b-46fb-96e9-314207dd9aa1.jpeg?h=f7874e80&itok=5WTkedGb'
+]
+
+erling_photos.each do |photo, index|
+  file = URI.open(photo)
+  isaac_dog.photos.attach(io: file, filename: "erling#{index}.png", content_type: 'image/png')
+end
+isaac_dog.save
+
+###################### Tom's profile
 tom = User.create(
   name: "Tom",
   email: "tom@tom.com",
@@ -108,6 +141,40 @@ max_photos.each do |photo, index|
   tom_dog.photos.attach(io: file, filename: "max#{index}.png", content_type: 'image/png')
 end
 tom_dog.save
+
+############################# Harry's profile
+harry = User.create(
+  name: "Harry",
+  email: "harry@harry.com",
+  password: '123456',
+  location: "Shoreditch",
+  age: 6,
+  bio: "I have a friendly french bulldog named Bella. Looking to meet other dog owners in the area!"
+)
+file = URI.open('https://ca.slack-edge.com/T02NE0241-U046DRSC3J4-2405583ed0d5-512')
+isaac.photo.attach(io: file, filename: "isaac.png", content_type: 'image/png')
+isaac.save
+
+isaac_dog = Dog.create(
+  name: "Bella",
+  age: 4,
+  breed: "French Bulldog",
+  gender: "Female",
+  bio: "I love running and play with other dogs",
+  user_id: harry.id
+)
+
+bella_photos = [
+  'https://i.imgur.com/65fNHIH.png',
+  'https://i.imgur.com/qsdFIpe.png'
+]
+
+bella_photos.each do |photo, index|
+  file = URI.open(photo)
+  harry_dog.photos.attach(io: file, filename: "bella#{index}.png", content_type: 'image/png')
+end
+harry_dog.save
+
 
 puts "Real users created!"
 puts "Creating fake users..."
@@ -141,7 +208,7 @@ users.each_with_index do |user, user_index|
       age: rand(1..10),
       breed: Faker::Creature::Dog.breed,
       gender: Faker::Gender.binary_type,
-      bio: Faker::Creature::Dog.meme_phrase,
+      bio: Faker::Lorem.paragraph,
       user_id: user.id
     )
 
