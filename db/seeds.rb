@@ -142,39 +142,6 @@ max_photos.each do |photo, index|
 end
 tom_dog.save
 
-############################# Harry's profile
-harry = User.create(
-  name: "Harry",
-  email: "harry@harry.com",
-  password: '123456',
-  location: "Shoreditch",
-  age: 6,
-  bio: "I have a friendly french bulldog named Bella. Looking to meet other dog owners in the area!"
-)
-file = URI.open('https://ca.slack-edge.com/T02NE0241-U046DRSC3J4-2405583ed0d5-512')
-isaac.photo.attach(io: file, filename: "isaac.png", content_type: 'image/png')
-isaac.save
-
-isaac_dog = Dog.create(
-  name: "Bella",
-  age: 4,
-  breed: "French Bulldog",
-  gender: "Female",
-  bio: "I love running and play with other dogs",
-  user_id: harry.id
-)
-
-bella_photos = [
-  'https://i.imgur.com/65fNHIH.png',
-  'https://i.imgur.com/qsdFIpe.png'
-]
-
-bella_photos.each do |photo, index|
-  file = URI.open(photo)
-  harry_dog.photos.attach(io: file, filename: "bella#{index}.png", content_type: 'image/png')
-end
-harry.save
-
 
 puts "Real users created!"
 puts "Creating fake users..."
