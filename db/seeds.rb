@@ -173,7 +173,7 @@ bella_photos.each do |photo, index|
   file = URI.open(photo)
   harry_dog.photos.attach(io: file, filename: "bella#{index}.png", content_type: 'image/png')
 end
-harry_dog.save
+harry.save
 
 
 puts "Real users created!"
