@@ -19,13 +19,13 @@ export default class extends Controller {
     button.style.border = "1px solid #e99852";
     button.style.color = "#e99852";
     fakeAttendees.classList.remove("d-none");
-    fakeAttendees.innerHTML = 'You, Tom and others are going'
+    fakeAttendees.innerHTML = 'You and 53 others are going'
   }
 
   leave(button, fakeAttendees) {
     button.style.backgroundColor = "#e99852";
     button.innerHTML = "<i class='fa-solid fa-bell-concierge'></i> Attend";
     button.style.color = "white";
-    fakeAttendees.innerHTML = 'Tom and others are going'
+    fakeAttendees.innerHTML = 'Tom and 52 others are going'
   }
 }

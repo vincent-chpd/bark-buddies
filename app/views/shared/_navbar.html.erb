@@ -1,8 +1,10 @@
 <div class="navbar-container" >
-  <div class="navbar-items " data-controller="notifications">
+  <div class="navbar-items " >
     <% if user_signed_in? %>
+    <div data-controller="notifications">
       <%= render "shared/navbar-partials/top_nav" %>
       <%=  render "shared/navbar-partials/bottom_nav" %>
+    </div>
     <% else %>
       <div class="login-item">
         <%= link_to "Login", new_user_session_path, class: "nav-link" %>

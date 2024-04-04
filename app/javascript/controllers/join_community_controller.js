@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["button", "chat"];
+  static targets = ["button", "chat", "member"];
 
   connect() {
     this.loadState();
@@ -12,8 +12,10 @@ export default class extends Controller {
     const chat = button.nextElementSibling;
     if (button.textContent === " Join community") {
       this.join(button, chat);
+      this.addOneMember();
     } else {
       this.leave(button, chat);
+      this.removeOneMember();
     }
     this.saveState(button);
   }
@@ -31,6 +33,18 @@ export default class extends Controller {
     button.innerHTML = "<i class='fa-solid fa-arrow-right-to-bracket'></i> Join community";
     button.style.color = "white";
     chat.classList.add("d-none");
+  }
+
+  addOneMember() {
+    const memberCount = this.memberTarget;
+    const currentCount = parseInt(memberCount.textContent.trim());
+    memberCount.textContent = currentCount + 1;
+  }
+
+  removeOneMember() {
+    const memberCount = this.memberTarget;
+    const currentCount = parseInt(memberCount.textContent.trim());
+    memberCount.textContent = currentCount - 1;
   }
 
   loadState() {

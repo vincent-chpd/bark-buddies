@@ -14,7 +14,9 @@ export default class extends Controller {
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
 
+
   resetForm(event) {
+    console.log("Form reset")
     event.preventDefault()
     event.target.reset()
   }
@@ -23,6 +25,7 @@ export default class extends Controller {
     console.log("Unsubscribed from the chatroom")
     this.channel.unsubscribe()
   }
+
 
   #insertMessageAndScrollDown(data) {
     const currentUserIsSender = this.currentUserIdValue == data.sender_id

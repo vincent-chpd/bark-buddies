@@ -1,10 +1,12 @@
 <div class="modal fade" id="staticBackdrop<%= community.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" >
-    <div class="modal-content">
+    <div class="modal-content" data-controller="join-community">
       <div class="modal-header">
         <div>
           <h1 class="modal-title fs-5" id="staticBackdropLabel"><%= community.name %></h1>
-          <p><i class="fa-regular fa-user orange"></i> <%= rand(10..20) %> Members</p>
+          <div class="d-flex">
+            <i class="fa-regular fa-user orange" style="margin-right:3px;"></i><small data-join-community-target="member" style="margin-right:3px;">25</small> <p> members</p>
+          </div>
         </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -12,7 +14,7 @@
       <div class="modal-body">
         <p><%= community.description %></p>
       </div>
-      <div class="modal-footer" data-controller="join-community">
+      <div class="modal-footer">
         <button type="button" class="btn-modal" data-action="click->join-community#toggle"  data-join-community-target="button" data-community-id="<%= community.id %>" >Join community</button>
         <%= link_to community_path(community), class:"btn-modal d-none", data: { target: "join-community.chat" } do %>
           <i class="fa-solid fa-people-group"></i> Enter chatroom

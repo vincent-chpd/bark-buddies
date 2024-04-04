@@ -21,8 +21,6 @@
     </div>
   </div>
 
-  </div>
-
 
   <%= form_for [@community, @community_message], html: {class: "chat-form", data: { action: "turbo:submit-end->community-subscription#resetForm" }} do |f| %>
     <%= f.text_area :content, placeholder: "Message...", class: "text-area"%>
@@ -31,4 +29,5 @@
       <i class="fa-solid fa-paper-plane"></i>
     <% end %>
   <% end %>
+
 </div>

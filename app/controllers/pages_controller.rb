@@ -1,24 +1,15 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :show, :landing]
-  before_action :load_data, only: [:home]
+  skip_before_action :authenticate_user!, only: [:home, :show]
 
   def home
-    # Use instance variables set by before_action
+    @communities = Community.includes(photo_attachment: :blob).limit(10)
+    @users = User.includes(:dogs, photo_attachment: :blob).where.not(id: current_user.id)
+    @user = current_user
+    @events = Event.includes(photo_attachment: :blob).limit(10)
   end
 
   def show
     @user = User.select(:id, :name, :email).find(params[:id])
   end
 
-  def landing
-  end
-
-  private
-
-  def load_data
-    @communities = Community.includes(photo_attachment: :blob).limit(10)
-    @users = User.includes(:dogs, photo_attachment: :blob).limit(10) # Eager load dogs association and limit the number of users fetched
-    @user = current_user
-    @events = Event.includes(photo_attachment: :blob).limit(10)
-  end
 end
