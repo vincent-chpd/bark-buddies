@@ -9,7 +9,7 @@
       </li>
       <li class='<%="link #{request.path == "/conversations" ? "orange" : ""}"%>' data-notifications-target="notificationsDot">
         <%= link_to conversations_path, class: "icon" do %>
-          <i class='<%="fas fa-envelope #{request.path == "/conversations" ? "orange" : ""}"%>'></i>
+          <i class='<%="fas fa-envelope #{request.path == "/conversations" ? "orange" : ""}"%>' data-notifications-target="envelope"></i>
         <% end %>
         <small>MESSAGES</small>
       </li>

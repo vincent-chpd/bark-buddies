@@ -11,16 +11,32 @@ export default class extends Controller {
       { channel: "ConversationChannel", id: this.conversationIdValue },
       { received: (data) => {
         this.insertMessageAndScrollDown(data)
+        this.startInterval()
       }}
     )
     this.markMessagesAsRead()
+    this.startInterval()
 
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
 
   disconnect() {
+    clearInterval(this.interval)
     this.channel.unsubscribe()
     this.markMessagesAsRead()
+  }
+
+  startInterval() {
+    let count = 0
+
+  this.interval = setInterval(() => {
+    if (count < 5) {
+      this.markMessagesAsRead()
+      count++
+    } else {
+      clearInterval(this.interval)
+    }
+  }, 25)
   }
 
   resetForm(event) {

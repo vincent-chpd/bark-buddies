@@ -2,16 +2,16 @@ class ConversationsController < ApplicationController
   # before_action :authenticate_user
 
   def index
-    @conversations = Conversation.includes(:messages, sender: {photo_attachment: :blob})
-                                 .where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id)
+    # @conversations = Conversation.where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id)
+    @conversations = Conversation.joins(:messages)
+                             .where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id)
+                             .group(:id)
+                             .order("MAX(messages.created_at) DESC")
     respond_to do |format|
       format.html
       format.text { render partial: "conversations/conversation_card", locals: { conversations: @conversations } }
     end
   end
-
-
-
 
   def show
     @conversation = Conversation.find(params[:id])
@@ -32,8 +32,6 @@ class ConversationsController < ApplicationController
     respond_to do |format|
       format.json { render json: { status: :ok } }
     end
-
-    # redirect_to conversation_path(@conversation)
   end
 
   def create
