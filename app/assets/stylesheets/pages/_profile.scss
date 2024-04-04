@@ -124,6 +124,11 @@
   height: 250px;
 }
 
+.carousel-item img {
+  height: 300px; /* Adjust the height as needed */
+  object-fit: cover; /* Maintain aspect ratio and cover the entire area */
+}
+
 .dog_details {
   margin-top: 10px;
   text-align: left;
