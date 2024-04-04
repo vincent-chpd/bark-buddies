@@ -50,6 +50,8 @@ luca = User.create(
   password: '123456',
   location: "Shoreditch",
   age: 30,
+  followers: 69,
+  communities: 5,
   bio: "Looking to meet other dog owners in the area. I have a friendly golden retriever who loves to play with other dogs!"
 )
 file = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1705006005/vzzyayojrtu8cxenstzi.jpg')
@@ -83,9 +85,11 @@ isaac = User.create(
   password: '123456',
   location: "Shoreditch",
   age: 29,
+  followers: 93,
+  communities: 3,
   bio: "I'm a dog lover and have a friendly french bulldog named Erling. Looking to meet other dog owners in the area"
 )
-file = URI.open('https://ca.slack-edge.com/T02NE0241-U046DRSC3J4-2405583ed0d5-512')
+file = URI.open('https://ca.slack-edge.com/T02NE0241-U061W4UGPSR-a589caaa3cbf-512')
 isaac.photo.attach(io: file, filename: "isaac.png", content_type: 'image/png')
 isaac.save
 
@@ -116,6 +120,8 @@ tom = User.create(
   password: '123456',
   location: "Shoreditch",
   age: 25,
+  followers: 89,
+  communities: 4,
   bio: "I'm a dog lover and have a friendly pug named Max. Looking to meet other dog owners in the area!"
 )
 file = URI.open('https://ca.slack-edge.com/T02NE0241-U046DRSC3J4-2405583ed0d5-512')
@@ -142,6 +148,40 @@ max_photos.each do |photo, index|
 end
 tom_dog.save
 
+###################### Harry's profile
+harry = User.create(
+  name: "Harry",
+  email: "harry@harry.com",
+  password: '123456',
+  location: "Shoreditch",
+  age: 26,
+  followers: 10,
+  communities: 2,
+  bio: "I'm a dog lover and have a friendly pug named Max. Looking to meet other dog owners in the area!"
+)
+file = URI.open('https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fi.imgur.com%2F9yIGrCa.png')
+harry.photo.attach(io: file, filename: "harry.png", content_type: 'image/png')
+harry.save
+
+harry_dog = Dog.create(
+  name: "Bella",
+  age: 4,
+  breed: "Golden labrador",
+  gender: "Female",
+  bio: " I'm a jolly pug who's always up for a playdate and making new fur-iends!",
+  user_id: harry.id
+)
+
+bella_photos = [
+  'https://i.imgur.com/65fNHIH.png',
+  'https://i.imgur.com/qsdFIpe.png'
+]
+
+bella_photos.each do |photo, index|
+  file = URI.open(photo)
+  harry_dog.photos.attach(io: file, filename: "bella#{index}.png", content_type: 'image/png')
+end
+harry_dog.save
 
 puts "Real users created!"
 puts "Creating fake users..."
