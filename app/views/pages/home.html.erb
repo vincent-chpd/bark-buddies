@@ -1,46 +1,31 @@
-<div class="profiles-container">
-  <div class="d-flex justify-content-between align-items-center mb-3 profiles-title">
-    <h2>Buddies near you</h2>
-    <%= link_to users_path, class: "underlined-link" do %>
-      <i class="fa-solid fa-arrow-right-long"></i>
-    <% end %>
-  </div>
-  <div class="scroll-container">
-    <div class="d-flex scroll px-3">
-      <% @users.reject { |user| user == current_user }.each do |user| %>
-        <% user.dogs.each do |dog| %>
-          <% first_photo = dog.photos.first %>
-          <% if first_photo %>
-            <% if user.location.present? %>
-              <%= link_to user_path(user) do %>
-                <div class="profile-card">
-                  <div class="card-image" style="background-image: url('<%= image_path first_photo.url %>')">
-                    <%= image_tag user.photo.url, height: 80, width: 80, class: "user-avatar", style: "border-radius: 50%;" %>
-                  </div>
-                  <div class="py-2 px-2 d-flex flex-column justify-content-center">
-                    <h5><%= user.name %> <br> & <%= dog.name %> </h5>
-                    <p><small><i class="fa-solid fa-location-dot"></i> <%= user.location %></small></p>
-                  </div>
-                </div>
-              <% end %>
-            <% else %>
-              <!-- Handle the case when user location is not present -->
+ <div class="profiles-container">
+    <div class="d-flex justify-content-between align-items-center mb-3 profiles-title">
+      <h2>Buddies near you</h2>
+      <%=  link_to users_path, class: "underlined-link" do %>
+        <i class="fa-solid fa-arrow-right-long"></i>
+      <% end %>
+    </div>
+    <div class="scroll-container">
+      <div class="d-flex scroll px-3">
+        <% @users.reject { |user| user == current_user }.take(10).each do |user| %>
+          <% user.dogs.each do |dog| %>
+            <%=  link_to user_path(user) do %>
+              <% first_photo = dog.photos.first %>
               <div class="profile-card">
-                <div class="card-image" style="background-color: #f0f0f0;">
+                <div class= "card-image" style="background-image: url('<%= image_path first_photo.url %>')">
                   <%= image_tag user.photo.url, height: 80, width: 80, class: "user-avatar", style: "border-radius: 50%;" %>
                 </div>
                 <div class="py-2 px-2 d-flex flex-column justify-content-center">
-                  <h5><%= user.name %></h5>
-                  <p><small><i class="fa-solid fa-location-dot"></i> Location not available</small></p>
+                  <h5><%= user.name %> & <%= dog.name %> </h5>
+                  <p><small><i class="fa-solid fa-location-dot"></i> <%= user.location %></small></p>
                 </div>
               </div>
             <% end %>
           <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
-</div>
 
 
 
