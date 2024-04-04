@@ -11,34 +11,37 @@
         <% user.dogs.each do |dog| %>
           <% first_photo = dog.photos.first %>
           <% if first_photo %>
-            <%= link_to user_path(user) do %>
+            <% if user.location.present? %>
+              <%= link_to user_path(user) do %>
+                <div class="profile-card">
+                  <div class="card-image" style="background-image: url('<%= image_path first_photo.url %>')">
+                    <%= image_tag user.photo.url, height: 80, width: 80, class: "user-avatar", style: "border-radius: 50%;" %>
+                  </div>
+                  <div class="py-2 px-2 d-flex flex-column justify-content-center">
+                    <h5><%= user.name %> <br> & <%= dog.name %> </h5>
+                    <p><small><i class="fa-solid fa-location-dot"></i> <%= user.location %></small></p>
+                  </div>
+                </div>
+              <% end %>
+            <% else %>
+              <!-- Handle the case when user location is not present -->
               <div class="profile-card">
-                <div class="card-image" style="background-image: url('<%= image_path first_photo.url %>')">
+                <div class="card-image" style="background-color: #f0f0f0;">
                   <%= image_tag user.photo.url, height: 80, width: 80, class: "user-avatar", style: "border-radius: 50%;" %>
                 </div>
                 <div class="py-2 px-2 d-flex flex-column justify-content-center">
-                  <h5><%= user.name %> <br> & <%= dog.name %> </h5>
-                  <p><small><i class="fa-solid fa-location-dot"></i> <%= user.location %></small></p>
+                  <h5><%= user.name %></h5>
+                  <p><small><i class="fa-solid fa-location-dot"></i> Location not available</small></p>
                 </div>
               </div>
             <% end %>
-          <% else %>
-            <!-- Handle the case when no photos are available for this dog -->
-            <div class="profile-card">
-              <div class="card-image" style="background-color: #f0f0f0;">
-                <%= image_tag user.photo.url, height: 80, width: 80, class: "user-avatar", style: "border-radius: 50%;" %>
-              </div>
-              <div class="py-2 px-2 d-flex flex-column justify-content-center">
-                <h5><%= user.name %></h5>
-                <p><small><i class="fa-solid fa-location-dot"></i> <%= user.location %></small></p>
-              </div>
-            </div>
           <% end %>
         <% end %>
       <% end %>
     </div>
   </div>
 </div>
+
 
 
   <div class="suggested-community-container">
