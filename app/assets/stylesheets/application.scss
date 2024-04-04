@@ -22,19 +22,57 @@ body{
 }
 
 @media (min-width: 575px){
-  body{
-    margin: 0 90px;
-  }
 
   .profiles-container {
     border-radius: 12px;
+    margin: 0 150px;
   }
 
   .upcoming-events-container {
     border-radius: 12px;
+    margin: 0 150px;
+  }
+
+  .card-event {
+    margin-bottom: 12px;
+  }
+
+  .suggested-community-container{
+    border-radius: 12px;
+    margin: 0 150px;
   }
 
   .header{
     border-radius: 12px;
+    margin: 0 150px;
+  }
+
+  .conversations-container{
+    border-radius: 12px;
+    margin: 0 150px;
+    background-color: white;
+  }
+
+  .chat-form{
+    margin: 0;
+  }
+
+  .chat-header{
+    border-radius: 12px;
+  }
+
+  .container-event{
+    border-radius: 12px;
+    margin: 16px 150px;
+  }
+
+  .community-container{
+    border-radius: 12px;
+    margin: 16px 150px;
+  }
+
+  .explore-container{
+    border-radius: 12px;
+    margin: 16px 150px;
   }
 }

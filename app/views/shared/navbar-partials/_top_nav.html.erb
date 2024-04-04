@@ -1,7 +1,7 @@
 <div class="appear-if-large">
-    <%= link_to landing_path, class: "logo-container " do %>
-      <%= image_tag ("https://res.cloudinary.com/drqv8g5uf/image/upload/v1710167061/Bark_Buddies_1_rg5mi8"), alt: "Bark Buddies Logo", class: "logo" %>
-    <% end %>
+  <%= link_to landing_path, class: "logo-container " do %>
+    <%= image_tag ("https://res.cloudinary.com/drqv8g5uf/image/upload/v1710167061/Bark_Buddies_1_rg5mi8"), alt: "Bark Buddies Logo", class: "logo" %>
+  <% end %>
   <div class="menu">
     <div class="menu-selections">
       <div class="link">
@@ -22,4 +22,5 @@
       </div>
     </div>
   </div>
+  <%= render "shared/navbar-partials/avatar_nav" %>
 </div>

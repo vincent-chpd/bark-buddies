@@ -6,9 +6,6 @@
   border-bottom: 1px solid $light-gray;
   transition: transform 0.3s;
   cursor: pointer;
-  &:hover{
-    border: 1px solid $light-orange;
-  }
 }
 
 .conversations-container{

@@ -11,16 +11,33 @@ export default class extends Controller {
       { channel: "ConversationChannel", id: this.conversationIdValue },
       { received: (data) => {
         this.insertMessageAndScrollDown(data)
-
+        this.startInterval()
       }}
     )
+    this.markMessagesAsRead()
+    this.startInterval()
+
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
 
   disconnect() {
+    clearInterval(this.interval)
     this.channel.unsubscribe()
+    this.markMessagesAsRead()
   }
 
+  startInterval() {
+    let count = 0
+
+  this.interval = setInterval(() => {
+    if (count < 5) {
+      this.markMessagesAsRead()
+      count++
+    } else {
+      clearInterval(this.interval)
+    }
+  }, 25)
+  }
 
   resetForm(event) {
     event.preventDefault()
@@ -60,4 +77,23 @@ export default class extends Controller {
     return currentUserIsSender ? "user-message" : "other-user-message"
   }
 
+
+  markMessagesAsRead() {
+    fetch(`/conversations/${this.conversationIdValue}/update_read_status`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+      },
+      body: JSON.stringify({ read: true })
+    }).then(response => {
+      if (response.ok) {
+        console.log('Messages updated successfully');
+      } else {
+        console.error('Error updating messages');
+      }
+    }).catch(error => {
+      console.error('Network error:', error);
+    });
+  }
 }

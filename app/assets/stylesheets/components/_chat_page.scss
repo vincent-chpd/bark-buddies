@@ -131,14 +131,14 @@
 .user-message{
   background-color: $orange;
   margin: 0;
-  padding-top: 8px;
+  padding: 4px 8px;
   small {
     color: $light-orange;
   }
 }
 
 .other-user-message{
-  padding-top: 8px;
+  padding: 4px 8px;
   background-color: grey;
   margin: 0;
   small {

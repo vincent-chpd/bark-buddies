@@ -1,6 +1,6 @@
 <div class="avatar-container">
   <div class="dropdown-image">
-    <div class="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-notifications-target="notificationsDot">
+    <div class="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <% if current_user.present? %>
         <div class="avatar">
           <%= image_tag current_user.photo, class: "avatar", alt: "dropdown menu" if current_user.photo.present? %>
