@@ -12,7 +12,7 @@
             <%=  link_to user_path(user) do %>
               <% first_photo = dog.photos.first %>
               <div class="profile-card">
-                <div class= "card-image" style="background-image: url('<%= image_path first_photo.url %>')">
+                <div class= "card-image" style="background-image: url('<%= image_path(first_photo&.url) %>')">
                   <%= image_tag user.photo.url, height: 80, width: 80, class: "user-avatar", style: "border-radius: 50%;" %>
                 </div>
                 <div class="py-2 px-2 d-flex flex-column justify-content-center">
