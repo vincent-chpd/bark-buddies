@@ -34,7 +34,7 @@
 }
 
 .navbar-items{
-  display: flex;
+  font-size: 16px;
   justify-content: center;
   gap:10px;
   align-items: center;
@@ -74,7 +74,6 @@
 
 .menu{
   width: 100%;
-  display: flex;
   padding: 4px 0;
   ul{
     width:100%;
@@ -98,7 +97,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 32px;
   .icon{
     font-size: 20px;
   }
@@ -145,8 +144,8 @@
   .appear-if-large {
     display: flex;
     justify-content: space-around;
-    gap: 60px;
     align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   .appear-if-small {
     display: none;
@@ -156,16 +155,23 @@
     display: none;
   }
 
+  .logo-container {
+    margin-left: 20px;
+  }
+
+  .avatar{
+    margin-right: 20px;
+  }
+
   .navbar-container{
     width: 100%;
-    padding: 0 20px;
     background: white;
     z-index: 1000;
   }
 
   .navbar-items{
     background: white;
-    padding: 20px;
+    padding: 0 0 20px 0;
     a{
       color: rgb(207, 126, 40);
     }

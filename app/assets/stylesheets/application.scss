@@ -18,7 +18,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body{
-  background-image: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('https://www.shutterstock.com/image-vector/dog-bone-seamless-pattern-french-600nw-1656988378.jpg');
+  background-image: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('https://www.shutterstock.com/image-vector/dog-bone-seamless-pattern-french-600nw-1656988378.jpg');
 }
 
 @media (min-width: 575px){
@@ -30,7 +30,7 @@ body{
 
   .upcoming-events-container {
     border-radius: 12px;
-    margin: 0 150px;
+    margin: 0 150px 35px 150px;
   }
 
   .card-event {
@@ -74,5 +74,16 @@ body{
   .explore-container{
     border-radius: 12px;
     margin: 16px 150px;
+  }
+
+  .profile-container{
+    border-radius: 12px;
+    margin: 16px 150px;
+  }
+
+  .btn-container{
+    display: flex;
+    justify-content: center;
+    gap: 32px;
   }
 }
