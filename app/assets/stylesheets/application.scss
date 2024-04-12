@@ -30,7 +30,7 @@ body{
 
   .upcoming-events-container {
     border-radius: 12px;
-    margin: 0 150px 35px 150px;
+    margin: 0 150px 35ccpx 150px;
   }
 
   .card-event {
@@ -58,7 +58,15 @@ body{
   }
 
   .chat-header{
-    border-radius: 12px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .chat{
+    height: 78vh;
+  }
+
+  .dog-image{
+    border: 3px solid $light-orange;
   }
 
   .container-event{
@@ -78,7 +86,13 @@ body{
 
   .profile-container{
     border-radius: 12px;
-    margin: 16px 150px;
+    margin: 16px 400px;
+    background-color: white;
+  }
+
+  .conversation-container{
+    background: white;
+    border: 1px solid lightgrey;
   }
 
   .btn-container{
